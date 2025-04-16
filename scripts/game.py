@@ -123,7 +123,7 @@ class Game:
 
 
     def run(self):
-        print(self.player.air_time, self.player.grounded)
+        
         mouse_pressed = False
         mouse_released = False
         for event in pygame.event.get():

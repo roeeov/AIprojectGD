@@ -21,23 +21,11 @@ class MapManager:
         self.download_index()
 
     def auth_drive(self):
-        gauth = GoogleAuth()
+        from pydrive2.auth import GoogleAuth
+        from pydrive2.drive import GoogleDrive
 
-        # Try to load saved credentials
-        gauth.LoadCredentialsFile("credentials.json")
-
-        # Authenticate if not loaded or expired
-        if gauth.credentials is None:
-            print("🔐 No saved credentials found. Logging in...")
-            gauth.LocalWebserverAuth()
-            gauth.SaveCredentialsFile("credentials.json")
-        elif gauth.access_token_expired:
-            print("🔄 Token expired. Refreshing...")
-            gauth.Refresh()
-            gauth.SaveCredentialsFile("credentials.json")
-        else:
-            print("✅ Loaded saved credentials.")
-
+        gauth = GoogleAuth()       # Auto-loads settings.yaml
+        gauth.ServiceAuth()        # Uses service account from settings.yaml
         return GoogleDrive(gauth)
 
     def postMap(self, id):
@@ -232,20 +220,24 @@ class MapManager:
         self.upload_index()
 
     def upload_index(self):
-        # Delete existing index.json on Drive if it exists
         existing = self.drive.ListFile({
-            'q': "title='index.json' and trashed=false"
+            'q': f"title='index.json' and '{self.LEVELS_FOLDER_ID}' in parents and trashed=false"
         }).GetList()
-        for f in existing:
-            f.Delete()
 
-        file = self.drive.CreateFile({
-            'title': 'index.json',
-            'parents': [{'id': self.LEVELS_FOLDER_ID}]
-        })
+        if existing:
+            file = existing[0]  # Update the existing file
+            print("♻️ Updating existing index.json")
+        else:
+            file = self.drive.CreateFile({
+                'title': 'index.json',
+                'parents': [{'id': self.LEVELS_FOLDER_ID}]
+            })
+            print("📄 Uploading new index.json")
+
         file.SetContentFile("index.json")
         file.Upload()
-        print("✅ index.json updated on Drive")
+        print("✅ index.json uploaded/updated on Drive")
+
 
     def download_level(self, map_id, local_folder="data/maps"):
         filename = f"{map_id}.json"

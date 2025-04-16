@@ -7,7 +7,6 @@ import os
 import json
 
 #map_manager.download_index()
-print(map_manager.list_online_levels())
 
 # FILENAME = "00001.json"  # Change this to any level file you want to upload
 # LOCAL_PATH = os.path.join("data", "maps", FILENAME)

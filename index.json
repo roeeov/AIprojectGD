@@ -18,5 +18,15 @@
     "name": "cube challenge",
     "creator": "roeeov",
     "difficulty": "hard"
+  },
+  "00005": {
+    "name": "ball timings",
+    "creator": "roeeov",
+    "difficulty": "harder"
+  },
+  "00006": {
+    "name": "ball challenge",
+    "creator": "roeeov",
+    "difficulty": "harder"
   }
 }
