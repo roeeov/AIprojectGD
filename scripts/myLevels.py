@@ -183,7 +183,7 @@ class myLevelPage:
                     map_info = map_manager.getMapInfo(map_manager.current_map_id)
                     creator, name = map_info['creator'].replace(" ", ""), map_info['name'].replace(" ", "")
                     if map_info['difficulty'] != 'NA' and creator not in {'', 'notentered'} and name not in {'', 'unnamed'}:
-                        map_manager.updateMapInfo(id= map_manager.generateOnlineId())
+                        map_manager.postMap(map_manager.current_map_id)
                         map_manager.update_map_dict()
                         self.level_select.reloadButtons()
                         game_state_manager.returnToPrevState()
