@@ -84,18 +84,19 @@ class myLevelPage:
     def __init__(self, display, level_select):
         self.display = display
         self.level_select = level_select
+        self.background = load_image('UI/backgrounds/levelPage.png', scale=DISPLAY_SIZE)
         self.buttons = []
 
-        play_text = Text('play', pos = vh(50, 62), size=UIsize(6))
-        play_button = Button(play_text, (0 ,255, 0), button_type='play')
+        play_text = Text('', pos = vh(50, 62), size=0)
+        play_button = Button(play_text, (0 ,255, 0), button_type='play', scale_factor=1.1, image=load_image('UI/buttons/play.png', scale=(UIsize(5*35/11), UIsize(5))))
         self.buttons.append(play_button)
 
-        edit_text = Text('edit', pos = vh(30, 62), size=UIsize(6))
-        edit_button = Button(edit_text, (0 ,255, 0), button_type='edit')
+        edit_text = Text('', pos = vh(30, 62), size=0)
+        edit_button = Button(edit_text, (0 ,255, 0), button_type='edit', scale_factor=1.1, image=load_image('UI/buttons/edit.png', scale=(UIsize(5*35/11), UIsize(5))))
         self.buttons.append(edit_button)
 
-        post_text = Text('post', pos = vh(70, 62), size=UIsize(6))
-        post_button = Button(post_text, (0 ,255, 0), button_type='post')
+        post_text = Text('', pos = vh(70, 62), size=0)
+        post_button = Button(post_text, (0 ,255, 0), button_type='post', scale_factor=1.1, image=load_image('UI/buttons/post.png', scale=(UIsize(5*35/11), UIsize(5))))
         self.buttons.append(post_button)
 
         prev_text = Text('', pos = (50, 50), size=UIsize(3))
@@ -120,7 +121,7 @@ class myLevelPage:
 
     def run(self):
 
-        self.display.fill((245, 137, 49))
+        self.display.blit(self.background, (0, 0))
 
         map_info = map_manager.getMapInfo(map_manager.current_map_id)
 

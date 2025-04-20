@@ -25,8 +25,13 @@
     "difficulty": "harder"
   },
   "00006": {
-    "name": "ball challenge",
+    "name": "wonic save",
     "creator": "roeeov",
-    "difficulty": "harder"
+    "difficulty": "demon"
+  },
+  "00007": {
+    "name": "level 1",
+    "creator": "koron",
+    "difficulty": "easy"
   }
 }

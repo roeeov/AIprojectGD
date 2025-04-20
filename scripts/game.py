@@ -120,10 +120,8 @@ class Game:
                     button.blit(self.display)
                 
 
-
-
     def run(self):
-        
+
         mouse_pressed = False
         mouse_released = False
         for event in pygame.event.get():

@@ -19,12 +19,12 @@ class LevelSelect:
     def reloadButtons(self):
         self.buttons = []
 
-        prev_text = Text('', pos = (50, 50), size=UIsize(3))
+        prev_text = Text('', pos = (50, 50), size=0)
         prev_button = Button(prev_text, (0 ,255, 0), button_type='prev', image=load_image('UI/buttons/back.png', (UIsize(3), UIsize(3))) )
         self.buttons.append(prev_button)
 
-        reload_text = Text('reload', pos = (vh(90, -1)[0], vh(-1, 90)[1]), size=UIsize(3))
-        reload_button = Button(reload_text, (0 ,255, 0), button_type='reload')
+        reload_text = Text('', pos = (vh(90, -1)[0], vh(-1, 90)[1]), size=0)
+        reload_button = Button(reload_text, (0 ,255, 0), button_type='reload', image=load_image('UI/buttons/reload.png', scale=(UIsize(3*35/11), UIsize(3))))
         self.buttons.append(reload_button)
 
         online_map_dict = map_manager.list_online_levels()
@@ -81,29 +81,30 @@ class LevelPage:
     def __init__(self, display, level_select):
         self.display = display
         self.level_select = level_select
+        self.background = load_image('UI/backgrounds/levelPage.png', scale=DISPLAY_SIZE)
         self.buttons = []
 
-        play_text = Text('play', pos = vh(60, 60), size=UIsize(6))
-        play_button = Button(play_text, (0 ,255, 0), button_type='play')
+        play_text = Text('', pos = vh(60, 60), size=0)
+        play_button = Button(play_text, (0 ,255, 0), button_type='play', scale_factor=1.1, image=load_image('UI/buttons/play.png', scale=(UIsize(5*35/11), UIsize(5))))
         self.buttons.append(play_button)
 
-        edit_text = Text('edit', pos = vh(40, 60), size=UIsize(6))
-        edit_button = Button(edit_text, (0 ,255, 0), button_type='edit')
+        edit_text = Text('', pos = vh(40, 60), size=0)
+        edit_button = Button(edit_text, (0 ,255, 0), button_type='edit', scale_factor=1.1, image=load_image('UI/buttons/edit.png', scale=(UIsize(5*35/11), UIsize(5))))
         self.buttons.append(edit_button)
 
         prev_text = Text('', pos = (50, 50), size=UIsize(3))
         prev_button = Button(prev_text, (0 ,255, 0), button_type='prev', image=load_image('UI/buttons/back.png', (UIsize(3), UIsize(3))) )
         self.buttons.append(prev_button)
 
-        sync_text = Text('sync', pos = (vh(90, -1)[0], vh(-1, 90)[1]), size=UIsize(3))
-        sync_button = Button(sync_text, (0 ,255, 0), button_type='sync')
+        sync_text = Text('', pos = (vh(90, -1)[0], vh(-1, 90)[1]), size=0)
+        sync_button = Button(sync_text, (0 ,255, 0), button_type='sync', image=load_image('UI/buttons/sync.png', scale=(UIsize(3*35/11), UIsize(3))))
         self.buttons.append(sync_button)
 
         self.diff_faces = {diff: load_image(f'UI/difficulity/{diff}.png', scale=(UIsize(3), UIsize(3))) for diff in DIFFICULTIES}
 
     def run(self):
 
-        self.display.fill((245, 137, 49))
+        self.display.blit(self.background, (0, 0))
 
         map_info = map_manager.getMapInfo(map_manager.current_map_id)
 
