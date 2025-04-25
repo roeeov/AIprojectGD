@@ -96,7 +96,7 @@ class LevelPage:
         prev_button = Button(prev_text, (0 ,255, 0), button_type='prev', image=load_image('UI/buttons/back.png', (UIsize(3), UIsize(3))) )
         self.buttons.append(prev_button)
 
-        sync_text = Text('', pos = (vh(90, -1)[0], vh(-1, 90)[1]), size=0)
+        sync_text = Text('', pos = (vh(93, -1)[0], vh(-1, 93)[1]), size=0)
         sync_button = Button(sync_text, (0 ,255, 0), button_type='sync', image=load_image('UI/buttons/sync.png', scale=(UIsize(3*35/11), UIsize(3))))
         self.buttons.append(sync_button)
 

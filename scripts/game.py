@@ -22,20 +22,20 @@ class Game:
         self.openMenu = False
         self.buttons = []
 
-        back_text = Text('menu', pos = vh(60, 55), size=UIsize(5))
-        back_button = Button(back_text, (0 ,255, 0), button_type='menu')
+        back_text = Text('', pos = vh(60, 55), size=UIsize(5))
+        back_button = Button(back_text, (0 ,255, 0), button_type='menu', image=load_image('UI/buttons/menu.png', scale=(UIsize(4*63/17), UIsize(4))), scale_factor=1.1)
         self.buttons.append(back_button)
 
-        edit_text = Text('resume', pos = vh(40, 55), size=UIsize(5))
-        edit_button = Button(edit_text, (0 ,255, 0), button_type='resume')
+        edit_text = Text('', pos = vh(40, 55), size=UIsize(5))
+        edit_button = Button(edit_text, (0 ,255, 0), button_type='resume', image=load_image('UI/buttons/resume.png', scale=(UIsize(4*63/17), UIsize(4))), scale_factor=1.1)
         self.buttons.append(edit_button)
 
-        reset_text = Text('play again', pos = vh(50, 70), size=UIsize(5))
-        reset_button = Button(reset_text, (0 ,255, 0), button_type='reset')
+        reset_text = Text('', pos = vh(50, 70), size=UIsize(5))
+        reset_button = Button(reset_text, (0 ,255, 0), button_type='reset', image=load_image('UI/buttons/playAgain.png', scale=(UIsize(4*63/17), UIsize(4))), scale_factor=1.1)
         self.buttons.append(reset_button)
 
-        pause_text = Text('pause', pos = vh(4, 4.5), size=UIsize(1.5))
-        self.pause_button = Button(pause_text, (0 ,255, 0), button_type='prev')
+        pause_text = Text('', pos = vh(4, 4.5), size=UIsize(1.5))
+        self.pause_button = Button(pause_text, (0 ,255, 0), button_type='prev', image=load_image('UI/buttons/pause.png', scale=(UIsize(2.5), UIsize(2.5))))
 
         self.pause_title_text = Text("Pause Menu", vh(50, 30), color=(255, 255, 255))
 

@@ -33,5 +33,10 @@
     "name": "level 1",
     "creator": "koron",
     "difficulty": "easy"
+  },
+  "00008": {
+    "name": "1943",
+    "creator": "hitler",
+    "difficulty": "demon"
   }
 }
