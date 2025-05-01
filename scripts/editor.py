@@ -23,10 +23,11 @@ class Editor:
         self.buttons.append(prev_button)
 
     def resetEditor(self):
+        self.scroll = [0, 0]
         self.setZoom(10)
         self.movement = [False, False, False, False]
         
-        self.scroll = [0, 0]
+        self.popup = None
         
         self.tile_list = list(self.assets)
         self.tile_group = 0
@@ -48,12 +49,19 @@ class Editor:
             'finish':load_images('tiles/finish', scale=(IMGscale[0], IMGscale[1]*2)),
             'orb': load_images('tiles/orb', scale=IMGscale),
         }
-        tile_map.setAssets(tile_assets)
+
+        spawner_assets = tile_assets.copy()
+        spawner_assets['spawner'] = load_image('extra/spawner.png', scale=IMGscale)
+        tile_map.setAssets(spawner_assets)
+        
         return tile_assets
     
     def setZoom(self, zoom):
         self.zoom = int(zoom)
-        tile_map.tile_size = int(TILE_SIZE * self.zoom // 10)
+        new_tile_size = int(TILE_SIZE * self.zoom // 10)
+        self.scroll[0] = (self.scroll[0] + DISPLAY_SIZE[0]//2) // tile_map.tile_size * new_tile_size - DISPLAY_SIZE[0]//2
+        self.scroll[1] = (self.scroll[1] + DISPLAY_SIZE[1]//2) // tile_map.tile_size * new_tile_size - DISPLAY_SIZE[1]//2
+        tile_map.tile_size = new_tile_size
         self.assets = self.reload_assets()
     
     def deleteGridBlock(self, tile_pos):
@@ -74,11 +82,10 @@ class Editor:
         tile_map.tilemap[str(tile_pos[0]) + ';' + str(tile_pos[1])] = {'type': tile_type, 'variant': self.tile_variant, 'pos': tile_pos}
         
     def run(self):
-
             self.display.blit(self.bgIMG, (0, 0))
             
-            self.scroll[0] += (self.movement[1] - self.movement[0]) * EDITOR_SCROLL
-            self.scroll[1] += (self.movement[3] - self.movement[2]) * EDITOR_SCROLL
+            self.scroll[0] += (self.movement[1] - self.movement[0]) * (EDITOR_SCROLL_FAST if self.shift else EDITOR_SCROLL)
+            self.scroll[1] += (self.movement[3] - self.movement[2]) * (EDITOR_SCROLL_FAST if self.shift else EDITOR_SCROLL)
             render_scroll = (int(self.scroll[0]), int(self.scroll[1]))
             
             tile_map.render(self.display, offset=render_scroll)
@@ -170,6 +177,7 @@ class Editor:
                     if event.key == pygame.K_o:
                         path = map_manager.getMapPath()
                         tile_map.save(path)
+                        self.popup = Popup("Level Saved!")
                     if event.key in {pygame.K_LSHIFT, pygame.K_RSHIFT}:
                         self.shift = True
                     if event.key == pygame.K_UP:
@@ -198,6 +206,10 @@ class Editor:
                         self.resetEditor()
                         game_state_manager.returnToPrevState()
                 button.blit(self.display)
+
+            if self.popup is not None and not self.popup.is_done():
+                self.popup.update()
+                self.popup.draw(self.display)
 
 
 

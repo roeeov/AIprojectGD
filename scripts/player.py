@@ -1,5 +1,6 @@
 from scripts.constants import *
 from collections import deque
+from scripts.tilemap import tile_map
 import numpy as np
 import pygame
 
@@ -8,14 +9,15 @@ class Player:
     def __init__(self, game):
         self.game = game
         self.trail = deque()
-        self.gamemode = ''
         self.action = ''
         self._initialize()  # Call the method that initializes everything
 
     def _initialize(self):
         """Set the initial state of the player."""
-        self.pos = PLAYER_POS.copy()
-        self.Yvelocity = 0
+        checkpointInfo = self.game.getCheckpoint()
+        self.pos = checkpointInfo['pos'].copy()
+        self.game.scroll = checkpointInfo['scroll'].copy()
+        self.Yvelocity = checkpointInfo['velocity']
         self.collisions = {'up': False, 'down': False, 'right': False}
         self.hitbox_collisions = {'up': False, 'down': False, 'right': False}
         self.input = {'hold': False, 'click': False, 'buffer': False}
@@ -24,9 +26,10 @@ class Player:
         self.death = False # is the player dead
         self.finishLevel = False # did the player reach the finish
         self.respawn = False # is death animation over and need to respawn
-        self.gravityDirection = 'down'
+        self.gravityDirection = checkpointInfo['gravity']
         self.portal_grace_period = 2
-        self.setGameMode('cube')
+        self.gamemode = ''
+        self.setGameMode(checkpointInfo['gamemode'])
 
         self.air_time = 5
         self.total_rotation = 0  # Track total rotation during a jump
@@ -35,8 +38,6 @@ class Player:
         """Reset the player to its initial state."""
         self.trail.clear()
         self._initialize()
-        self.gamemode = ''
-        self.setGameMode('cube')
 
 
     def update(self, tilemap, upPressed):
@@ -161,6 +162,12 @@ class Player:
                                                 self.pos[1] + self.size[1] // 2 - offset[1]))
         # Draw the rotated image
         surf.blit(flipped_img, img_rect)
+
+
+        checkpoint_img = self.game.assets['checkpoint']   
+        for checkpoint in np.array(self.game.checkPoints):
+            checkpoint_rect = checkpoint_img.get_rect(center=(checkpoint['pos'][0] - offset[0], checkpoint['pos'][1] - offset[1]))
+            surf.blit(checkpoint_img, checkpoint_rect)
 
         if DRAW_PLAYER_HITBOX:
             colrect = self.rect()

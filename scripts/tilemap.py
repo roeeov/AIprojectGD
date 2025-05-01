@@ -2,6 +2,7 @@ import json
 import numpy as np
 import pygame
 from scripts.constants import *
+from scripts.gameStateManager import game_state_manager
 
 AUTOTILE_MAP = {
     tuple(sorted([(1, 0), (0, 1)])): 0,
@@ -87,7 +88,7 @@ class Tilemap:
                     case 'orb':
                         tiles.append((pygame.Rect(tile['pos'][0] * self.tile_size, tile['pos'][1] * self.tile_size, self.tile_size, self.tile_size), (tile['type'], tile['variant'])))
         return tiles
-    
+
     def autotile(self):
         for loc in self.tilemap:
             tile = self.tilemap[loc]
@@ -115,13 +116,19 @@ class Tilemap:
                     if SHOW_SPIKE_HITBOX and tile['type'] == 'spike':
                         colrect = pygame.Rect(
                             self.tile_size * tile['pos'][0], 
-                            self.tile_size * tile['pos'][1], 
+                            self.tile_size * tile['pos'][1],
                             int(self.tile_size*SPIKE_SIZE[0]), 
                             int(self.tile_size*SPIKE_SIZE[1])
                         )
                         colrect.center = (tile['pos'][0] * self.tile_size - offset[0] + self.tile_size//2, 
                                         tile['pos'][1] * self.tile_size - offset[1] + self.tile_size//2)
                         pygame.draw.rect(surf, (255, 0, 0), colrect)
+
+        if game_state_manager.getState() == 'edit':
+            spawner_img = self.assets['spawner'].copy()
+            spawner_img.set_alpha(256 * 0.5)  # 0 = transparent, 255 = opaque
+            surf.blit(spawner_img, (PLAYER_POS[0] - offset[0], PLAYER_POS[1] - offset[1]))
+
 
 
 tile_map = Tilemap(tile_size=TILE_SIZE)

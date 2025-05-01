@@ -9,6 +9,7 @@ from scripts.clouds import Clouds
 from scripts.constants import *
 from scripts.gameStateManager import game_state_manager
 from scripts.mapManager import map_manager
+from collections import deque
 
 class Game:
     def __init__(self, display):
@@ -18,9 +19,13 @@ class Game:
         self.input = {'w': False, 'space': False, 'up_arrow': False, 'mouse': False}
         self.up = False
         self.noclip = False
+        self.checkPoints = deque()
+        self.scroll = [0, 0]
 
         self.openMenu = False
         self.buttons = []
+
+        self.mode = 'normal'
 
         back_text = Text('', pos = vh(60, 55), size=UIsize(5))
         back_button = Button(back_text, (0 ,255, 0), button_type='menu', image=load_image('UI/buttons/menu.png', scale=(UIsize(4*63/17), UIsize(4))), scale_factor=1.1)
@@ -29,6 +34,10 @@ class Game:
         edit_text = Text('', pos = vh(40, 55), size=UIsize(5))
         edit_button = Button(edit_text, (0 ,255, 0), button_type='resume', image=load_image('UI/buttons/resume.png', scale=(UIsize(4*63/17), UIsize(4))), scale_factor=1.1)
         self.buttons.append(edit_button)
+
+        practice_text = Text('practice', pos = vh(50, 70), size=UIsize(5))
+        practice_button = Button(practice_text, (0 ,255, 0), button_type='practice', scale_factor=1.1)
+        self.buttons.append(practice_button)
 
         reset_text = Text('', pos = vh(50, 70), size=UIsize(5))
         reset_button = Button(reset_text, (0 ,255, 0), button_type='reset', image=load_image('UI/buttons/playAgain.png', scale=(UIsize(4*63/17), UIsize(4))), scale_factor=1.1)
@@ -52,14 +61,10 @@ class Game:
         
         self.player = Player(self)
         
-        self.scroll = [0, 0]
 
     def reset(self):    
         # Then set assets
         tile_map.assets = self.assets
-        
-        # Reset scroll and up state
-        self.scroll = [0, 0]
         self.up = False
         
         # Reset player after tilemap is cleared
@@ -88,7 +93,7 @@ class Game:
                         button.update(mouse_pressed, mouse_released)
                         if button.is_clicked():
                                 self.openMenu = False
-                                self.reset()
+                                #self.reset()
                                 game_state_manager.returnToPrevState()
                         button.blit(self.display)
 
@@ -98,6 +103,7 @@ class Game:
                                 self.openMenu = False
                                 self.reset()
                         button.blit(self.display)
+
         else:
 
             self.pause_title_text.blit(self.display)
@@ -118,9 +124,28 @@ class Game:
                     if button.is_clicked():
                             self.openMenu = False
                     button.blit(self.display)
-                
+
+                if button.type == 'practice':
+                    button.update(mouse_pressed, mouse_released)
+                    if button.is_clicked():
+                            self.mode = 'practice' if self.mode == 'normal' else 'normal'
+                            self.checkPoints.clear()
+                            self.openMenu = False
+                            self.reset()
+                    button.blit(self.display)
+    
+    def getCheckpoint(self):
+        if len(self.checkPoints) > 0:
+            return self.checkPoints[0]
+        return {'pos': PLAYER_POS.copy(), 'scroll': [0, 0].copy(),
+                'velocity': 0, 'gravity': 'down', 'gamemode': 'cube'}
 
     def run(self):
+
+        if game_state_manager.justSwitched('game'):
+            self.mode = 'normal'
+            self.checkPoints.clear()
+            self.reset()
 
         mouse_pressed = False
         mouse_released = False
@@ -147,6 +172,13 @@ class Game:
                 if event.key == pygame.K_n:
                     if not self.openMenu:
                         self.noclip = not self.noclip
+                if event.key == pygame.K_z:
+                     if self.mode == 'practice':
+                        self.checkPoints.appendleft({'pos': self.player.pos.copy(), 'scroll': self.scroll.copy(),
+                            'velocity': self.player.Yvelocity, 'gravity': self.player.gravityDirection, 'gamemode': self.player.gamemode})
+                if event.key == pygame.K_x:
+                     if self.mode == 'practice' and len(self.checkPoints) > 0:
+                          self.checkPoints.popleft()
                 if event.key == pygame.K_ESCAPE:
                     if not self.openMenu:
                         self.openMenu = True
@@ -180,7 +212,12 @@ class Game:
         self.clouds.render(self.display, offset=render_scroll)
             
         tile_map.render(self.display, offset=render_scroll)
-        
+        if self.mode == 'practice':
+            img = self.assets['practiceButtons']
+            pos = vh(50, 90)
+            centered_pos = (pos[0] - img.get_width() // 2, pos[1] - img.get_height() // 2)
+            self.display.blit(img, centered_pos)
+     
         self.pause_button.update(mouse_pressed, mouse_released)
         if self.pause_button.is_clicked():
                 self.openMenu = True

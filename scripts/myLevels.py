@@ -30,7 +30,7 @@ class myLevels:
         my_maps_dict = map_manager.getEditorMapsDict()
         for idx, map in enumerate(my_maps_dict.values()):
             map_text = map['info']['name'] + ' '*5 + map['info']['creator'] + ' '*5 + map['info']['difficulty']
-            map_text = Text(map_text, pos = (vh(50, -1)[0], (idx+1)*vh(-1, 14)[1] - vh(-1, 3)[1]), size=UIsize(4), color=(40, 40, 40))
+            map_text = Text(map_text, pos = (vh(47, -1)[0], (idx+1)*vh(-1, 14)[1] - vh(-1, 3)[1]), size=UIsize(4), color=(40, 40, 40))
             map_button = Button(map_text, (0 ,255, 0), "map_idx: " + map['info']['id'], scale_factor=1.05, image=self.levelInfoIMG)
             self.buttons.append(map_button)
 
@@ -110,7 +110,8 @@ class myLevelPage:
         diffs = []
         diffLen = len(DIFFICULTIES)
         for idx, difficulity in enumerate(DIFFICULTIES):
-            diff_text = Text(difficulity, pos = vh(70 - (diffLen/2 - 0.5)*7 + idx * 7, 47), size=UIsize(1.5))
+            spacing = 6
+            diff_text = Text(difficulity, pos = vh(65 - (diffLen/2 - 0.5)*spacing + idx * spacing, 47), size=UIsize(1.5))
             diff_button = Button(diff_text, (129, 98, 252), button_type=difficulity, scale_factor=1.1)
             diffs.append(diff_button)
         self.diffRadio = radionButton(diffs)
@@ -184,6 +185,7 @@ class myLevelPage:
                     map_info = map_manager.getMapInfo(map_manager.current_map_id)
                     creator, name = map_info['creator'].replace(" ", ""), map_info['name'].replace(" ", "")
                     if map_info['difficulty'] != 'NA' and creator not in {'', 'notentered'} and name not in {'', 'unnamed'}:
+                        blitLoading(self.display, 'UPLOADING MAP...')
                         map_manager.postMap(map_manager.current_map_id)
                         map_manager.update_map_dict()
                         self.level_select.reloadButtons()

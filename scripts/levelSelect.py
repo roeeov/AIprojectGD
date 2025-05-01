@@ -23,14 +23,14 @@ class LevelSelect:
         prev_button = Button(prev_text, (0 ,255, 0), button_type='prev', image=load_image('UI/buttons/back.png', (UIsize(3), UIsize(3))) )
         self.buttons.append(prev_button)
 
-        reload_text = Text('', pos = (vh(90, -1)[0], vh(-1, 90)[1]), size=0)
-        reload_button = Button(reload_text, (0 ,255, 0), button_type='reload', image=load_image('UI/buttons/reload.png', scale=(UIsize(3*35/11), UIsize(3))))
+        reload_text = Text('', pos = (vh(93, -1)[0], vh(-1, 90)[1]), size=0)
+        reload_button = Button(reload_text, (0 ,255, 0), button_type='reload', image=load_image('UI/buttons/reload.png', scale=(UIsize(3*35/11), UIsize(3))), scale_factor=1.1)
         self.buttons.append(reload_button)
 
         online_map_dict = map_manager.list_online_levels()
         for idx, map in enumerate(online_map_dict.items()):
             map_text = map[1]['name'] + ' '*5 + map[1]['creator'] + ' '*5 + map[1]['difficulty']
-            map_text = Text(map_text, pos = (vh(50, -1)[0], (idx+1)*vh(-1, 14)[1] - vh(-1, 3)[1]), size=UIsize(4), color=(40, 40, 40))
+            map_text = Text(map_text, pos = (vh(47, -1)[0], (idx+1)*vh(-1, 14)[1] - vh(-1, 3)[1]), size=UIsize(4), color=(40, 40, 40))
             map_button = Button(map_text, (0 ,255, 0), "map_idx: " + map[0], scale_factor=1.05, image=self.levelInfoIMG)
             self.buttons.append(map_button)
 
@@ -68,6 +68,7 @@ class LevelSelect:
                 if button.type == 'prev':
                     game_state_manager.returnToPrevState()
                 elif button.type == 'reload':
+                    blitLoading(self.display, 'LOADING LEVELS...')
                     self.reloadButtons()
                 else:
                     map_id = button.type.split()[-1]
@@ -144,13 +145,16 @@ class LevelPage:
                     game_state_manager.returnToPrevState()
                 elif button.type == 'play':
                     if not map_manager.isMapLoaded(map_manager.current_map_id):
+                        blitLoading(self.display, 'DOWNLOADING MAP...')
                         map_manager.sync_level(map_manager.current_map_id)
                     map_manager.loadMap()
                     game_state_manager.setState('game')
                 elif button.type == 'sync':
+                    blitLoading(self.display, 'SYNCING MAP...')
                     map_manager.sync_level(map_manager.current_map_id)
                 elif button.type == 'edit':
                     if not map_manager.isMapLoaded(map_manager.current_map_id):
+                        blitLoading(self.display, 'DOWNLOADING MAP...')
                         map_manager.sync_level(map_manager.current_map_id)
                     map_manager.loadMap()
                     game_state_manager.setState('edit')

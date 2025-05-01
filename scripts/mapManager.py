@@ -9,7 +9,7 @@ from scripts.tilemap import tile_map
 
 class MapManager:
 
-    def __init__(self):
+    def _initialize(self):
 
         self.editor_levels_json = {}
         self.current_map_id = ''

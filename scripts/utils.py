@@ -29,7 +29,10 @@ def load_assets():
             'orb': load_images('tiles/orb', scale=IMGscale),
             'background': load_image('background.png', scale=DISPLAY_SIZE),
             'clouds': load_images('clouds'),
-            'trail': load_image('player/trail/trail.png', scale=(PLAYERS_IMAGE_SIZE['wave'][0]*0.4, PLAYERS_IMAGE_SIZE['wave'][1]*0.4))
+            'trail': load_image('player/trail/trail.png', scale=(PLAYERS_IMAGE_SIZE['wave'][0]*0.4, PLAYERS_IMAGE_SIZE['wave'][1]*0.4)),
+            'checkpoint': load_image('extra/checkpoint.png', scale=(TILE_SIZE * 3 / 4 * 0.8, TILE_SIZE * 0.8)),
+            'spawner': load_image('extra/spawner.png', scale=IMGscale),
+            'practiceButtons': load_image('extra/practiceButtons.png', scale=(UIsize(8 * 48 / 26), UIsize(8))),
         }
 
 def vh(width_precent, height_precent):
@@ -37,8 +40,26 @@ def vh(width_precent, height_precent):
 
 def UIsize(size):
     return int(DISPLAY_SIZE[0] * size // 100)
-        
 
+def blitLoading(display, text):
+        background = load_image('UI/backgrounds/menuBG.png', scale=DISPLAY_SIZE)
+        display.blit(background, (0, 0))
+
+        rect_width, rect_height = DISPLAY_SIZE[0]//4*3, DISPLAY_SIZE[1]//3*2 # size of the black rectangle
+        black_rect = pygame.Surface((rect_width, rect_height), pygame.SRCALPHA)  # enable per-pixel alpha
+        black_rect.fill((0, 0, 0, 128))  # RGBA, 128 = 50% opacity
+
+        # Position the rectangle in the center of the screen
+        x = (DISPLAY_SIZE[0] - rect_width) // 2
+        y = (DISPLAY_SIZE[1] - rect_height) // 2
+
+        display.blit(black_rect, (x, y))
+
+        text_loading = Text(text=text, pos=(DISPLAY_SIZE[0]//2, DISPLAY_SIZE[1]//2), color=(255, 255, 255), size = 100)
+        text_loading.blit(display)
+
+        pygame.display.update()
+        
 class Animation:
     def __init__(self, images, img_dur=5, loop=True):
         self.images = images
@@ -70,6 +91,40 @@ class Text():
 
     def blit(self, display):
         display.blit(self.text, self.text_rect)
+
+
+
+class Popup:
+    def __init__(self, text, font_size=2, color=(255, 255, 255), bg_color=(0, 0, 0), duration=120, padding=10, pos=None):
+        self.font = pygame.font.Font(FONT, UIsize(font_size))
+        self.text = text
+        self.color = color
+        self.bg_color = bg_color
+        self.duration = duration  # in frames
+        self.timer = 0
+        self.padding = padding
+        self.pos = pos  # (x, y) or None for center
+
+        self.image = self.font.render(self.text, True, self.color)
+        self.rect = self.image.get_rect()
+        self.rect.inflate_ip(self.padding * 2, self.padding * 2)
+
+        if self.pos is None:
+            self.rect.center = vh(50, 50)
+        else:
+            self.rect.topleft = self.pos
+
+    def update(self):
+        self.timer += 1
+
+    def draw(self, surface):
+        # Only draw if within duration
+        if self.timer < self.duration:
+            pygame.draw.rect(surface, self.bg_color, self.rect)
+            surface.blit(self.image, (self.rect.x + self.padding, self.rect.y + self.padding))
+
+    def is_done(self):
+        return self.timer >= self.duration
 
 
 

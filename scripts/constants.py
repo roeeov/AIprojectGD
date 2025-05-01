@@ -1,11 +1,11 @@
 import tkinter as tk
-# root = tk.Tk()
-# screen_width = root.winfo_screenwidth()
-# screen_height = root.winfo_screenheight()
-# root.destroy()
-#DISPLAY_SIZE = (screen_width*0.8, screen_height*0.8)
+root = tk.Tk()
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+root.destroy()
 
-DISPLAY_SIZE = (1920, 1080)
+DISPLAY_SIZE = (screen_width, screen_height)
+#DISPLAY_SIZE = (1920, 1080)
 FPS = 60
 
 TILE_SIZE = DISPLAY_SIZE[0] * 3 // 80
@@ -14,7 +14,7 @@ PLAYER_SPEED = 10.4 * TILE_SIZE / 60
 PLAYER_HITBOX = 0.7 # precent
 
 
-PLAYER_POS = [50, 50]
+PLAYER_POS = [TILE_SIZE/2, TILE_SIZE/2]
 
 # Needs to be changed for every new gamemode added
 GRAVITY = {'cube': (1.06 / 48) * TILE_SIZE, 'ball': (0.7 / 48) * TILE_SIZE}   # Downward acceleration per frame
@@ -40,6 +40,7 @@ SPIKE_SIZE = (0.4, 0.6) # precent
 FONT = 'data/fonts/PixelifySans-VariableFont_wght.ttf'
 
 EDITOR_SCROLL = (8 / 48) * TILE_SIZE
+EDITOR_SCROLL_FAST = (40 / 48) * TILE_SIZE
 LEVEL_SELECTOR_SCROLL = DISPLAY_SIZE[0] * 6 // 100 // 3
 
 DIFFICULTIES = ('easy', 'normal', 'hard', 'harder', 'insane', 'demon')

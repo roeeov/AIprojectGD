@@ -11,6 +11,7 @@ class Menu:
 
         self.display = display
         self.background = load_image('UI/backgrounds/menuBG.png', scale=DISPLAY_SIZE)
+        self.gameTitle = load_image('extra/gameTitle.png', scale=(UIsize(10) * 62 / 12, UIsize(10)))
 
         select_level_text = Text('', pos = vh(50, 45), size=UIsize(5))
         select_level_button = Button(select_level_text, (59, 189, 30), 'level_select', image=load_image('UI/buttons/levelSelect.png', scale=(UIsize(64/3), UIsize(17/3))))
@@ -23,11 +24,16 @@ class Menu:
 
         self.buttons = [create_map_button, select_level_button, quit_button]
 
-        self.title_text = Text("GeoRush", vh(50, 20), color=(209, 154, 15), size=UIsize(10))
+        #self.title_text = Text("GeoRush", vh(50, 20), color=(209, 154, 15), size=UIsize(10))
 
     def run(self):
 
         self.display.blit(self.background, (0, 0))
+
+        img = self.gameTitle
+        pos = vh(50, 20)
+        centered_pos = (pos[0] - img.get_width() // 2, pos[1] - img.get_height() // 2)
+        self.display.blit(img, centered_pos)
 
         mouse_pressed = False
         mouse_released = False
@@ -39,8 +45,6 @@ class Menu:
                 mouse_pressed = True
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 mouse_released = True
-
-        self.title_text.blit(self.display)
 
         for button in self.buttons:
             button.update(mouse_pressed, mouse_released)

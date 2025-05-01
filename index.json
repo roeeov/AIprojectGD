@@ -32,11 +32,11 @@
   "00007": {
     "name": "level 1",
     "creator": "koron",
-    "difficulty": "easy"
+    "difficulty": "normal"
   },
-  "00008": {
-    "name": "1943",
-    "creator": "hitler",
-    "difficulty": "demon"
+  "00009": {
+    "name": "orange",
+    "creator": "roeeov",
+    "difficulty": "normal"
   }
 }
