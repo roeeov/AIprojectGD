@@ -1,0 +1,163 @@
+{
+    "info": {
+        "name": "unnamed",
+        "creator": "not entered",
+        "difficulty": "NA",
+        "id": "-00004"
+    },
+    "tilemap": {
+        "2;0": {
+            "type": "portal up",
+            "variant": 2,
+            "pos": [
+                2,
+                0
+            ]
+        },
+        "2;1": {
+            "type": "portal down",
+            "variant": 2,
+            "pos": [
+                2,
+                1
+            ]
+        },
+        "12;0": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                12,
+                0
+            ]
+        },
+        "11;0": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                11,
+                0
+            ]
+        },
+        "12;-1": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                12,
+                -1
+            ]
+        },
+        "11;-1": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                11,
+                -1
+            ]
+        },
+        "17;4": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                17,
+                4
+            ]
+        },
+        "18;4": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                18,
+                4
+            ]
+        },
+        "18;5": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                18,
+                5
+            ]
+        },
+        "17;5": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                17,
+                5
+            ]
+        },
+        "7;6": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                7,
+                6
+            ]
+        },
+        "6;6": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                6,
+                6
+            ]
+        },
+        "6;5": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                6,
+                5
+            ]
+        },
+        "8;5": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                8,
+                5
+            ]
+        },
+        "7;5": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                7,
+                5
+            ]
+        },
+        "19;-3": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                19,
+                -3
+            ]
+        },
+        "19;-2": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                19,
+                -2
+            ]
+        },
+        "18;-3": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                18,
+                -3
+            ]
+        },
+        "18;-2": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                18,
+                -2
+            ]
+        }
+    },
+    "offgrid": []
+}

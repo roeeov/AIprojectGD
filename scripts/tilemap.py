@@ -17,8 +17,6 @@ AUTOTILE_MAP = {
 }
 
 NEIGHBOR_OFFSETS = np.array([(-1, 0), (-1, -1), (0, -1), (1, -1), (1, 0), (0, 0), (-1, 1), (0, 1), (1, 1)])
-PHYSICS_TILES = {'grass', 'stone'}
-AUTOTILE_TYPES = {'grass', 'stone'}
 
 class Tilemap:
     def __init__(self, assets=None, tile_size=16):

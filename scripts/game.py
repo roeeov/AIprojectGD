@@ -20,12 +20,12 @@ class Game:
         self.up = False
         self.noclip = False
         self.checkPoints = deque()
+        self.mode = 'normal'
         self.scroll = [0, 0]
 
         self.openMenu = False
-        self.buttons = []
 
-        self.mode = 'normal'
+        self.buttons = []
 
         back_text = Text('', pos = vh(60, 55), size=UIsize(5))
         back_button = Button(back_text, (0 ,255, 0), button_type='menu', image=load_image('UI/buttons/menu.png', scale=(UIsize(4*63/17), UIsize(4))), scale_factor=1.1)
