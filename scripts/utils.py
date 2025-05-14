@@ -84,13 +84,30 @@ class Animation:
     
 
 class Text():
-    def __init__(self, text, pos, color = (0,0,0), size = 50, font = FONT):
+    def __init__(self, text, pos, color = (0,0,0), size = 50, font = FONT, centered = True):
         font = pygame.font.Font(font, size)
+
+        # for single line texts
         self.text = font.render(text, True, color)
-        self.text_rect = self.text.get_rect(center=pos)
+        if centered:
+            self.text_rect = self.text.get_rect(center=pos)
+        else:
+            self.text_rect = self.text.get_rect(topleft=pos)
+
+        self.texts = []
+        for idx, txt in enumerate(text.split('\n')):
+            text = font.render(txt, True, color)
+            if centered:
+                text_rect = text.get_rect(center=(pos[0], pos[1] + idx * (size + 5)))
+            else:
+                text_rect = text.get_rect(topleft=(pos[0], pos[1] + idx * (size + 5)))
+            self.texts.append((text, text_rect))
 
     def blit(self, display):
-        display.blit(self.text, self.text_rect)
+        for txt in self.texts:
+            text, text_rect = txt
+            # Draw the text
+            display.blit(text, text_rect)
 
 
 

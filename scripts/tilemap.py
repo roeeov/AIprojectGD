@@ -17,6 +17,7 @@ AUTOTILE_MAP = {
 }
 
 NEIGHBOR_OFFSETS = np.array([(-1, 0), (-1, -1), (0, -1), (1, -1), (1, 0), (0, 0), (-1, 1), (0, 1), (1, 1)])
+STATE_OFFSETS = np.array([(x, y) for x in range(0, 5) for y in range(-3, 4)])
 
 class Tilemap:
     def __init__(self, assets=None, tile_size=16):
@@ -37,6 +38,28 @@ class Tilemap:
             if check_loc in self.tilemap:
                 tiles.append(self.tilemap[check_loc])
         return tiles
+    
+    def getState(self, pos):
+        state = []
+        tile_loc = (int(pos[0] // self.tile_size), int(pos[1] // self.tile_size))
+        
+        for offset in STATE_OFFSETS:
+            check_loc = str(tile_loc[0] + offset[0]) + ';' + str(tile_loc[1] + offset[1])
+            if check_loc in self.tilemap:
+                tile = self.tilemap[check_loc]
+                tile_type = tile['type']
+                tile_variant = tile.get('variant', None)  # Get the variant if it exists
+                
+                # Check if the tile type has variants in the map
+                if isinstance(TILE_TYPE_MAP.get(tile_type, 0), dict):
+                    tile_number = TILE_TYPE_MAP[tile_type].get(tile_variant, 0)  # Default to 0 if variant not found
+                else:
+                    tile_number = TILE_TYPE_MAP.get(tile_type, 0)  # Default to 0 if no variants
+            else:
+                tile_number = 0  # Empty space or no tile
+            state.append(tile_number)
+        
+        return np.array(state).reshape((5, 7))  # Reshape to match STATE_OFFSETS grid dimensions
     
     def save(self, path):
         f = open(path, 'r')
@@ -60,7 +83,7 @@ class Tilemap:
             if tile['type'] in PHYSICS_TILES:
                 rects.append(pygame.Rect(tile['pos'][0] * self.tile_size, tile['pos'][1] * self.tile_size, self.tile_size, self.tile_size))
         return rects
-    
+
 
     def interactive_rects_around(self, pos):
         tiles = []
@@ -124,8 +147,8 @@ class Tilemap:
 
         if game_state_manager.getState() == 'edit':
             spawner_img = self.assets['spawner'].copy()
-            spawner_img.set_alpha(256 * 0.5)  # 0 = transparent, 255 = opaque
-            surf.blit(spawner_img, (PLAYER_POS[0] - offset[0], PLAYER_POS[1] - offset[1]))
+            spawner_img.set_alpha(256 * 0.5)
+            surf.blit(spawner_img, (PLAYER_POS[0] * self.tile_size - offset[0], PLAYER_POS[1] * self.tile_size - offset[1]))
 
 
 

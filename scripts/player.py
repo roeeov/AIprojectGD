@@ -40,7 +40,7 @@ class Player:
         self._initialize()
 
 
-    def update(self, tilemap, upPressed):
+    def update(self, upPressed):
 
         self.checkDeath()
 
@@ -66,7 +66,7 @@ class Player:
         self.pos[0] += frame_movement[0]
         entity_rect = self.rect()
         hitbox = self.hitbox_rect()
-        for rect in tilemap.physics_rects_around(self.pos):
+        for rect in tile_map.physics_rects_around(self.pos):
             if entity_rect.colliderect(rect):
                 #entity_rect.right = rect.left
                 self.collisions['right'] = True
@@ -77,7 +77,7 @@ class Player:
         self.pos[1] += frame_movement[1]
         entity_rect = self.rect()
         hitbox = self.hitbox_rect()
-        for rect in tilemap.physics_rects_around(self.pos):
+        for rect in tile_map.physics_rects_around(self.pos):
             if entity_rect.colliderect(rect):
                 if frame_movement[1] > 0:
                     entity_rect.bottom = rect.top
@@ -99,7 +99,7 @@ class Player:
             # Check for portals and other interactive objects
             entity_rect = self.rect()
             hitbox = self.hitbox_rect()
-            for rect, (type, variant) in tilemap.interactive_rects_around(self.pos):
+            for rect, (type, variant) in tile_map.interactive_rects_around(self.pos):
                 if hitbox.colliderect(rect):
                     match type:
                         case 'portal':

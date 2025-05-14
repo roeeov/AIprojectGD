@@ -43,5 +43,15 @@
     "name": "actually good",
     "creator": "Terbold",
     "difficulty": "demon"
+  },
+  "00011": {
+    "name": "denos",
+    "creator": "denial",
+    "difficulty": "easy"
+  },
+  "00012": {
+    "name": "Aether",
+    "creator": "roeeov",
+    "difficulty": "demon"
   }
 }

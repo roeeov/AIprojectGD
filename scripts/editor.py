@@ -22,6 +22,9 @@ class Editor:
         prev_button = Button(prev_text, (0 ,255, 0), button_type='prev', image=load_image('UI/buttons/back.png', (UIsize(3), UIsize(3))) )
         self.buttons.append(prev_button)
 
+        instruction_text = 'SAVE - O\nDELETE - RIGHT CLICK\nPLACE - LEFT CLICK\nMOVE - W,A,S,D\nSWITCH TILE - SCROLL WHEEL (HOLD SHIFT TO SWITCH TILE VARIANT)\nZOOM IN - UP\nZOOM OUT - DOWN\nGRID - G\nAUTOTILE - T'
+        self.instructions = Text(instruction_text, pos = vh(1, 80), size=UIsize(1), centered=False, color=(255, 255, 255))
+
     def resetEditor(self):
         self.scroll = [0, 0]
         self.setZoom(10)
@@ -92,6 +95,8 @@ class Editor:
             
             current_tile_img = self.assets[self.tile_list[self.tile_group]][self.tile_variant].copy()
             current_tile_img.set_alpha(100)
+
+            self.instructions.blit(self.display)
             
             mpos = pygame.mouse.get_pos()
             tile_pos = (int((mpos[0] + self.scroll[0]) // tile_map.tile_size), int((mpos[1] + self.scroll[1]) // tile_map.tile_size))

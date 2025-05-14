@@ -5,6 +5,8 @@ import pygame
 from scripts.utils import *
 from scripts.player import Player
 from scripts.tilemap import tile_map
+from scripts.Agent import Agent
+from scripts.environment import Environment
 from scripts.clouds import Clouds
 from scripts.constants import *
 from scripts.gameStateManager import game_state_manager
@@ -15,9 +17,9 @@ class Game:
     def __init__(self, display):
 
         self.display = display
-        
-        self.input = {'w': False, 'space': False, 'up_arrow': False, 'mouse': False}
-        self.up = False
+        self.agent = Agent()
+        self.env = Environment(self)
+
         self.noclip = False
         self.checkPoints = deque()
         self.mode = 'normal'
@@ -35,8 +37,8 @@ class Game:
         edit_button = Button(edit_text, (0 ,255, 0), button_type='resume', image=load_image('UI/buttons/resume.png', scale=(UIsize(4*63/17), UIsize(4))), scale_factor=1.1)
         self.buttons.append(edit_button)
 
-        practice_text = Text('practice', pos = vh(50, 70), size=UIsize(5))
-        practice_button = Button(practice_text, (0 ,255, 0), button_type='practice', scale_factor=1.1)
+        practice_text = Text('', pos = vh(50, 70), size=UIsize(5))
+        practice_button = Button(practice_text, (0 ,255, 0), button_type='practice', image=load_image('UI/buttons/practice.png', scale=(UIsize(4*67/17), UIsize(4))), scale_factor=1.1)
         self.buttons.append(practice_button)
 
         reset_text = Text('', pos = vh(50, 70), size=UIsize(5))
@@ -63,11 +65,8 @@ class Game:
         
 
     def reset(self):    
-        # Then set assets
         tile_map.assets = self.assets
-        self.up = False
-        
-        # Reset player after tilemap is cleared
+        self.agent.reset()
         self.player.reset()
 
     def blitMenu(self, mouse_pressed, mouse_released):
@@ -149,7 +148,8 @@ class Game:
 
         mouse_pressed = False
         mouse_released = False
-        for event in pygame.event.get():
+        events = pygame.event.get()
+        for event in events:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
@@ -160,12 +160,6 @@ class Game:
                 mouse_released = True
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:
-                    self.input['up_arrow'] = True
-                if event.key == pygame.K_w:
-                    self.input['w'] = True
-                if event.key == pygame.K_SPACE:
-                    self.input['space'] = True  
                 if event.key == pygame.K_r:
                     if not self.openMenu:
                         self.reset()
@@ -186,21 +180,6 @@ class Game:
                         self.openMenu = False
                         self.reset()
                         game_state_manager.returnToPrevState()
-
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_UP:
-                    self.input['up_arrow'] = False
-                if event.key == pygame.K_w:
-                    self.input['w'] = False
-                if event.key == pygame.K_SPACE:
-                    self.input['space'] = False
-
-            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                self.input['mouse'] = True     
-            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
-                self.input['mouse'] = False     
-
-        self.up = self.input['space'] or self.input['w'] or self.input['up_arrow'] or self.input['mouse']
 
         self.display.blit(self.assets['background'], (0, 0))
             
@@ -224,7 +203,7 @@ class Game:
         self.pause_button.blit(self.display)
         
         if not map_manager.current_map_id.startswith('-'): self.noclip = False
-        if not self.openMenu: self.player.update(tile_map, self.up)
+        if not self.openMenu: self.env.move(self.agent.getAction(events))
         self.player.render(self.display, offset=render_scroll)
         if (self.player.finishLevel): self.openMenu = True
 

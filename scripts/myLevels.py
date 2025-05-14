@@ -87,6 +87,8 @@ class myLevelPage:
         self.background = load_image('UI/backgrounds/levelPage.png', scale=DISPLAY_SIZE)
         self.buttons = []
 
+        self.popup = None
+
         play_text = Text('', pos = vh(50, 62), size=0)
         play_button = Button(play_text, (0 ,255, 0), button_type='play', scale_factor=1.1, image=load_image('UI/buttons/play.png', scale=(UIsize(5*35/11), UIsize(5))))
         self.buttons.append(play_button)
@@ -190,6 +192,13 @@ class myLevelPage:
                         map_manager.update_map_dict()
                         self.level_select.reloadButtons()
                         game_state_manager.returnToPrevState()
+                    else:
+                        popup_text = ''
+                        if map_info['difficulty'] == 'NA': popup_text += ' and select a difficulty'
+                        if creator in {'', 'notentered'}: popup_text += ' and enter a creator name'
+                        if name in {'', 'unnamed'}: popup_text += ' and enter a level name'
+                        popup_text = 'you must' + popup_text[4:]
+                        self.popup = Popup(popup_text, color=(255, 0, 0), duration=300)
             button.blit(self.display)
 
         self.diffRadio.chosen = DIFFICULTIES.index(map_info['difficulty']) if map_info['difficulty'] != 'NA' else -1
@@ -197,6 +206,10 @@ class myLevelPage:
         if diff not in {None, map_info['difficulty']}:
             map_manager.updateMapInfo(difficulty=diff)
         self.diffRadio.blit(self.display)
+
+        if self.popup is not None and not self.popup.is_done():
+            self.popup.update()
+            self.popup.draw(self.display)
 
         
 

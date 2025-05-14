@@ -10,11 +10,23 @@ FPS = 60
 
 TILE_SIZE = DISPLAY_SIZE[0] * 3 // 80
 
+TILE_TYPE_MAP = {
+    'spike': 1,
+    'portal': {
+        'ball': 2,
+        'wave': 3,
+        'cube': 4,  # Add other variants as needed
+    },
+    'finish': 5,
+    'orb': 6,
+    # Add other tile types and their variants as needed
+}
+
 PLAYER_SPEED = 10.4 * TILE_SIZE / 60
 PLAYER_HITBOX = 0.7 # precent
 
 
-PLAYER_POS = [TILE_SIZE/2, TILE_SIZE/2]
+PLAYER_POS = [0.5, 0.5]
 
 # Needs to be changed for every new gamemode added
 GRAVITY = {'cube': (1.06 / 48) * TILE_SIZE, 'ball': (0.7 / 48) * TILE_SIZE}   # Downward acceleration per frame
