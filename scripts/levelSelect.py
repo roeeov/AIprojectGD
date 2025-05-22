@@ -14,6 +14,7 @@ class LevelSelect:
         self.scroll = 0
         self.levelInfoIMG = load_image(path='UI/buttons/levelInfo.png', scale=(UIsize(75), UIsize(6)))
         self.background = load_image('UI/backgrounds/menuBG.png', scale=DISPLAY_SIZE)
+        self.sort = 'recent'
         self.reloadButtons()
 
     def reloadButtons(self):
@@ -27,14 +28,33 @@ class LevelSelect:
         reload_button = Button(reload_text, (0 ,255, 0), button_type='reload', image=load_image('UI/buttons/reload.png', scale=(UIsize(3*35/11), UIsize(3))), scale_factor=1.1)
         self.buttons.append(reload_button)
 
-        online_map_dict = map_manager.list_online_levels()
-        for idx, map in enumerate(online_map_dict.items()):
+        sorting = []
+        for idx, srt in enumerate(SORTING):
+            spacing = 6
+            sort_text = Text(srt, pos = vh(93, 30 + spacing * idx), size=UIsize(1.5))
+            sort_button = Button(sort_text, (129, 98, 252), button_type=srt, scale_factor=1.1)
+            sorting.append(sort_button)
+        self.sortRadio = radionButton(sorting)
+
+        self.online_map_dict = map_manager.list_online_levels()
+        self.resortLevels()
+        self.max_scroll = -vh(-1, 14)[1] * len(self.online_map_dict)
+
+    def resortLevels(self):
+        self.buttons = self.buttons[:2]  # Keep the first two buttons (prev and reload)
+        
+        match self.sort:
+            case 'recent':
+                self.online_map_dict = {k: self.online_map_dict[k] for k in sorted(self.online_map_dict, key=lambda x: x, reverse=True)}
+            case 'difficulty':
+                self.online_map_dict = {k:self. online_map_dict[k] for k in sorted(self.online_map_dict, key=lambda x: DIFFICULTIES.index(self.online_map_dict[x]['difficulty']))}
+
+        for idx, map in enumerate(self.online_map_dict.items()):
             map_text = map[1]['name'] + ' '*5 + map[1]['creator'] + ' '*5 + map[1]['difficulty']
             map_text = Text(map_text, pos = (vh(47, -1)[0], (idx+1)*vh(-1, 14)[1] - vh(-1, 3)[1]), size=UIsize(4), color=(40, 40, 40))
             map_button = Button(map_text, (0 ,255, 0), "map_idx: " + map[0], scale_factor=1.05, image=self.levelInfoIMG)
             self.buttons.append(map_button)
 
-        self.max_scroll = -vh(-1, 14)[1] * len(online_map_dict)
         
     def run(self):
         
@@ -74,8 +94,15 @@ class LevelSelect:
                     map_id = button.type.split()[-1]
                     map_manager.setMap(map_id)
                     game_state_manager.setState('level_page')
-
             button.blit(self.display)
+
+        self.sortRadio.chosen = SORTING.index(self.sort)
+        srt = self.sortRadio.update(mouse_pressed, mouse_released)
+        if srt != self.sort:
+            self.sort = srt
+            self.resortLevels()
+            self.scroll = 0
+        self.sortRadio.blit(self.display)
 
 class LevelPage:
 

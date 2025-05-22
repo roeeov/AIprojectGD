@@ -41,6 +41,9 @@ class Editor:
         self.shift = False
         self.ongrid = True
 
+        self.tileMenuPos = DISPLAY_SIZE[1]
+        self.tileMenuOpen = False
+
     def reload_assets(self):
         IMGscale = (tile_map.tile_size, tile_map.tile_size)
         tile_assets = {
@@ -83,13 +86,40 @@ class Editor:
     def placeGridBlock(self, tile_pos, tile_type):
         self.deleteGridBlock(tile_pos)
         tile_map.tilemap[str(tile_pos[0]) + ';' + str(tile_pos[1])] = {'type': tile_type, 'variant': self.tile_variant, 'pos': tile_pos}
-        
+
+    def canPlaceTile(self, mpos):
+        return mpos[1] < self.tileMenuPos
+
+
+    def drawTileMenu(self, mouse_pressed, mouse_released):
+        tile_menu = pygame.Surface((DISPLAY_SIZE[0], EDITOR_TILE_MENU_SIZE), pygame.SRCALPHA)
+        tile_menu.fill((0, 0, 0, 128))
+
+        variant_buttons = []
+        for idx, variant_img in enumerate(self.assets[self.tile_list[self.tile_group]]):
+            variant_img = variant_img.copy()
+            variant_img = pygame.transform.scale(variant_img, (TILE_SIZE, TILE_SIZE))
+            variant_pos = (DISPLAY_SIZE[0]//(TILE_MENU_COLUMNS+1) * (idx % TILE_MENU_COLUMNS + 1), EDITOR_TILE_MENU_SIZE // (TILE_MENU_ROWS+1) * (idx // TILE_MENU_COLUMNS + 1))
+            variant_txt = Text('', variant_pos, size=UIsize(1))
+            variant_buttons.append(Button(variant_txt, (0, 0, 0), button_type=str(idx), image=variant_img))
+
+        variants_radio = radionButton(variant_buttons)
+        variants_radio.chosen = self.tile_variant
+        srt = variants_radio.update(mouse_pressed, mouse_released)
+        variants_radio.blit(tile_menu)
+
+        self.display.blit(tile_menu, (0, self.tileMenuPos))
+
     def run(self):
             self.display.blit(self.bgIMG, (0, 0))
             
             self.scroll[0] += (self.movement[1] - self.movement[0]) * (EDITOR_SCROLL_FAST if self.shift else EDITOR_SCROLL)
             self.scroll[1] += (self.movement[3] - self.movement[2]) * (EDITOR_SCROLL_FAST if self.shift else EDITOR_SCROLL)
             render_scroll = (int(self.scroll[0]), int(self.scroll[1]))
+
+            if self.tileMenuOpen:
+                self.tileMenuPos += ((DISPLAY_SIZE[1] - EDITOR_TILE_MENU_SIZE) - self.tileMenuPos) * 0.3
+            else: self.tileMenuPos += (DISPLAY_SIZE[1] - self.tileMenuPos) * 0.3
             
             tile_map.render(self.display, offset=render_scroll)
             
@@ -106,7 +136,7 @@ class Editor:
             else:
                 self.display.blit(current_tile_img, mpos)
             
-            if self.clicking and self.ongrid:
+            if self.clicking and self.ongrid and self.canPlaceTile(mpos):
                 tile_type = self.tile_list[self.tile_group]
                 
                 if tile_type in {'portal', 'finish'}:
@@ -139,7 +169,7 @@ class Editor:
                     if event.button == 1:
                         mouse_pressed = True
                         self.clicking = True
-                        if not self.ongrid:
+                        if not self.ongrid and self.canPlaceTile(mpos):
                             tile_type = self.tile_list[self.tile_group]
                             if (tile_type not in PHYSICS_TILES and tile_type not in INTERACTIVE_TILES):
                                 tile_pos = ((mpos[0] + self.scroll[0]) / tile_map.tile_size, (mpos[1] + self.scroll[1]) / tile_map.tile_size)
@@ -183,6 +213,8 @@ class Editor:
                         path = map_manager.getMapPath()
                         tile_map.save(path)
                         self.popup = Popup("Level Saved!")
+                    if event.key == pygame.K_p:
+                        self.tileMenuOpen = not self.tileMenuOpen
                     if event.key in {pygame.K_LSHIFT, pygame.K_RSHIFT}:
                         self.shift = True
                     if event.key == pygame.K_UP:
@@ -211,6 +243,8 @@ class Editor:
                         self.resetEditor()
                         game_state_manager.returnToPrevState()
                 button.blit(self.display)
+
+            self.drawTileMenu(mouse_pressed, mouse_released)
 
             if self.popup is not None and not self.popup.is_done():
                 self.popup.update()

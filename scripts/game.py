@@ -191,11 +191,6 @@ class Game:
         self.clouds.render(self.display, offset=render_scroll)
             
         tile_map.render(self.display, offset=render_scroll)
-        if self.mode == 'practice':
-            img = self.assets['practiceButtons']
-            pos = vh(50, 90)
-            centered_pos = (pos[0] - img.get_width() // 2, pos[1] - img.get_height() // 2)
-            self.display.blit(img, centered_pos)
      
         self.pause_button.update(mouse_pressed, mouse_released)
         if self.pause_button.is_clicked():
@@ -205,8 +200,14 @@ class Game:
         if not map_manager.current_map_id.startswith('-'): self.noclip = False
         if not self.openMenu: self.env.move(self.agent.getAction(events))
         self.player.render(self.display, offset=render_scroll)
-        if (self.player.finishLevel): self.openMenu = True
 
+        if self.mode == 'practice':
+            img = self.assets['practiceButtons']
+            pos = vh(50, 90)
+            centered_pos = (pos[0] - img.get_width() // 2, pos[1] - img.get_height() // 2)
+            self.display.blit(img, centered_pos)
+
+        if (self.player.finishLevel): self.openMenu = True
 
         if self.openMenu: self.blitMenu(mouse_pressed, mouse_released)
 

@@ -24,11 +24,6 @@
     "creator": "roeeov",
     "difficulty": "harder"
   },
-  "00006": {
-    "name": "wonic save",
-    "creator": "roeeov",
-    "difficulty": "demon"
-  },
   "00007": {
     "name": "level 1",
     "creator": "koron",
@@ -40,9 +35,9 @@
     "difficulty": "normal"
   },
   "00010": {
-    "name": "actually good",
+    "name": "jump!",
     "creator": "Terbold",
-    "difficulty": "demon"
+    "difficulty": "easy"
   },
   "00011": {
     "name": "denos",
@@ -53,5 +48,15 @@
     "name": "Aether",
     "creator": "roeeov",
     "difficulty": "demon"
+  },
+  "00013": {
+    "name": "start journy",
+    "creator": "Terbold",
+    "difficulty": "hard"
+  },
+  "00014": {
+    "name": "nahomovich",
+    "creator": "roeeov",
+    "difficulty": "harder"
   }
 }
