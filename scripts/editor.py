@@ -90,22 +90,22 @@ class Editor:
     def canPlaceTile(self, mpos):
         return mpos[1] < self.tileMenuPos
 
-
     def drawTileMenu(self, mouse_pressed, mouse_released):
         tile_menu = pygame.Surface((DISPLAY_SIZE[0], EDITOR_TILE_MENU_SIZE), pygame.SRCALPHA)
-        tile_menu.fill((0, 0, 0, 128))
+        tile_menu.fill((0, 0, 20, 256*0.5))
 
         variant_buttons = []
         for idx, variant_img in enumerate(self.assets[self.tile_list[self.tile_group]]):
             variant_img = variant_img.copy()
-            variant_img = pygame.transform.scale(variant_img, (TILE_SIZE, TILE_SIZE))
+            variant_img = pygame.transform.scale(variant_img, (TILE_SIZE, variant_img.get_height() * TILE_SIZE // variant_img.get_width()))
             variant_pos = (DISPLAY_SIZE[0]//(TILE_MENU_COLUMNS+1) * (idx % TILE_MENU_COLUMNS + 1), EDITOR_TILE_MENU_SIZE // (TILE_MENU_ROWS+1) * (idx // TILE_MENU_COLUMNS + 1))
             variant_txt = Text('', variant_pos, size=UIsize(1))
-            variant_buttons.append(Button(variant_txt, (0, 0, 0), button_type=str(idx), image=variant_img))
+            variant_buttons.append(Button(variant_txt, (0, 0, 0), button_type=str(idx), image=variant_img, mouse_offset=(0, EDITOR_TILE_MENU_SIZE - DISPLAY_SIZE[1])))
 
-        variants_radio = radionButton(variant_buttons)
+        variants_radio = radionButton(variant_buttons, opacity_facor=256*0.7)
+        variant_clicked = variants_radio.update(mouse_pressed, mouse_released)
+        if variant_clicked is not None: self.tile_variant = int(variant_clicked)
         variants_radio.chosen = self.tile_variant
-        srt = variants_radio.update(mouse_pressed, mouse_released)
         variants_radio.blit(tile_menu)
 
         self.display.blit(tile_menu, (0, self.tileMenuPos))

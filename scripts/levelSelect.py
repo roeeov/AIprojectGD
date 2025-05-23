@@ -47,7 +47,7 @@ class LevelSelect:
             case 'recent':
                 self.online_map_dict = {k: self.online_map_dict[k] for k in sorted(self.online_map_dict, key=lambda x: x, reverse=True)}
             case 'difficulty':
-                self.online_map_dict = {k:self. online_map_dict[k] for k in sorted(self.online_map_dict, key=lambda x: DIFFICULTIES.index(self.online_map_dict[x]['difficulty']))}
+                self.online_map_dict = {k:self. online_map_dict[k] for k in sorted(self.online_map_dict, key=lambda x: DIFFICULTIES.index(self.online_map_dict[x]['difficulty']), reverse=True)}
 
         for idx, map in enumerate(self.online_map_dict.items()):
             map_text = map[1]['name'] + ' '*5 + map[1]['creator'] + ' '*5 + map[1]['difficulty']

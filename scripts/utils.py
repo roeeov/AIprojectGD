@@ -197,8 +197,9 @@ class InputBox:
         pygame.draw.rect(screen, self.colors['frame'], self.rect, 2)
 
 class radionButton:
-    def __init__(self, buttonList):
+    def __init__(self, buttonList, opacity_facor = 128):
         self.buttons = buttonList
+        self.opacity_factor = opacity_facor
         self.chosen = -1
 
     def update(self, mouse_pressed, mouse_released):
@@ -211,19 +212,20 @@ class radionButton:
     
     def blit(self, surf):
         for idx, button in enumerate(self.buttons):
-            opacity = 255 if idx == self.chosen else 255//2
+            opacity = 255 if idx == self.chosen else self.opacity_factor
             button.blit(surf, opacity=opacity)
 
     
 
 class Button:
-    def __init__(self, text='', background_color=(255, 255, 255), button_type='', hover=True, scale_factor=1.2, x=None, y=None, image=None):
+    def __init__(self, text='', background_color=(255, 255, 255), button_type='', hover=True, scale_factor=1.2, x=None, y=None, image=None, mouse_offset=(0, 0)):
         self.text = text
         self.background_color = background_color
         self.type = button_type
         self.hover_enabled = hover
         self.scale_factor = scale_factor
         self.image = image
+        self.mouse_offset = mouse_offset
         
         # Set up rectangles
         self.rect = self.text.text_rect.copy()
@@ -264,7 +266,9 @@ class Button:
         # Track mouse state
         self.mouse_pressed = False
         self.mouse_released = False
-        self.mouse_pos = pygame.mouse.get_pos()
+        self.mouse_pos = list(pygame.mouse.get_pos())
+        self.mouse_pos[0] += self.mouse_offset[0]
+        self.mouse_pos[1] += self.mouse_offset[1]
 
     def set_offset(self, offset_x, offset_y):
         """Set the position offset of the button"""
@@ -339,7 +343,10 @@ class Button:
             self.scaled_image = None
 
     def update(self, mouse_pressed=None, mouse_released=None):
-        self.mouse_pos = pygame.mouse.get_pos()
+        self.mouse_pos = list(pygame.mouse.get_pos())
+        self.mouse_pos[0] += self.mouse_offset[0]
+        self.mouse_pos[1] += self.mouse_offset[1]
+        # Update hover state
         if mouse_pressed is not None:
             self.mouse_pressed = mouse_pressed
         if mouse_released is not None:

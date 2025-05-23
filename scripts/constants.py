@@ -54,9 +54,9 @@ FONT = 'data/fonts/PixelifySans-VariableFont_wght.ttf'
 EDITOR_SCROLL = (8 / 48) * TILE_SIZE
 EDITOR_SCROLL_FAST = (40 / 48) * TILE_SIZE
 LEVEL_SELECTOR_SCROLL = DISPLAY_SIZE[0] * 6 // 100 // 3
-EDITOR_TILE_MENU_SIZE = DISPLAY_SIZE[1] // 2
-TILE_MENU_COLUMNS = 4
-TILE_MENU_ROWS = 4
+EDITOR_TILE_MENU_SIZE = DISPLAY_SIZE[1] // 3
+TILE_MENU_COLUMNS = 6
+TILE_MENU_ROWS = 2
 
 DIFFICULTIES = ('easy', 'normal', 'hard', 'harder', 'insane', 'demon')
 SORTING = ('difficulty', 'recent')
