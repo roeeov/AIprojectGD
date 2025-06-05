@@ -30,23 +30,24 @@ PLAYER_POS = [0.5, 0.5]
 
 # Needs to be changed for every new gamemode added
 GRAVITY = {'cube': (1.06 / 48) * TILE_SIZE, 'ball': (0.7 / 48) * TILE_SIZE}   # Downward acceleration per frame
-GAMEMODES= {'cube', 'wave', 'ball'}
+GAMEMODES= ('ball', 'cube', 'wave', 'ship')
 GROUND_GAMEMODES = {'cube', 'ball'}
-PLAYERS_SIZE = {'cube': (TILE_SIZE*9.5//10, TILE_SIZE*9.5//10), 'wave': (TILE_SIZE//2, TILE_SIZE//2), 'ball': (TILE_SIZE*9.5//10, TILE_SIZE*9.5//10)}
+PLAYERS_SIZE = {'cube': (TILE_SIZE*9.5//10, TILE_SIZE*9.5//10), 'wave': (TILE_SIZE//2, TILE_SIZE//2), 'ball': (TILE_SIZE*9.5//10, TILE_SIZE*9.5//10), 'ship': (TILE_SIZE*14//10 * 0.5, TILE_SIZE*14//10 * 0.5)}
 PLAYERS_IMAGE_SIZE = {
         'cube': PLAYERS_SIZE['cube'],
         'wave': (PLAYERS_SIZE['wave'][0]*1.4, PLAYERS_SIZE['wave'][1]*1.4),
         'ball': PLAYERS_SIZE['ball'],
+        'ship': (PLAYERS_SIZE['ship'][0]/0.6, PLAYERS_SIZE['ship'][1]/0.6),
     }
-PLAYER_VELOCITY = {'cube': (16 / 48) * TILE_SIZE, 'wave': PLAYER_SPEED, 'ball': (3/ 48) * TILE_SIZE}
+PLAYER_VELOCITY = {'cube': (16 / 48) * TILE_SIZE, 'wave': PLAYER_SPEED, 'ball': (1/ 48) * TILE_SIZE, 'ship': (16 / 48) * TILE_SIZE}
 MAX_VELOCITY = {'cube': (16 / 48) * TILE_SIZE, 'ball': (16 / 48) * TILE_SIZE}
-ORB_JUMP = {'yellow': {'cube': (16 / 48) * TILE_SIZE, 'ball': (10.5/ 48) * TILE_SIZE},
-            'green': {'cube': (16 / 48) * TILE_SIZE, 'ball': (10.5 / 48) * TILE_SIZE},
-            'blue': {'cube': -(8 / 48) * TILE_SIZE, 'ball': -(6 / 48) * TILE_SIZE}}
+ORB_JUMP = {'yellow': {'cube': (16 / 48) * TILE_SIZE, 'ball': (10.5/ 48) * TILE_SIZE, 'ship': (10.5/ 48) * TILE_SIZE},
+            'green': {'cube': (16 / 48) * TILE_SIZE, 'ball': (10.5 / 48) * TILE_SIZE, 'ship': (10.5 / 48) * TILE_SIZE},
+            'blue': {'cube': -(8 / 48) * TILE_SIZE, 'ball': -(6 / 48) * TILE_SIZE, 'ship': (10.5 / 48) * TILE_SIZE}}
 
-PHYSICS_TILES = {'grass', 'stone'}
+PHYSICS_TILES = {'grass', 'stone', 'sand', 'pinkgrass'}
 INTERACTIVE_TILES = {'portal', 'spike', 'finish', 'orb'}
-AUTOTILE_TYPES = {'grass', 'stone'}
+AUTOTILE_TYPES = {'grass', 'stone', 'pinkgrass'}
 ORBS = ('blue', 'green', 'yellow')
 SPIKE_SIZE = (0.4, 0.6) # precent
 FONT = 'data/fonts/PixelifySans-VariableFont_wght.ttf'

@@ -49,7 +49,9 @@ class Editor:
         tile_assets = {
             'decor': load_images('tiles/decor', scale=IMGscale),
             'grass': load_images('tiles/grass', scale=IMGscale),
+            'pinkgrass': load_images('tiles/pinkgrass', scale=IMGscale),
             'stone': load_images('tiles/stone', scale=IMGscale),
+            'sand': load_images('tiles/sand', scale=IMGscale),
             'portal': load_images('tiles/portal', scale=(IMGscale[0], IMGscale[1]*2)),
             'spike': load_images('tiles/spike', scale=IMGscale),
             'finish':load_images('tiles/finish', scale=(IMGscale[0], IMGscale[1]*2)),

@@ -3,6 +3,7 @@ from collections import deque
 from scripts.tilemap import tile_map
 import numpy as np
 import pygame
+import math
 
 class Player:
 
@@ -103,7 +104,7 @@ class Player:
                 if hitbox.colliderect(rect):
                     match type:
                         case 'portal':
-                            game_mode = {0 : 'ball', 1 : 'cube', 2 : 'wave'}[variant]
+                            game_mode = GAMEMODES[variant]
                             self.setGameMode(game_mode)
                         case 'spike':
                             if not self.game.noclip: self.death = True
@@ -261,7 +262,13 @@ class Player:
                         self.gravityDirection = {'down': 'up', 'up': 'down'}[self.gravityDirection]
                         self.Yvelocity = PLAYER_VELOCITY['ball'] * {'down': 1, 'up': -1}[self.gravityDirection]
 
-
+            case 'ship':
+                
+                if not self.orb_clicked:
+                    if (self.collisions['down'] or self.collisions['up']) and not self.collisions['right']:
+                        self.Yvelocity = 0
+                    else:   
+                        self.Yvelocity = math.sin(self.deg * math.pi / 180 * {'down': 1, 'up': -1}[self.gravityDirection]) * PLAYER_VELOCITY['ship']
                 
 
     # change player rotation (deg) and set the player action (run, jump)
@@ -307,5 +314,22 @@ class Player:
                     self.set_action('run')
                 else:
                     self.set_action('jump')
+
+            case 'ship':
+                # if self.input['hold']:
+                #     self.deg += (-45-self.deg) * 0.04
+                # else:
+                #     self.deg += (45-self.deg) * 0.04
+                # if self.Yvelocity == 0: self.deg *= 0.1  # Slow down rotation when not moving
+                if self.Yvelocity == 0:
+                    self.deg *= 0.1  # Slow down rotation when not moving
+                    self.deg = round(self.deg)
+
+                deltaDeg = abs(self.deg) * 0.01 + 1.5 # Adjust rotation speed
+                if self.input['hold']:
+                    self.deg -= deltaDeg
+                else:
+                    self.deg += deltaDeg
+                self.deg = min(max(self.deg, -40), 40)
             
         self.animation.update()
