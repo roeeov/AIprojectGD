@@ -5,7 +5,7 @@ from scripts.player import Player
 from scripts.tilemap import tile_map
 
 from scripts.utils import *
-from scripts.Agent import Agent
+from scripts.humanAgent import Agent
 from scripts.environment import Environment
 from scripts.clouds import Clouds
 from scripts.constants import *

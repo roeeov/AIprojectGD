@@ -12,6 +12,7 @@ class MapManager:
     def _initialize(self):
 
         self.editor_levels_json = {}
+        self.ai_levels_json = {}
         self.current_map_id = ''
 
         self.LEVELS_FOLDER_ID = "1rNiGJA27XI1kYgS5aLv2SmuamZvWvwOn"
@@ -95,10 +96,30 @@ class MapManager:
                     data = json.load(file)
                     map_id = data["info"]["id"]
                     self.editor_levels_json[map_id] = data
+                    
+    
+    def update_ai_map_dict(self):
+
+        self.ai_levels_json = {}
+
+        folder_path = "data/ai_maps"
+        for filename in sorted(os.listdir(folder_path), reverse=True):
+            if filename.endswith(".json") and filename.startswith("AI"):
+                file_path = os.path.join(folder_path, filename)
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    data = json.load(file)
+                    map_id = data["info"]["id"]
+                    self.ai_levels_json[map_id] = data
+                    
+
 
     def getEditorMapsDict(self):
         self.update_map_dict()
         return self.editor_levels_json
+    
+    def getAIMapsDict(self):
+        self.update_ai_map_dict()
+        return self.ai_levels_json
     
     def updateMapInfo(self, creator = None, name = None, difficulty = None, id = None):
         file_path = f'data/maps/{self.current_map_id}.json'
@@ -122,12 +143,12 @@ class MapManager:
         self.update_map_dict()
 
     # use more
-    def getMapPath(self, id = None):
+    def getMapPath(self, id = None, isAi = False):
         map_id = self.current_map_id if id is None else id
-        return f"data/maps/{map_id}.json"
+        return f"data/ai_maps/{map_id}.json" if isAi else f"data/maps/{map_id}.json"
 
-    def loadMap(self):
-        map_path = self.getMapPath()
+    def loadMap(self, isAi = False):
+        map_path = self.getMapPath(isAi=isAi)
         tile_map.load(map_path)
 
     def createNewMap(self):
@@ -167,7 +188,9 @@ class MapManager:
             with open("index.json", "r") as f:
                 index = json.load(f)
             return index[id]
-            
+    
+    def getAIMapInfo(self, id):
+            return self.ai_levels_json[id]["info"]
         
     def setMap(self, id):
         self.current_map_id = id
