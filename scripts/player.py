@@ -34,6 +34,8 @@ class Player:
 
         self.air_time = 5
         self.total_rotation = 0  # Track total rotation during a jump
+        # Residual impulse applied to ship velocity when collecting orbs
+        self.ship_impulse = 0
 
     def reset(self):
         """Reset the player to its initial state."""
@@ -114,10 +116,26 @@ class Player:
                     match type:
                         case 'orb':
                             if (self.input['buffer'] or self.input['click']) and not self.orb_clicked:
-                                if ORBS[variant] in {'blue', 'green'}: 
+                                if ORBS[variant] in {'blue', 'green'}:
                                     self.gravityDirection = {'down': 'up', 'up': 'down'}[self.gravityDirection]
                                 if self.gamemode != 'wave':
-                                    self.Yvelocity = {'down': -1, 'up': 1}[self.gravityDirection] * ORB_JUMP[ORBS[variant]][self.gamemode]
+                                    orb_vel = {'down': -1, 'up': 1}[self.gravityDirection] * ORB_JUMP[ORBS[variant]][self.gamemode]
+                                    # For ship mode, add the orb's impulse to a residual so base steering stays responsive
+                                    if self.gamemode == 'ship':
+                                        try:
+                                            self.ship_impulse += orb_vel
+                                        except Exception:
+                                            # ensure the field exists
+                                            self.ship_impulse = orb_vel
+                                        # If yellow/green orb, immediately tilt the ship for visual feedback
+                                        if ORBS[variant] in {'yellow', 'green'}:
+                                            # Use orb_vel sign to decide tilt direction; choose a visible tilt (35 degrees)
+                                            try:
+                                                self.deg = 35 if orb_vel > 0 else -35
+                                            except Exception:
+                                                self.deg = 35 if orb_vel > 0 else -35
+                                    else:
+                                        self.Yvelocity = orb_vel
 
                                 self.input['buffer'] = False
                                 self.orb_clicked = True
@@ -263,12 +281,34 @@ class Player:
                         self.Yvelocity = PLAYER_VELOCITY['ball'] * {'down': 1, 'up': -1}[self.gravityDirection]
 
             case 'ship':
-                
-                if not self.orb_clicked:
-                    if (self.collisions['down'] or self.collisions['up']) and not self.collisions['right']:
-                        self.Yvelocity = 0
-                    else:   
-                        self.Yvelocity = math.sin(self.deg * math.pi / 180 * {'down': 1, 'up': -1}[self.gravityDirection]) * PLAYER_VELOCITY['ship']
+                self.input['buffer'] = False
+                # Base desired ship velocity (like original behaviour) — very responsive to rotation
+                steer_dir = {'down': 1, 'up': -1}[self.gravityDirection]
+                desired = math.sin(self.deg * math.pi / 180 * steer_dir) * PLAYER_VELOCITY['ship']
+
+                # If touching ground ceilings, zero base velocity
+                if (self.collisions['down'] or self.collisions['up']) and not self.collisions['right']:
+                    desired = 0
+
+                # Decay residual impulse over time so orb effects persist briefly then fade
+                try:
+                    decay = SHIP_IMPULSE_DECAY
+                except Exception:
+                    decay = 0.12
+                try:
+                    self.ship_impulse *= (1 - decay)
+                except Exception:
+                    self.ship_impulse = 0
+
+                # Compose final Y velocity: immediate base steering + residual orb impulse
+                self.Yvelocity = desired + getattr(self, 'ship_impulse', 0)
+
+                # Clamp velocity to the configured max for ship
+                try:
+                    max_v = MAX_VELOCITY['ship']
+                except Exception:
+                    max_v = PLAYER_VELOCITY['ship']
+                self.Yvelocity = max(-max_v, min(self.Yvelocity, max_v))
                 
 
     # change player rotation (deg) and set the player action (run, jump)

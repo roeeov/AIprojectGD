@@ -39,10 +39,15 @@ PLAYERS_IMAGE_SIZE = {
         'ball': PLAYERS_SIZE['ball'],
         'ship': (PLAYERS_SIZE['ship'][0]/0.6, PLAYERS_SIZE['ship'][1]/0.6),
     }
-PLAYER_VELOCITY = {'cube': (16 / 48) * TILE_SIZE, 'wave': PLAYER_SPEED, 'ball': (1/ 48) * TILE_SIZE, 'ship': (16 / 48) * TILE_SIZE}
-MAX_VELOCITY = {'cube': (16 / 48) * TILE_SIZE, 'ball': (16 / 48) * TILE_SIZE}
-ORB_JUMP = {'yellow': {'cube': (16 / 48) * TILE_SIZE, 'ball': (10.5/ 48) * TILE_SIZE, 'ship': (10.5/ 48) * TILE_SIZE},
-            'green': {'cube': (16 / 48) * TILE_SIZE, 'ball': (10.5 / 48) * TILE_SIZE, 'ship': (10.5 / 48) * TILE_SIZE},
+PLAYER_VELOCITY = {'cube': (16 / 48) * TILE_SIZE, 'wave': PLAYER_SPEED, 'ball': (2/ 48) * TILE_SIZE, 'ship': (16 / 48) * TILE_SIZE}
+MAX_VELOCITY = {'cube': (16 / 48) * TILE_SIZE, 'ball': (16 / 48) * TILE_SIZE, 'ship': (16 / 48) * TILE_SIZE}
+# Ship tuning: fraction of steering applied each frame and damping to smooth movement
+SHIP_STEER_FACTOR = 0.12  # apply ~12% of steering 'desired' per frame (tune for feel)
+SHIP_DRAG = 0.02  # velocity is multiplied by (1 - SHIP_DRAG) each frame to add gentle damping
+SHIP_IMPULSE_DECAY = 0.12  # per-frame decay fraction for residual ship impulse from orbs
+ORB_AIR_MULTIPLIER = 0.75  # fraction of orb velocity applied when used in-air (non-ship)
+ORB_JUMP = {'yellow': {'cube': (16 / 48) * TILE_SIZE, 'ball': (10.5/ 48) * TILE_SIZE, 'ship': (2 / 48) * TILE_SIZE},
+            'green': {'cube': (16 / 48) * TILE_SIZE, 'ball': (10.5 / 48) * TILE_SIZE, 'ship': (2 / 48) * TILE_SIZE},
             'blue': {'cube': -(8 / 48) * TILE_SIZE, 'ball': -(6 / 48) * TILE_SIZE, 'ship': (10.5 / 48) * TILE_SIZE}}
 
 PHYSICS_TILES = {'grass', 'stone', 'sand', 'pinkgrass'}
