@@ -212,7 +212,8 @@ class Editor:
                     if event.key == pygame.K_t:
                         tile_map.autotile()
                     if event.key == pygame.K_o:
-                        path = map_manager.getMapPath()
+                        path = map_manager.getMapPath(isAi=None)
+                        print("Saving level to", path)
                         tile_map.save(path)
                         self.popup = Popup("Level Saved!")
                     if event.key == pygame.K_p:

@@ -146,7 +146,7 @@ class Game:
             self.checkPoints.clear()
             self.reset()
 
-        mouse_pressed = False
+        mouse_pressed = False   
         mouse_released = False
         events = pygame.event.get()
         for event in events:
@@ -207,9 +207,19 @@ class Game:
             centered_pos = (pos[0] - img.get_width() // 2, pos[1] - img.get_height() // 2)
             self.display.blit(img, centered_pos)
 
-        if (self.player.finishLevel): self.openMenu = True
+        if (self.player.finishLevel):
+            if map_manager.current_map_id.startswith('AI'):
+                map_manager.choose_random_ai_id()
+                map_manager.loadMap(isAi=True)
+                self.reset()
+            else:
+                self.openMenu = True
 
         if self.openMenu: self.blitMenu(mouse_pressed, mouse_released)
 
         # check if the player death animation has ended
-        if self.player.respawn: self.reset()
+        if self.player.respawn:
+            if map_manager.current_map_id.startswith('AI'):
+                map_manager.choose_random_ai_id()
+                map_manager.loadMap(isAi=True)
+            self.reset()

@@ -49,5 +49,5 @@ class Engine:
             self.clock.tick(FPS)
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  
     Engine().run()

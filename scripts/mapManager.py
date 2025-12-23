@@ -6,6 +6,7 @@ from googleapiclient.discovery import build
 import os
 import hashlib
 from scripts.tilemap import tile_map
+import random
 
 class MapManager:
 
@@ -84,6 +85,10 @@ class MapManager:
         new_id = str(new_id).zfill(5)
         return new_id
     
+    def choose_random_ai_id(self):
+        self.update_ai_map_dict()
+        self.current_map_id = random.choice(list(self.ai_levels_json.keys()))
+
     def update_map_dict(self):
 
         self.editor_levels_json = {}
@@ -110,6 +115,8 @@ class MapManager:
                     data = json.load(file)
                     map_id = data["info"]["id"]
                     self.ai_levels_json[map_id] = data
+                    
+        print(self.ai_levels_json.keys(), self.current_map_id)
                     
 
 
@@ -144,7 +151,9 @@ class MapManager:
 
     # use more
     def getMapPath(self, id = None, isAi = False):
+        # isAi: true-ai map, false-normal map, None-detect from id
         map_id = self.current_map_id if id is None else id
+        if isAi is None: return f"data/ai_maps/{map_id}.json" if map_id.startswith("AI") else f"data/maps/{map_id}.json"
         return f"data/ai_maps/{map_id}.json" if isAi else f"data/maps/{map_id}.json"
 
     def loadMap(self, isAi = False):
