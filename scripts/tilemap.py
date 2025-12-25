@@ -1,5 +1,6 @@
 import json
 import numpy as np
+import math
 import pygame
 from scripts.constants import *
 from scripts.gameStateManager import game_state_manager
@@ -17,7 +18,7 @@ AUTOTILE_MAP = {
 }
 
 NEIGHBOR_OFFSETS = np.array([(-1, 0), (-1, -1), (0, -1), (1, -1), (1, 0), (0, 0), (-1, 1), (0, 1), (1, 1)])
-STATE_OFFSETS = np.array([(x, y) for x in range(0, 5) for y in range(-3, 4)])
+STATE_ANGLES = np.array(list(range(45, -46, -5)))
 
 class Tilemap:
     def __init__(self, assets=None, tile_size=16):
@@ -41,25 +42,49 @@ class Tilemap:
     
     def getState(self, pos):
         state = []
-        tile_loc = (int(pos[0] // self.tile_size), int(pos[1] // self.tile_size))
-        
-        for offset in STATE_OFFSETS:
-            check_loc = str(tile_loc[0] + offset[0]) + ';' + str(tile_loc[1] + offset[1])
-            if check_loc in self.tilemap:
-                tile = self.tilemap[check_loc]
-                tile_type = tile['type']
-                tile_variant = tile.get('variant', None)  # Get the variant if it exists
-                
-                # Check if the tile type has variants in the map
-                if isinstance(TILE_TYPE_MAP.get(tile_type, 0), dict):
-                    tile_number = TILE_TYPE_MAP[tile_type].get(tile_variant, 0)  # Default to 0 if variant not found
-                else:
-                    tile_number = TILE_TYPE_MAP.get(tile_type, 0)  # Default to 0 if no variants
-            else:
-                tile_number = 0  # Empty space or no tile
-            state.append(tile_number)
-        
-        return np.array(state).reshape((5, 7))  # Reshape to match STATE_OFFSETS grid dimensions
+        player_loc = (pos[0] / self.tile_size, pos[1] / self.tile_size)
+        # Raycasting parameters (distances in tile units)
+        max_distance = 20.0
+        step = 0.2
+
+        for angle_deg in STATE_ANGLES:
+            angle_rad = math.radians(float(angle_deg))
+            dx = math.cos(angle_rad)
+            dy = math.sin(angle_rad)
+
+            found = False
+            distance = 0.0
+            while distance <= max_distance:
+                sample_x = player_loc[0] + dx * distance
+                sample_y = player_loc[1] + dy * distance
+
+                tile_x = math.floor(sample_x)
+                tile_y = math.floor(sample_y)
+                loc = str(tile_x) + ';' + str(tile_y)
+
+                if loc in self.tilemap:
+                    tile = self.tilemap[loc]
+                    base_type = tile['type'].split()[0]
+                    block_code = -1
+                    # Find matching code from TILE_TYPE_MAP
+                    for code, typeset in TILE_TYPE_MAP.items():
+                        if base_type in typeset:
+                            block_code = code
+                            break
+
+                    state.append((distance, block_code))
+                    found = True
+                    break
+
+                distance += step
+
+            if not found:
+                state.append((max_distance, -1))
+
+        # Return as a numpy array (rows: [distance, block_code])
+        return np.array(state, dtype=float)
+
+ 
     
     def save(self, path):
         f = open(path, 'r')

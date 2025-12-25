@@ -1,2 +1,1 @@
-
-    def run(self):
+print(list(range(45, -46, -5)))

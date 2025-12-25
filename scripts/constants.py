@@ -10,18 +10,6 @@ FPS = 60
 
 TILE_SIZE = DISPLAY_SIZE[0] * 3 // 80
 
-TILE_TYPE_MAP = {
-    'spike': 1,
-    'portal': {
-        'ball': 2,
-        'wave': 3,
-        'cube': 4,  # Add other variants as needed
-    },
-    'finish': 5,
-    'orb': 6,
-    # Add other tile types and their variants as needed
-}
-
 PLAYER_SPEED = 10.4 * TILE_SIZE / 60
 PLAYER_HITBOX = 0.7 # precent
 
@@ -56,6 +44,13 @@ AUTOTILE_TYPES = {'grass', 'stone', 'pinkgrass'}
 ORBS = ('blue', 'green', 'yellow')
 SPIKE_SIZE = (0.4, 0.6) # precent
 FONT = 'data/fonts/PixelifySans-VariableFont_wght.ttf'
+
+TILE_TYPE_MAP = {
+    0: PHYSICS_TILES,
+    1: {'spike'},
+    2: {'finish'},
+    # Add other tile types and their variants as needed
+}
 
 EDITOR_SCROLL = (8 / 48) * TILE_SIZE
 EDITOR_SCROLL_FAST = (40 / 48) * TILE_SIZE

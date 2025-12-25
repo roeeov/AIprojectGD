@@ -145,6 +145,8 @@ class Game:
             self.mode = 'normal'
             self.checkPoints.clear()
             self.reset()
+        
+        isAi = map_manager.current_map_id.startswith('AI')
 
         mouse_pressed = False   
         mouse_released = False
@@ -201,6 +203,8 @@ class Game:
         if not self.openMenu: self.env.move(self.agent.getAction(events))
         self.player.render(self.display, offset=render_scroll)
 
+        if isAi and not self.openMenu: print(self.env.state())
+
         if self.mode == 'practice':
             img = self.assets['practiceButtons']
             pos = vh(50, 90)
@@ -208,7 +212,7 @@ class Game:
             self.display.blit(img, centered_pos)
 
         if (self.player.finishLevel):
-            if map_manager.current_map_id.startswith('AI'):
+            if isAi:
                 map_manager.choose_random_ai_id()
                 map_manager.loadMap(isAi=True)
                 self.reset()
@@ -219,7 +223,7 @@ class Game:
 
         # check if the player death animation has ended
         if self.player.respawn:
-            if map_manager.current_map_id.startswith('AI'):
+            if isAi:
                 map_manager.choose_random_ai_id()
                 map_manager.loadMap(isAi=True)
             self.reset()
