@@ -26,7 +26,7 @@ class Environment:
 
     def state(self):
         player_pos = self.game.player.pos.copy()
-        return tile_map.getState(player_pos)
+        return tile_map.getState(self.game.player)
 
     def compute_reward(self):
         # Example reward logic

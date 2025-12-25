@@ -137,7 +137,7 @@ class Game:
         if len(self.checkPoints) > 0:
             return self.checkPoints[0]
         return {'pos': PLAYER_POS.copy(), 'scroll': [0, 0].copy(),
-                'velocity': 0, 'gravity': 'down', 'gamemode': 'cube'}
+                'velocity': 0, 'gravity': 'down', 'gamemode': 'cube'}.copy()
 
     def run(self):
 

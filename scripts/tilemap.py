@@ -40,8 +40,9 @@ class Tilemap:
                 tiles.append(self.tilemap[check_loc])
         return tiles
     
-    def getState(self, pos):
+    def getState(self, player):
         state = []
+        pos = player.pos.copy()
         player_loc = (pos[0] / self.tile_size, pos[1] / self.tile_size)
         # Raycasting parameters (distances in tile units)
         max_distance = 20.0
@@ -54,27 +55,38 @@ class Tilemap:
 
             found = False
             distance = 0.0
-            while distance <= max_distance:
+            while distance <= max_distance and not found:
                 sample_x = player_loc[0] + dx * distance
                 sample_y = player_loc[1] + dy * distance
 
-                tile_x = math.floor(sample_x)
-                tile_y = math.floor(sample_y)
-                loc = str(tile_x) + ';' + str(tile_y)
+                rect_pos_x = sample_x * self.tile_size
+                rect_pos_y = sample_y * self.tile_size
+                rect_pos = [rect_pos_x, rect_pos_y]
 
-                if loc in self.tilemap:
-                    tile = self.tilemap[loc]
-                    base_type = tile['type'].split()[0]
-                    block_code = -1
-                    # Find matching code from TILE_TYPE_MAP
-                    for code, typeset in TILE_TYPE_MAP.items():
-                        if base_type in typeset:
-                            block_code = code
+                entity_rect = player.rect(rect_pos)
+                for rect in self.physics_rects_around(rect_pos):
+                    # tile = self.tilemap[loc]
+                    # base_type = tile['type'].split()[0]
+                    # block_code = -1
+                    # # Find matching code from TILE_TYPE_MAP
+                    # for code, typeset in TILE_TYPE_MAP.items():
+                    #     if base_type in typeset:
+                    #         block_code = code
+                    #         break
+                    if entity_rect.colliderect(rect):
+                        block_code = TILE_TYPE_MAP['block']
+                        state.append((distance, block_code))
+                        found = True
+                        break
+
+                if not found:
+                    hitbox = player.hitbox_rect(rect_pos)
+                    for rect, (type, variant) in self.interactive_rects_around(rect_pos):
+                        if hitbox.colliderect(rect) and type in {'spike', 'finish'}:
+                            block_code = TILE_TYPE_MAP[type]
+                            state.append((distance, block_code))
+                            found = True
                             break
-
-                    state.append((distance, block_code))
-                    found = True
-                    break
 
                 distance += step
 

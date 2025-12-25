@@ -200,12 +200,14 @@ class Player:
             pygame.draw.rect(surf, (0, 255, 0), colrect)
 
 
-    def rect(self):
-        return pygame.Rect(self.pos[0], self.pos[1], self.size[0], self.size[1])
+    def rect(self, pos = None):
+        if pos is None: pos = self.pos
+        return pygame.Rect(pos[0], pos[1], self.size[0], self.size[1])
     
-    def hitbox_rect(self):
-        return pygame.Rect(self.pos[0] + self.size[0]*(1-PLAYER_HITBOX)//2,
-                           self.pos[1] + self.size[1]*(1-PLAYER_HITBOX)//2,
+    def hitbox_rect(self, pos = None):
+        if pos is None: pos = self.pos
+        return pygame.Rect(pos[0] + self.size[0]*(1-PLAYER_HITBOX)//2,
+                           pos[1] + self.size[1]*(1-PLAYER_HITBOX)//2,
                            self.size[0]*PLAYER_HITBOX, self.size[1]*PLAYER_HITBOX)
 
     def setGameMode(self, gamemode):

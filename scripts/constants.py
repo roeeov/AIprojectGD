@@ -46,9 +46,9 @@ SPIKE_SIZE = (0.4, 0.6) # precent
 FONT = 'data/fonts/PixelifySans-VariableFont_wght.ttf'
 
 TILE_TYPE_MAP = {
-    0: PHYSICS_TILES,
-    1: {'spike'},
-    2: {'finish'},
+    "block": 0,
+    "spike": 1,
+    "finish": 2,
     # Add other tile types and their variants as needed
 }
 
