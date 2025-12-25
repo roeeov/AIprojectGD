@@ -18,7 +18,6 @@ AUTOTILE_MAP = {
 }
 
 NEIGHBOR_OFFSETS = np.array([(-1, 0), (-1, -1), (0, -1), (1, -1), (1, 0), (0, 0), (-1, 1), (0, 1), (1, 1)])
-STATE_ANGLES = np.array(list(range(45, -46, -5)))
 
 class Tilemap:
     def __init__(self, assets=None, tile_size=16):
@@ -45,8 +44,41 @@ class Tilemap:
         pos = player.pos.copy()
         player_loc = (pos[0] / self.tile_size, pos[1] / self.tile_size)
         # Raycasting parameters (distances in tile units)
-        max_distance = 20.0
+        max_distance = 10.0
         step = 0.2
+
+        # Precompute nearby physics and interactive rects once to avoid repeated lookups
+        min_x = int(math.floor(player_loc[0] - max_distance)) - 1
+        max_x = int(math.ceil(player_loc[0] + max_distance)) + 1
+        min_y = int(math.floor(player_loc[1] - max_distance)) - 1
+        max_y = int(math.ceil(player_loc[1] + max_distance)) + 1
+
+        physics_rects = []
+        interactive_rects = []
+        for x in range(min_x, max_x + 1):
+            for y in range(min_y, max_y + 1):
+                key = str(x) + ';' + str(y)
+                tile = self.tilemap.get(key)
+                if not tile:
+                    continue
+                if tile['type'] in PHYSICS_TILES:
+                    physics_rects.append(pygame.Rect(tile['pos'][0] * self.tile_size, tile['pos'][1] * self.tile_size, self.tile_size, self.tile_size))
+                base = tile['type'].split()[0]
+                # Only collect 'finish' and 'spike' rects — player won't touch portal/orb
+                if base == 'finish':
+                    interactive_rects.append((pygame.Rect(tile['pos'][0] * self.tile_size, tile['pos'][1] * self.tile_size, self.tile_size, self.tile_size), (base, tile.get('variant'))))
+                elif base == 'spike':
+                    colrect = pygame.Rect(
+                        self.tile_size * tile['pos'][0],
+                        self.tile_size * tile['pos'][1],
+                        int(self.tile_size * SPIKE_SIZE[0]),
+                        int(self.tile_size * SPIKE_SIZE[1])
+                    )
+                    colrect.center = (
+                        self.tile_size * tile['pos'][0] + self.tile_size // 2,
+                        self.tile_size * tile['pos'][1] + self.tile_size // 2
+                    )
+                    interactive_rects.append((colrect, (base, tile.get('variant'))))
 
         for angle_deg in STATE_ANGLES:
             angle_rad = math.radians(float(angle_deg))
@@ -64,15 +96,7 @@ class Tilemap:
                 rect_pos = [rect_pos_x, rect_pos_y]
 
                 entity_rect = player.rect(rect_pos)
-                for rect in self.physics_rects_around(rect_pos):
-                    # tile = self.tilemap[loc]
-                    # base_type = tile['type'].split()[0]
-                    # block_code = -1
-                    # # Find matching code from TILE_TYPE_MAP
-                    # for code, typeset in TILE_TYPE_MAP.items():
-                    #     if base_type in typeset:
-                    #         block_code = code
-                    #         break
+                for rect in physics_rects:
                     if entity_rect.colliderect(rect):
                         block_code = TILE_TYPE_MAP['block']
                         state.append((distance, block_code))
@@ -81,9 +105,9 @@ class Tilemap:
 
                 if not found:
                     hitbox = player.hitbox_rect(rect_pos)
-                    for rect, (type, variant) in self.interactive_rects_around(rect_pos):
-                        if hitbox.colliderect(rect) and type in {'spike', 'finish'}:
-                            block_code = TILE_TYPE_MAP[type]
+                    for rect, (itype, variant) in interactive_rects:
+                        if hitbox.colliderect(rect) and itype in {'spike', 'finish'}:
+                            block_code = TILE_TYPE_MAP[itype]
                             state.append((distance, block_code))
                             found = True
                             break

@@ -1,3 +1,4 @@
+import numpy as np
 import tkinter as tk
 root = tk.Tk()
 screen_width = root.winfo_screenwidth()
@@ -45,6 +46,7 @@ ORBS = ('blue', 'green', 'yellow')
 SPIKE_SIZE = (0.4, 0.6) # precent
 FONT = 'data/fonts/PixelifySans-VariableFont_wght.ttf'
 
+STATE_ANGLES = np.array(list(range(45, -46, -5)))
 TILE_TYPE_MAP = {
     "block": 0,
     "spike": 1,
@@ -65,6 +67,7 @@ SORTING = ('difficulty', 'recent')
 
 #debugging
 DRAW_PLAYER_HITBOX = False
+DRAW_PLAYER_STATE = True
 SHOW_BUTTON_HITBOX = False
 SHOW_SPIKE_HITBOX = False
 SHOW_FPS_COUNTER = False

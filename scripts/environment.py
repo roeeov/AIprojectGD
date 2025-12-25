@@ -1,5 +1,7 @@
 import pygame
+import math
 from scripts.tilemap import tile_map
+from scripts.constants import *
 
 class Environment:
     def __init__(self, game):
@@ -25,8 +27,31 @@ class Environment:
         self.game.player.update(boolAction)
 
     def state(self):
-        player_pos = self.game.player.pos.copy()
-        return tile_map.getState(self.game.player)
+        player = self.game.player
+        state_info = tile_map.getState(player)
+        
+        if DRAW_PLAYER_STATE:
+            player_pos = player.pos.copy()
+            for (distance, type), angle_deg in zip(state_info, STATE_ANGLES):
+                angle_rad = math.radians(float(angle_deg))
+                dx = math.cos(angle_rad) * distance * tile_map.tile_size
+                dy = math.sin(angle_rad) * distance * tile_map.tile_size
+                rect_pos = (player_pos[0] + dx, player_pos[1] + dy)
+
+                offset = (int(self.game.scroll[0]), int(self.game.scroll[1]))
+
+                colrect = player.rect(rect_pos)
+                colrect.center=(rect_pos[0] + player.size[0] // 2 - offset[0],
+                                                        rect_pos[1] + player.size[1] // 2 - offset[1])
+                pygame.draw.rect(self.game.display, (0, 0, 255), colrect)
+            
+                colrect = player.hitbox_rect(rect_pos)
+                colrect.center=(rect_pos[0] + player.size[0] // 2 - offset[0],
+                                                        rect_pos[1] + player.size[1] // 2 - offset[1])
+                pygame.draw.rect(self.game.display, (0, 255, 0), colrect)
+
+        return state_info
+    
 
     def compute_reward(self):
         # Example reward logic
