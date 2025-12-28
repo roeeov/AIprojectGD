@@ -1,6 +1,6 @@
 import pygame
 
-class Agent():
+class humanAgent():
 
     def __init__(self):
         self.reset()

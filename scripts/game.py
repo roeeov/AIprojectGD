@@ -5,7 +5,8 @@ from scripts.player import Player
 from scripts.tilemap import tile_map
 
 from scripts.utils import *
-from scripts.humanAgent import Agent
+from scripts.humanAgent import humanAgent
+from scripts.aiAgent import aiAgent
 from scripts.environment import Environment
 from scripts.clouds import Clouds
 from scripts.constants import *
@@ -17,7 +18,8 @@ class Game:
     def __init__(self, display):
 
         self.display = display
-        self.agent = Agent()
+        self.human_agent = humanAgent()
+        self.ai_agent = aiAgent()
         self.env = Environment(self)
 
         self.noclip = False
@@ -66,7 +68,7 @@ class Game:
 
     def reset(self):    
         tile_map.assets = self.assets
-        self.agent.reset()
+        self.human_agent.reset()
         self.player.reset()
 
     def blitMenu(self, mouse_pressed, mouse_released):
@@ -200,10 +202,10 @@ class Game:
         self.pause_button.blit(self.display)
         
         if not map_manager.current_map_id.startswith('-'): self.noclip = False
-        if not self.openMenu: self.env.move(self.agent.getAction(events))
+        if not self.openMenu:
+            action = self.ai_agent.getAction(self.env.state()) if isAi else self.human_agent.getAction(events)
+            self.env.move(action)
         self.player.render(self.display, offset=render_scroll)
-
-        if isAi and not self.openMenu: print(self.env.state())
 
         if self.mode == 'practice':
             img = self.assets['practiceButtons']

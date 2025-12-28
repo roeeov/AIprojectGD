@@ -1750,22 +1750,6 @@
                 -2
             ]
         },
-        "47;-3": {
-            "type": "portal up",
-            "variant": 3,
-            "pos": [
-                47,
-                -3
-            ]
-        },
-        "47;-2": {
-            "type": "portal down",
-            "variant": 3,
-            "pos": [
-                47,
-                -2
-            ]
-        },
         "47;0": {
             "type": "spike",
             "variant": 0,
@@ -3292,22 +3276,6 @@
             "pos": [
                 9,
                 1
-            ]
-        },
-        "78;-1": {
-            "type": "portal up",
-            "variant": 1,
-            "pos": [
-                78,
-                -1
-            ]
-        },
-        "78;0": {
-            "type": "portal down",
-            "variant": 1,
-            "pos": [
-                78,
-                0
             ]
         },
         "78;2": {
@@ -8836,6 +8804,206 @@
             "pos": [
                 163,
                 2
+            ]
+        },
+        "12;-3": {
+            "type": "sand",
+            "variant": 1,
+            "pos": [
+                12,
+                -3
+            ]
+        },
+        "11;-4": {
+            "type": "sand",
+            "variant": 1,
+            "pos": [
+                11,
+                -4
+            ]
+        },
+        "13;-2": {
+            "type": "sand",
+            "variant": 1,
+            "pos": [
+                13,
+                -2
+            ]
+        },
+        "14;-1": {
+            "type": "sand",
+            "variant": 1,
+            "pos": [
+                14,
+                -1
+            ]
+        },
+        "15;0": {
+            "type": "sand",
+            "variant": 2,
+            "pos": [
+                15,
+                0
+            ]
+        },
+        "16;-1": {
+            "type": "sand",
+            "variant": 0,
+            "pos": [
+                16,
+                -1
+            ]
+        },
+        "17;-2": {
+            "type": "sand",
+            "variant": 0,
+            "pos": [
+                17,
+                -2
+            ]
+        },
+        "18;-3": {
+            "type": "sand",
+            "variant": 0,
+            "pos": [
+                18,
+                -3
+            ]
+        },
+        "18;4": {
+            "type": "sand",
+            "variant": 4,
+            "pos": [
+                18,
+                4
+            ]
+        },
+        "17;5": {
+            "type": "sand",
+            "variant": 4,
+            "pos": [
+                17,
+                5
+            ]
+        },
+        "16;6": {
+            "type": "sand",
+            "variant": 4,
+            "pos": [
+                16,
+                6
+            ]
+        },
+        "15;7": {
+            "type": "sand",
+            "variant": 2,
+            "pos": [
+                15,
+                7
+            ]
+        },
+        "14;6": {
+            "type": "sand",
+            "variant": 3,
+            "pos": [
+                14,
+                6
+            ]
+        },
+        "13;5": {
+            "type": "sand",
+            "variant": 3,
+            "pos": [
+                13,
+                5
+            ]
+        },
+        "12;4": {
+            "type": "sand",
+            "variant": 3,
+            "pos": [
+                12,
+                4
+            ]
+        },
+        "20;3": {
+            "type": "sand",
+            "variant": 4,
+            "pos": [
+                20,
+                3
+            ]
+        },
+        "19;3": {
+            "type": "sand",
+            "variant": 2,
+            "pos": [
+                19,
+                3
+            ]
+        },
+        "47;-2": {
+            "type": "portal up",
+            "variant": 3,
+            "pos": [
+                47,
+                -2
+            ]
+        },
+        "47;-1": {
+            "type": "portal down",
+            "variant": 3,
+            "pos": [
+                47,
+                -1
+            ]
+        },
+        "47;-4": {
+            "type": "portal up",
+            "variant": 3,
+            "pos": [
+                47,
+                -4
+            ]
+        },
+        "47;-3": {
+            "type": "portal down",
+            "variant": 3,
+            "pos": [
+                47,
+                -3
+            ]
+        },
+        "78;0": {
+            "type": "portal up",
+            "variant": 1,
+            "pos": [
+                78,
+                0
+            ]
+        },
+        "78;1": {
+            "type": "portal down",
+            "variant": 1,
+            "pos": [
+                78,
+                1
+            ]
+        },
+        "78;-2": {
+            "type": "portal up",
+            "variant": 1,
+            "pos": [
+                78,
+                -2
+            ]
+        },
+        "78;-1": {
+            "type": "portal down",
+            "variant": 1,
+            "pos": [
+                78,
+                -1
             ]
         }
     },
