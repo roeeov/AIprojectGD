@@ -14,6 +14,22 @@ class Environment:
         self.done = False
         self.score = 0
         return self.state()
+    
+    def update_visuls(self):
+        self.game.display.blit(self.game.assets['background'], (0, 0))
+            
+        self.game.scroll[0] += (self.game.player.rect().centerx - self.game.display.get_width() / 3 - self.game.scroll[0]) / 20 * 60 / FPS
+        self.game.scroll[1] += (self.game.player.rect().centery - self.game.display.get_height() / 2 - self.game.scroll[1]) / 20 * 60 / FPS
+        render_scroll = (int(self.game.scroll[0]), int(self.game.scroll[1]))
+            
+        self.game.clouds.update()
+        self.game.clouds.render(self.game.display, offset=render_scroll)
+            
+        tile_map.render(self.game.display, offset=render_scroll)
+        
+        self.game.pause_button.blit(self.game.display)
+            
+        self.game.player.render(self.game.display, offset=render_scroll)
 
     def step(self, action):
         self.move(action)

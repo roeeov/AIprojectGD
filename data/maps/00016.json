@@ -278,6 +278,22 @@
                 1
             ]
         },
+        "15;3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                15,
+                3
+            ]
+        },
+        "18;2": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                18,
+                2
+            ]
+        },
         "16;4": {
             "type": "grass",
             "variant": 1,
@@ -1228,46 +1244,6 @@
             "pos": [
                 53,
                 -2
-            ]
-        },
-        "13;3": {
-            "type": "spike",
-            "variant": 0,
-            "pos": [
-                13,
-                3
-            ]
-        },
-        "14;2": {
-            "type": "spike",
-            "variant": 1,
-            "pos": [
-                14,
-                2
-            ]
-        },
-        "15;3": {
-            "type": "spike",
-            "variant": 0,
-            "pos": [
-                15,
-                3
-            ]
-        },
-        "17;3": {
-            "type": "spike",
-            "variant": 0,
-            "pos": [
-                17,
-                3
-            ]
-        },
-        "16;2": {
-            "type": "spike",
-            "variant": 1,
-            "pos": [
-                16,
-                2
             ]
         }
     },

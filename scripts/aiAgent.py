@@ -1,6 +1,7 @@
 import torch
 from scripts.DQN import DQN
 import numpy as np
+from scripts.ReplayBuffer import ReplayBuffer
 
 class aiAgent():
     def __init__(self):
@@ -10,21 +11,9 @@ class aiAgent():
         # Flatten the state from (19, 2) to (38,)
         state_tensor = torch.from_numpy(state).flatten().float()
         actions = self.get_actions()
-        
-        # actions is [0, 1], we need to make it (2, 1) for concatenation
-        action_tensor = actions.unsqueeze(1).float()
-        
-        # Expand flattened state to match number of actions: (2, 38)
-        expand_state_tensor = state_tensor.unsqueeze(0).repeat((len(actions), 1))
-        
-        # Debug: check shapes before DQN call
-        print(f"expand_state_tensor shape: {expand_state_tensor.shape}")
-        print(f"action_tensor shape: {action_tensor.shape}")
-        
+      
         with torch.no_grad():
-            Q_values = self.DQN(expand_state_tensor, action_tensor)
-        
-        # Get the index as a Python int
+            Q_values = self.DQN(state_tensor)
         max_index = torch.argmax(Q_values).item()
         
         # Return the action value as a Python int/float
@@ -33,3 +22,12 @@ class aiAgent():
     def get_actions(self):
         actions = torch.tensor([0, 1])
         return actions
+    
+    def get_Actions_Values (self, states):
+        with torch.no_grad():
+            Q_values = self.DQN(states)
+            max_values, max_indices = torch.max(Q_values,dim=1) # best_values, best_actions
+            return max_indices.reshape(-1,1), max_values.reshape(-1,1)
+        
+    def sample(self, state, action, reward, next_state, done):
+        pass

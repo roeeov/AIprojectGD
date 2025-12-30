@@ -146,7 +146,7 @@ class Game:
         if game_state_manager.justSwitched('game'):
             self.mode = 'normal'
             self.checkPoints.clear()
-            self.reset()
+            self.reset()    
         
         isAi = map_manager.current_map_id.startswith('AI')
 
@@ -185,27 +185,18 @@ class Game:
                         self.reset()
                         game_state_manager.returnToPrevState()
 
-        self.display.blit(self.assets['background'], (0, 0))
-            
-        self.scroll[0] += (self.player.rect().centerx - self.display.get_width() / 3 - self.scroll[0]) / 20 * 60 / FPS
-        self.scroll[1] += (self.player.rect().centery - self.display.get_height() / 2 - self.scroll[1]) / 20 * 60 / FPS
-        render_scroll = (int(self.scroll[0]), int(self.scroll[1]))
-            
-        self.clouds.update()
-        self.clouds.render(self.display, offset=render_scroll)
-            
-        tile_map.render(self.display, offset=render_scroll)
      
         self.pause_button.update(mouse_pressed, mouse_released)
         if self.pause_button.is_clicked():
                 self.openMenu = True
-        self.pause_button.blit(self.display)
         
         if not map_manager.current_map_id.startswith('-'): self.noclip = False
         if not self.openMenu:
             action = self.ai_agent.getAction(self.env.state()) if isAi else self.human_agent.getAction(events)
             self.env.move(action)
-        self.player.render(self.display, offset=render_scroll)
+            
+            
+        self.env.update_visuls()
 
         if self.mode == 'practice':
             img = self.assets['practiceButtons']

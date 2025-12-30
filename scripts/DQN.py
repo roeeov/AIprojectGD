@@ -4,10 +4,10 @@ import torch.nn.functional as F
 from scripts.constants import *
 
 # Parameters
-input_size = len(STATE_ANGLES) * 2 + 1 # distances and angles of each ray + action
+input_size = len(STATE_ANGLES) * 2 # distances and angles of each ray
 layer1 = 128
 layer2 = 64
-output_size = 1 # Q(s,a)
+output_size = 2 #value of each action
 gamma = 0.99 
 MSELoss = nn.MSELoss()
 
@@ -31,6 +31,5 @@ class DQN (nn.Module):
         x = self.output(x)
         return x
     
-    def __call__(self, states, actions):
-        state_action = torch.cat((states,actions), dim=1)
-        return self.forward(state_action)
+    def __call__(self, states):
+        return self.forward(states)
