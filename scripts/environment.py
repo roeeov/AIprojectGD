@@ -15,7 +15,7 @@ class Environment:
         self.score = 0
         return self.state()
     
-    def update_visuls(self):
+    def update_visuls(self, state_info):
         self.game.display.blit(self.game.assets['background'], (0, 0))
             
         self.game.scroll[0] += (self.game.player.rect().centerx - self.game.display.get_width() / 3 - self.game.scroll[0]) / 20 * 60 / FPS
@@ -26,10 +26,12 @@ class Environment:
         self.game.clouds.render(self.game.display, offset=render_scroll)
             
         tile_map.render(self.game.display, offset=render_scroll)
+             
+        self.game.player.render(self.game.display, offset=render_scroll)
+        
+        self.blit_state(state_info)
         
         self.game.pause_button.blit(self.game.display)
-            
-        self.game.player.render(self.game.display, offset=render_scroll)
 
     def step(self, action):
         self.move(action)
@@ -41,12 +43,23 @@ class Environment:
     def move(self, action):
         boolAction = bool(action)
         self.game.player.update(boolAction)
+        next_state = self.state()
+        reward = self.calculate_reward()
+        return next_state, reward
+    
+    def calculate_reward(self):
+        # create a reward function
+        pass
+        return 0
 
     def state(self):
         player = self.game.player
         state_info = tile_map.getState(player)
-        
-        if DRAW_PLAYER_STATE:
+        return state_info
+    
+    def blit_state(self, state_info):
+        if DRAW_PLAYER_STATE and state_info is not None:
+            player = self.game.player
             player_pos = player.pos.copy()
             for (distance, type), angle_deg in zip(state_info, STATE_ANGLES):
                 angle_rad = math.radians(float(angle_deg))
@@ -65,8 +78,6 @@ class Environment:
                 colrect.center=(rect_pos[0] + player.size[0] // 2 - offset[0],
                                                         rect_pos[1] + player.size[1] // 2 - offset[1])
                 pygame.draw.rect(self.game.display, (0, 255, 0), colrect)
-
-        return state_info
     
 
     def compute_reward(self):

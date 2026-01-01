@@ -137,6 +137,7 @@ class aiLevelPage:
                     print(map_manager.current_map_id)
                     map_manager.loadMap(isAi=True)
                     game_state_manager.setState('game')
+                    game_state_manager.setState('ai-train')
                 elif button.type == 'edit':
                     map_manager.loadMap(isAi=True)
                     game_state_manager.setState('edit')

@@ -116,8 +116,6 @@ class MapManager:
                     map_id = data["info"]["id"]
                     self.ai_levels_json[map_id] = data
                     
-        print(self.ai_levels_json.keys(), self.current_map_id)
-                    
 
 
     def getEditorMapsDict(self):

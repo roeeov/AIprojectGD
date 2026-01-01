@@ -146,11 +146,13 @@ class Game:
         if game_state_manager.justSwitched('game'):
             self.mode = 'normal'
             self.checkPoints.clear()
-            self.reset()    
+            self.reset()
         
         isAi = map_manager.current_map_id.startswith('AI')
 
-        mouse_pressed = False   
+        state, action, reward, next_state, done = None, None, None, None, False
+        
+        mouse_pressed = False
         mouse_released = False
         events = pygame.event.get()
         for event in events:
@@ -192,11 +194,13 @@ class Game:
         
         if not map_manager.current_map_id.startswith('-'): self.noclip = False
         if not self.openMenu:
-            action = self.ai_agent.getAction(self.env.state()) if isAi else self.human_agent.getAction(events)
-            self.env.move(action)
+            if isAi:
+                state = self.env.state()
+                action = self.ai_agent.getAction(state)
+            else: action = self.human_agent.getAction(events)
+            next_state, reward = self.env.move(action)
             
-            
-        self.env.update_visuls()
+        self.env.update_visuls(state_info=state)
 
         if self.mode == 'practice':
             img = self.assets['practiceButtons']
@@ -205,6 +209,7 @@ class Game:
             self.display.blit(img, centered_pos)
 
         if (self.player.finishLevel):
+            done = True
             if isAi:
                 map_manager.choose_random_ai_id()
                 map_manager.loadMap(isAi=True)
@@ -216,7 +221,14 @@ class Game:
 
         # check if the player death animation has ended
         if self.player.respawn:
+            done = True
             if isAi:
                 map_manager.choose_random_ai_id()
-                map_manager.loadMap(isAi=True)
+                map_manager.loadMap(isAi=True)  
             self.reset()
+            
+        if isAi and not self.openMenu:
+            if (action is not None):
+                print('---------------------------------------------------')
+                print(state, action, reward, next_state, done)
+                self.ai_agent.push_to_replayBuffer(state, action, reward, next_state, done)

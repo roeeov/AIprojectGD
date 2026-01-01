@@ -176,6 +176,7 @@ class LevelPage:
                         map_manager.sync_level(map_manager.current_map_id)
                     map_manager.loadMap()
                     game_state_manager.setState('game')
+                    game_state_manager.setGameMode('human')
                 elif button.type == 'sync':
                     blitLoading(self.display, 'SYNCING MAP...')
                     map_manager.sync_level(map_manager.current_map_id)

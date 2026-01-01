@@ -180,6 +180,7 @@ class myLevelPage:
                 elif button.type == 'play':
                     map_manager.loadMap()
                     game_state_manager.setState('game')
+                    game_state_manager.setGameMode('human')
                 elif button.type == 'edit':
                     map_manager.loadMap()
                     game_state_manager.setState('edit')

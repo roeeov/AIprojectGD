@@ -8,6 +8,9 @@ class gameStateManager:
         self.previousStates = deque()
         self.previousStates.append(self.defualtState)
         self.just_switch = None
+        
+        self.gameMode = None
+        # human / ai-train / ai-test
 
     def getState(self):
         return self.currentState
@@ -29,5 +32,11 @@ class gameStateManager:
             self.just_switch = None
             return True
         return False
+    
+    def setGameMode(self, gameMode):
+        self.gameMode = gameMode
+        
+    def getGameMode(self):
+        return self.gameMode
 
 game_state_manager = gameStateManager('menu')
