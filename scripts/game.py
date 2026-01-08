@@ -198,7 +198,7 @@ class Game:
                 state = self.env.state()
                 action = self.ai_agent.getAction(state)
             else: action = self.human_agent.getAction(events)
-            next_state, reward = self.env.move(action)
+            next_state, reward = self.env.move(action, isAi)
             
         self.env.update_visuls(state_info=state)
 

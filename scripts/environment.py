@@ -40,11 +40,13 @@ class Environment:
         self.done = self.check_done()
         return self.state(), reward, self.done, {}
 
-    def move(self, action):
+    def move(self, action, isAi):
         boolAction = bool(action)
         self.game.player.update(boolAction)
-        next_state = self.state()
-        reward = self.calculate_reward()
+        next_state, reward = None, None
+        if isAi:
+            next_state = self.state()
+            reward = self.calculate_reward()
         return next_state, reward
     
     def calculate_reward(self):
