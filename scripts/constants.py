@@ -64,6 +64,7 @@ TILE_MENU_ROWS = 2
 DIFFICULTIES = ('easy', 'normal', 'hard', 'harder', 'insane', 'demon')
 SORTING = ('difficulty', 'recent')
 
+MIN_BUFFER = 5000
 
 #debugging
 DRAW_PLAYER_HITBOX = False

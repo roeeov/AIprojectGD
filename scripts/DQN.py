@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from scripts.constants import *
+import copy
 
 # Parameters
 input_size = len(STATE_ANGLES) * 2 # distances and angles of each ray
@@ -30,6 +31,9 @@ class DQN (nn.Module):
         x = F.relu(x)
         x = self.output(x)
         return x
+    
+    def copy (self):
+        return copy.deepcopy(self)
     
     def __call__(self, states):
         return self.forward(states)

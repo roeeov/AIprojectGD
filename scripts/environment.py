@@ -92,7 +92,7 @@ class Environment:
             return 0
 
     def check_done(self):
-        return self.game.player.dead or getattr(self.game.player, "reached_goal", False)
+        return self.game.player.finishLevel or self.game.player.respawn
 
     def render(self, display):
         self.game.render(display)

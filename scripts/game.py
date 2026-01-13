@@ -207,9 +207,10 @@ class Game:
             pos = vh(50, 90)
             centered_pos = (pos[0] - img.get_width() // 2, pos[1] - img.get_height() // 2)
             self.display.blit(img, centered_pos)
-
+        
+        done = self.env.check_done()
+        
         if (self.player.finishLevel):
-            done = True
             if isAi:
                 map_manager.choose_random_ai_id()
                 map_manager.loadMap(isAi=True)
@@ -221,7 +222,6 @@ class Game:
 
         # check if the player death animation has ended
         if self.player.respawn:
-            done = True
             if isAi:
                 map_manager.choose_random_ai_id()
                 map_manager.loadMap(isAi=True)  
@@ -232,3 +232,4 @@ class Game:
                 print('---------------------------------------------------')
                 print(state, action, reward, next_state, done)
                 self.ai_agent.push_to_replayBuffer(state, action, reward, next_state, done)
+                self.ai_agent.train()
