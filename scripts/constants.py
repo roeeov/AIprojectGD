@@ -47,6 +47,8 @@ SPIKE_SIZE = (0.4, 0.6) # precent
 FONT = 'data/fonts/PixelifySans-VariableFont_wght.ttf'
 
 STATE_ANGLES = np.array(list(range(45, -46, -5)))
+MAX_DISTANCE = 10.0
+STEP = 0.1
 TILE_TYPE_MAP = {
     "block": 0,
     "spike": 1,
@@ -64,7 +66,9 @@ TILE_MENU_ROWS = 2
 DIFFICULTIES = ('easy', 'normal', 'hard', 'harder', 'insane', 'demon')
 SORTING = ('difficulty', 'recent')
 
+# training consts
 MIN_BUFFER = 5000
+EPSILON_START, EPSILON_FINAL, EPSILON_DECAY = 1, 0.01, 5000
 
 #debugging
 DRAW_PLAYER_HITBOX = False

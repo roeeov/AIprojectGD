@@ -40,19 +40,29 @@ class Environment:
         self.done = self.check_done()
         return self.state(), reward, self.done, {}
 
-    def move(self, action, isAi):
+    def move(self, action, isAi, state):
         boolAction = bool(action)
         self.game.player.update(boolAction)
         next_state, reward = None, None
         if isAi:
             next_state = self.state()
-            reward = self.calculate_reward()
+            reward = self.calculate_reward(state)
         return next_state, reward
     
-    def calculate_reward(self):
+    def calculate_reward(self, state):
         # create a reward function
-        pass
-        return 0
+        if self.game.player.finishLevel: return 1000
+        if self.game.player.respawn: return -1000
+        
+        reward = 0
+        n = len(state)
+        for distance, type in state:
+            if type == TILE_TYPE_MAP["finish"]:
+                reward += (MAX_DISTANCE + STEP - distance) * 10/n
+            else:
+                reward += distance / n
+        
+        return reward
 
     def state(self):
         player = self.game.player
@@ -80,16 +90,6 @@ class Environment:
                 colrect.center=(rect_pos[0] + player.size[0] // 2 - offset[0],
                                                         rect_pos[1] + player.size[1] // 2 - offset[1])
                 pygame.draw.rect(self.game.display, (0, 255, 0), colrect)
-    
-
-    def compute_reward(self):
-        # Example reward logic
-        if self.game.player.dead:
-            return -1
-        elif getattr(self.game.player, "reached_goal", False):
-            return 10
-        else:
-            return 0
 
     def check_done(self):
         return self.game.player.finishLevel or self.game.player.respawn

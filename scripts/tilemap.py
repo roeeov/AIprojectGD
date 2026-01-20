@@ -44,8 +44,8 @@ class Tilemap:
         pos = player.pos.copy()
         player_loc = (pos[0] / self.tile_size, pos[1] / self.tile_size)
         # Raycasting parameters (distances in tile units)
-        max_distance = 10.0
-        step = 0.1
+        max_distance = MAX_DISTANCE
+        step = STEP
 
         # Precompute nearby physics and interactive rects once to avoid repeated lookups
         min_x = int(math.floor(player_loc[0] - max_distance)) - 1

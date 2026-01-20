@@ -398,28 +398,12 @@
                 -2
             ]
         },
-        "7;2": {
-            "type": "spike",
-            "variant": 0,
-            "pos": [
-                7,
-                2
-            ]
-        },
         "14;4": {
             "type": "spike",
             "variant": 0,
             "pos": [
                 14,
                 4
-            ]
-        },
-        "18;-1": {
-            "type": "spike",
-            "variant": 0,
-            "pos": [
-                18,
-                -1
             ]
         },
         "22;4": {
@@ -500,6 +484,310 @@
             "pos": [
                 22,
                 1
+            ]
+        },
+        "10;0": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                10,
+                0
+            ]
+        },
+        "10;2": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                10,
+                2
+            ]
+        },
+        "10;4": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                10,
+                4
+            ]
+        },
+        "10;-4": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                10,
+                -4
+            ]
+        },
+        "8;1": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                8,
+                1
+            ]
+        },
+        "8;-1": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                8,
+                -1
+            ]
+        },
+        "8;-3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                8,
+                -3
+            ]
+        },
+        "8;3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                8,
+                3
+            ]
+        },
+        "8;5": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                8,
+                5
+            ]
+        },
+        "12;5": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                12,
+                5
+            ]
+        },
+        "14;2": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                14,
+                2
+            ]
+        },
+        "12;3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                12,
+                3
+            ]
+        },
+        "12;1": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                12,
+                1
+            ]
+        },
+        "14;0": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                14,
+                0
+            ]
+        },
+        "12;-1": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                12,
+                -1
+            ]
+        },
+        "14;-2": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                14,
+                -2
+            ]
+        },
+        "12;-3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                12,
+                -3
+            ]
+        },
+        "14;-4": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                14,
+                -4
+            ]
+        },
+        "16;5": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                16,
+                5
+            ]
+        },
+        "18;4": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                18,
+                4
+            ]
+        },
+        "20;5": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                20,
+                5
+            ]
+        },
+        "20;3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                20,
+                3
+            ]
+        },
+        "18;2": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                18,
+                2
+            ]
+        },
+        "16;3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                16,
+                3
+            ]
+        },
+        "16;1": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                16,
+                1
+            ]
+        },
+        "18;0": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                18,
+                0
+            ]
+        },
+        "20;1": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                20,
+                1
+            ]
+        },
+        "20;-1": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                20,
+                -1
+            ]
+        },
+        "18;-2": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                18,
+                -2
+            ]
+        },
+        "16;-1": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                16,
+                -1
+            ]
+        },
+        "16;-3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                16,
+                -3
+            ]
+        },
+        "20;-3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                20,
+                -3
+            ]
+        },
+        "18;-4": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                18,
+                -4
+            ]
+        },
+        "6;-4": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                6,
+                -4
+            ]
+        },
+        "6;-2": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                6,
+                -2
+            ]
+        },
+        "6;0": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                6,
+                0
+            ]
+        },
+        "6;2": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                6,
+                2
+            ]
+        },
+        "6;4": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                6,
+                4
             ]
         }
     },

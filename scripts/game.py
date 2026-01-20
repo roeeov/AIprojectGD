@@ -196,9 +196,9 @@ class Game:
         if not self.openMenu:
             if isAi:
                 state = self.env.state()
-                action = self.ai_agent.getAction(state)
+                action = self.ai_agent.getAction(state, train=True)
             else: action = self.human_agent.getAction(events)
-            next_state, reward = self.env.move(action, isAi)
+            next_state, reward = self.env.move(action, isAi, state)
             
         self.env.update_visuls(state_info=state)
 
