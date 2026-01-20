@@ -68,6 +68,7 @@ SORTING = ('difficulty', 'recent')
 
 # training consts
 MIN_BUFFER = 5000
+BATCH_SIZE = 50
 EPSILON_START, EPSILON_FINAL, EPSILON_DECAY = 1, 0.01, 5000
 
 #debugging

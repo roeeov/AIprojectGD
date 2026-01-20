@@ -59,7 +59,7 @@ class aiAgent():
         if len(self.replayBuffer) < MIN_BUFFER:
             return
         
-        batch_size = 50
+        batch_size = BATCH_SIZE
         states, actions, rewards, next_states, dones = self.replayBuffer.sample(batch_size)
         Q_values = self.Q(states, actions)
         next_actions, Q_hat_Values = self.get_Actions_Values(next_states, modle= self.DQN_hat)
