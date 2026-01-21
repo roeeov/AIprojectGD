@@ -1,6 +1,7 @@
 import sys
 
 import pygame
+import torch
 from scripts.player import Player
 from scripts.tilemap import tile_map
 
@@ -208,7 +209,7 @@ class Game:
             centered_pos = (pos[0] - img.get_width() // 2, pos[1] - img.get_height() // 2)
             self.display.blit(img, centered_pos)
         
-        done = self.env.check_done()
+        done = int(self.env.check_done())
         
         if (self.player.finishLevel):
             if isAi:
@@ -229,7 +230,8 @@ class Game:
             
         if isAi and not self.openMenu:
             if (action is not None):
-                print('---------------------------------------------------')
-                print(state, action, reward, next_state, done)
-                self.ai_agent.push_to_replayBuffer(state, action, reward, next_state, done)
+                #print('---------------------------------------------------')
+                #print(state, action, reward, next_state, done)
+                print('Epoch:', self.ai_agent.epoch, ' | Reward:', reward, ' | Buffer Size:', len(self.ai_agent.replayBuffer), ' | state shape:', torch.from_numpy(state).shape)
+                self.ai_agent.push_to_replayBuffer(torch.from_numpy(state), action, torch.tensor(reward), torch.from_numpy(next_state), torch.tensor(done))
                 self.ai_agent.train()

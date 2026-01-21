@@ -61,7 +61,8 @@ class aiAgent():
         
         batch_size = BATCH_SIZE
         states, actions, rewards, next_states, dones = self.replayBuffer.sample(batch_size)
-        Q_values = self.Q(states, actions)
+        print(f"States shape: {states.shape}, Actions shape: {actions.shape}, Rewards shape: {rewards.shape}, Next_states shape: {next_states.shape}, Dones shape: {dones.shape}")  # Debugging line
+        Q_values = self.Q(states = states, actions = actions)
         next_actions, Q_hat_Values = self.get_Actions_Values(next_states, modle= self.DQN_hat)
 
         loss = self.DQN.loss(Q_values, rewards, Q_hat_Values, dones)

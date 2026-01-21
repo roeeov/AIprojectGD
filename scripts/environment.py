@@ -56,7 +56,7 @@ class Environment:
         
         reward = 0
         n = len(state)
-        for distance, type in state:
+        for distance, type in zip(state[0::2], state[1::2]):
             if type == TILE_TYPE_MAP["finish"]:
                 reward += (MAX_DISTANCE + STEP - distance) * 10/n
             else:
@@ -73,7 +73,7 @@ class Environment:
         if DRAW_PLAYER_STATE and state_info is not None:
             player = self.game.player
             player_pos = player.pos.copy()
-            for (distance, type), angle_deg in zip(state_info, STATE_ANGLES):
+            for distance, angle_deg in zip(state_info[0::2], STATE_ANGLES):
                 angle_rad = math.radians(float(angle_deg))
                 dx = math.cos(angle_rad) * distance * tile_map.tile_size
                 dy = math.sin(angle_rad) * distance * tile_map.tile_size

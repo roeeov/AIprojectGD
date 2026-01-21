@@ -99,7 +99,8 @@ class Tilemap:
                 for rect in physics_rects:
                     if entity_rect.colliderect(rect):
                         block_code = TILE_TYPE_MAP['block']
-                        state.append((distance, block_code))
+                        state.append(distance)
+                        state.append(block_code)
                         found = True
                         break
 
@@ -108,14 +109,16 @@ class Tilemap:
                     for rect, (itype, variant) in interactive_rects:
                         if hitbox.colliderect(rect) and itype in {'spike', 'finish'}:
                             block_code = TILE_TYPE_MAP[itype]
-                            state.append((distance, block_code))
+                            state.append(distance)
+                            state.append(block_code)
                             found = True
                             break
 
                 distance += step
 
             if not found:
-                state.append((max_distance, -1))
+                state.append(max_distance)
+                state.append(-1)
 
         # Return as a numpy array (rows: [distance, block_code])
         return np.array(state, dtype=float)

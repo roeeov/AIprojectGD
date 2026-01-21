@@ -15,16 +15,17 @@ MSELoss = nn.MSELoss()
 class DQN (nn.Module):
     def __init__(self) -> None:
         super().__init__()
-        if torch.cuda.is_available:
-            self.device = torch.device('cuda')
-        else:
-            self.device = torch.device('cpu')
+        # if torch.cuda.is_available:
+        #     self.device = torch.device('cuda')
+        # else:
+        #     self.device = torch.device('cpu')
         
         self.linear1 = nn.Linear(input_size, layer1)
         self.linear2 = nn.Linear(layer1, layer2)
         self.output = nn.Linear(layer2, output_size)
         
     def forward (self, x):
+        print(f"Input shape before linear1: {x.shape}") # Add this line
         x = self.linear1(x)
         x = F.relu(x)
         x = self.linear2(x)
