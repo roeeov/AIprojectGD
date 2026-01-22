@@ -33,13 +33,6 @@ class Environment:
         
         self.game.pause_button.blit(self.game.display)
 
-    def step(self, action):
-        self.move(action)
-        self.game.update()  # Main game update logic
-        reward = self.compute_reward()
-        self.done = self.check_done()
-        return self.state(), reward, self.done, {}
-
     def move(self, action, isAi, state):
         boolAction = bool(action)
         self.game.player.update(boolAction)
@@ -49,13 +42,9 @@ class Environment:
             reward = self.calculate_reward(state)
         return next_state, reward
     
-    def calculate_reward(self, state):
-        # create a reward function
-        if self.game.player.finishLevel: return 1000
-        if self.game.player.respawn: return -1000
-        
-        reward = 0
-        n = len(state)
+    def calculate_reward(self, state): 
+        reward = 0.02
+        n = len(state)/2
         for distance, type in zip(state[0::2], state[1::2]):
             if type == TILE_TYPE_MAP["finish"]:
                 reward += (MAX_DISTANCE + STEP - distance) * 10/n
@@ -67,7 +56,7 @@ class Environment:
     def state(self):
         player = self.game.player
         state_info = tile_map.getState(player)
-        return state_info
+        return state_info;
     
     def blit_state(self, state_info):
         if DRAW_PLAYER_STATE and state_info is not None:
