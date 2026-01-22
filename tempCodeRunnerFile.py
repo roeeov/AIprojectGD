@@ -1,1 +1,2 @@
-print(list(range(45, -46, -5)))
+
+        self.level_page = LevelPage(self.display, self.level_select)

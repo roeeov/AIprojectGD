@@ -233,5 +233,9 @@ class Game:
                 #print('---------------------------------------------------')
                 #print(state, action, reward, next_state, done)
                 print('Epoch:', self.ai_agent.epoch, ' | Reward:', reward, ' | Buffer Size:', len(self.ai_agent.replayBuffer), ' | state shape:', torch.from_numpy(state).shape)
-                self.ai_agent.push_to_replayBuffer(torch.from_numpy(state), action, torch.tensor(reward), torch.from_numpy(next_state), torch.tensor(done))
+                self.ai_agent.push_to_replayBuffer(torch.from_numpy(state).to(torch.float32),
+                                                   torch.tensor(action, dtype=torch.int32),
+                                                   torch.tensor(reward, dtype=torch.float32),
+                                                   torch.from_numpy(next_state).to(torch.float32),
+                                                   torch.tensor(done, dtype=torch.float32))
                 self.ai_agent.train()
