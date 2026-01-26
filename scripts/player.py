@@ -247,14 +247,19 @@ class Player:
                 else:
                     gravity = -GRAVITY['cube']
                     jumpVel = PLAYER_VELOCITY['cube']
+                
                 if not self.orb_clicked:
+                    just_jumped = False
+
                     if self.input['hold'] and self.grounded:
                         self.input['buffer'] = False
                         self.air_time = 5
                         self.Yvelocity = jumpVel
+                        just_jumped = True
                         
-                    if (self.collisions['down'] or self.collisions['up']) and not self.collisions['right']:
+                    if not just_jumped and (self.collisions['down'] or self.collisions['up']) and not self.collisions['right']:
                         self.Yvelocity = 0
+
                     else:
                         self.Yvelocity = max(-MAX_VELOCITY['cube'], min(self.Yvelocity + gravity, MAX_VELOCITY['cube']))
 

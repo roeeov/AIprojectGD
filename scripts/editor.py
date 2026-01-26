@@ -22,8 +22,8 @@ class Editor:
         prev_button = Button(prev_text, (0 ,255, 0), button_type='prev', image=load_image('UI/buttons/back.png', (UIsize(3), UIsize(3))) )
         self.buttons.append(prev_button)
 
-        instruction_text = 'SAVE - O\nDELETE - RIGHT CLICK\nPLACE - LEFT CLICK\nMOVE - W,A,S,D\nSWITCH TILE - SCROLL WHEEL (HOLD SHIFT TO SWITCH TILE VARIANT)\nZOOM IN - UP\nZOOM OUT - DOWN\nGRID - G\nAUTOTILE - T'
-        self.instructions = Text(instruction_text, pos = vh(1, 80), size=UIsize(1), centered=False, color=(255, 255, 255))
+        instruction_text = 'SAVE - O\nDELETE - RIGHT CLICK\nPLACE - LEFT CLICK\nMOVE - W,A,S,D\nSWITCH TILE - SCROLL WHEEL (HOLD SHIFT TO SWITCH TILE VARIANT)\nZOOM IN - UP\nZOOM OUT - DOWN\nGRID - G\nAUTOTILE - T\nTILE MENU - P'
+        self.instructions = Text(instruction_text, pos = vh(1, 75), size=UIsize(1), centered=False, color=(255, 255, 255))
 
     def resetEditor(self):
         self.scroll = [0, 0]

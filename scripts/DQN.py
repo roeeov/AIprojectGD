@@ -26,7 +26,6 @@ class DQN (nn.Module):
         self.MSELoss = nn.MSELoss()
         
     def forward (self, x):
-        print(f"Input shape before linear1: {x.shape}") # Add this line
         x = self.linear1(x)
         x = F.relu(x)
         x = self.linear2(x)

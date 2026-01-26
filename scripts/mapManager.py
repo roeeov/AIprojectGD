@@ -178,6 +178,44 @@ class MapManager:
         # self.update_map_dict()
         self.setMap(new_map_id)
 
+    def createNewAIMap(self):
+        new_map_id = 'AI' + self.generateAILevelId()
+        new_map_data = {
+            "info": {
+                "name": "unnamed",
+                "creator": "not entered",
+                "difficulty": "NA",
+                "id": new_map_id
+            },
+            "tilemap": {
+                "1;0": {
+                    "type": "portal up",
+                    "variant": 2,
+                    "pos": [
+                        1,
+                        0
+                    ]
+                },
+                "1;1": {
+                    "type": "portal down",
+                    "variant": 2,
+                    "pos": [
+                        1,
+                        1
+                    ]
+                }
+            },
+            "offgrid": []
+        }
+
+        file_path = f'data/ai_maps/{new_map_id}.json'
+        with open(file_path, 'w') as f:
+            json.dump(new_map_data, f, indent=4)  # indent=4 makes it pretty
+
+        # self.update_map_dict()
+        self.setMap(new_map_id)
+
+
     def generateEditorId(self):
         editorDict = self.getEditorMapsDict().keys()
         editorDict = filter(lambda x: not x.startswith('--'), editorDict)
@@ -186,6 +224,16 @@ class MapManager:
         except IndexError:
             new_id = 1
         new_id = '-' + str(new_id).zfill(5)
+        return new_id
+    
+    def generateAILevelId(self):
+        aiDict = self.getAIMapsDict().keys()
+        print(aiDict)
+        try:
+            new_id = int(tuple(aiDict)[0][2:]) + 1
+        except IndexError:
+            new_id = 1
+        new_id = str(new_id).zfill(5)
         return new_id
 
     def getMapInfo(self, id):

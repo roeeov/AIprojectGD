@@ -48,7 +48,7 @@ class Tilemap:
         step = STEP
 
         # Precompute nearby physics and interactive rects once to avoid repeated lookups
-        min_x = int(math.floor(player_loc[0] - max_distance)) - 1
+        min_x = int(math.floor(player_loc[0])) - 1
         max_x = int(math.ceil(player_loc[0] + max_distance)) + 1
         min_y = int(math.floor(player_loc[1] - max_distance)) - 1
         max_y = int(math.ceil(player_loc[1] + max_distance)) + 1
@@ -89,7 +89,7 @@ class Tilemap:
             distance = 0.0
             while distance <= max_distance and not found:
                 sample_x = player_loc[0] + dx * distance
-                sample_y = player_loc[1] + dy * distance
+                sample_y = player_loc[1] - dy * distance
 
                 rect_pos_x = sample_x * self.tile_size
                 rect_pos_y = sample_y * self.tile_size
@@ -114,7 +114,7 @@ class Tilemap:
                             found = True
                             break
 
-                distance += step
+                distance += step * ((abs(angle_deg) == 45) + 1) # setp doulble for diagonal rays
 
             if not found:
                 state.append(max_distance)

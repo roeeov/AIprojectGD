@@ -11,7 +11,8 @@ FPS = 60
 
 TILE_SIZE = DISPLAY_SIZE[0] * 3 // 80
 
-PLAYER_SPEED = 10.4 * TILE_SIZE / 60
+#PLAYER_SPEED = 10.4 * TILE_SIZE / 60
+PLAYER_SPEED = TILE_SIZE / 6
 PLAYER_HITBOX = 0.7 # precent
 
 
@@ -46,15 +47,14 @@ ORBS = ('blue', 'green', 'yellow')
 SPIKE_SIZE = (0.4, 0.6) # precent
 FONT = 'data/fonts/PixelifySans-VariableFont_wght.ttf'
 
-STATE_ANGLES = np.array(list(range(45, -46, -5)))
+STATE_ANGLES = np.concatenate((np.array([90]), np.array(list(range(50, -51, -5))), np.array([-90])))
 MAX_DISTANCE = 10.0
-STEP = 0.1
+STEP = (PLAYER_SPEED / TILE_SIZE) * (2** 0.5) / 2
 TILE_TYPE_MAP = {
     "block": 0,
-    "spike": 1,
-    "finish": 2,
-    # Add other tile types and their variants as needed
-}
+    "spike": 0,
+    "finish": 1,
+    }    # Add other tile types and their variants as needed
 
 EDITOR_SCROLL = (8 / 48) * TILE_SIZE
 EDITOR_SCROLL_FAST = (40 / 48) * TILE_SIZE
@@ -65,6 +65,8 @@ TILE_MENU_ROWS = 2
 
 DIFFICULTIES = ('easy', 'normal', 'hard', 'harder', 'insane', 'demon')
 SORTING = ('difficulty', 'recent')
+VISUALS = ('Full Detail', 'Low Detail', 'No detail')
+MAP_SWITCH = ('always', 'on completion', 'never')
 
 # training consts
 MIN_BUFFER = 5000

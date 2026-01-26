@@ -129,7 +129,7 @@ class Game:
 
                 if button.type == 'practice':
                     button.update(mouse_pressed, mouse_released)
-                    if button.is_clicked():
+                    if button.is_clicked() and game_state_manager.getGameMode() != 'ai-train':
                             self.mode = 'practice' if self.mode == 'normal' else 'normal'
                             self.checkPoints.clear()
                             self.openMenu = False
@@ -148,8 +148,9 @@ class Game:
             self.mode = 'normal'
             self.checkPoints.clear()
             self.reset()
-        
-        isAi = map_manager.current_map_id.startswith('AI')
+
+        isAi = game_state_manager.getGameMode().startswith('ai')
+        isTraining = game_state_manager.getGameMode() == 'ai-train'
 
         state, action, reward, next_state, done = None, None, None, None, False
         
@@ -197,11 +198,11 @@ class Game:
         if not self.openMenu:
             if isAi:
                 state = self.env.state()
-                action = self.ai_agent.getAction(state, train=True)
+                action = self.ai_agent.getAction(state, train=isTraining)
             else: action = self.human_agent.getAction(events)
-            next_state, reward = self.env.move(action, isAi, state)
+            next_state, reward = self.env.move(action, state, isTraining)
             
-        self.env.update_visuls(state_info=state)
+        self.env.update_visuals(state_info=state)
 
         if self.mode == 'practice':
             img = self.assets['practiceButtons']
@@ -209,33 +210,28 @@ class Game:
             centered_pos = (pos[0] - img.get_width() // 2, pos[1] - img.get_height() // 2)
             self.display.blit(img, centered_pos)
         
-        done = int(self.env.check_done())
-        
+        done = int(self.env.check_done())  
+            
+        if isTraining and not self.openMenu:
+            if (action is not None): # data didnt get lost due to menu opening
+                #print('---------------------------------------------------')
+                #print(state, action, reward, next_state, done)
+                print('Epoch:', self.ai_agent.epoch, ' | Reward:', reward, ' | Buffer Size:', len(self.ai_agent.replayBuffer), ' | state shape:', torch.from_numpy(state).shape)
+                self.ai_agent.handle_training(state, action, reward, next_state, done)
+
         if (self.player.finishLevel):
-            if isAi:
+            if game_state_manager.getGameSettings('map switch') != MAP_SWITCH[2]: # not 'never'
                 map_manager.choose_random_ai_id()
                 map_manager.loadMap(isAi=True)
-                self.reset()
-            else:
-                self.openMenu = True
+            
+            if isAi: self.reset()
+            else: self.openMenu = True
 
         if self.openMenu: self.blitMenu(mouse_pressed, mouse_released)
 
         # check if the player death animation has ended
         if self.player.respawn:
-            if isAi:
+            if game_state_manager.getGameSettings('map switch') == MAP_SWITCH[0]:  # 'always'
                 map_manager.choose_random_ai_id()
                 map_manager.loadMap(isAi=True)  
             self.reset()
-            
-        if isAi and not self.openMenu:
-            if (action is not None):
-                #print('---------------------------------------------------')
-                #print(state, action, reward, next_state, done)
-                print('Epoch:', self.ai_agent.epoch, ' | Reward:', reward, ' | Buffer Size:', len(self.ai_agent.replayBuffer), ' | state shape:', torch.from_numpy(state).shape)
-                self.ai_agent.push_to_replayBuffer(torch.from_numpy(state).to(torch.float32),
-                                                   torch.tensor(action, dtype=torch.int32),
-                                                   torch.tensor(reward, dtype=torch.float32),
-                                                   torch.from_numpy(next_state).to(torch.float32),
-                                                   torch.tensor(done, dtype=torch.float32))
-                self.ai_agent.train()

@@ -32,9 +32,9 @@ class Engine:
         self.ai_level_page = aiLevelPage(self.display, self.ai_levels)
         self.editor = Editor(self.display)
 
-        self.state = {'game': self.game, 'menu': self.menu, 'level_select': self.level_select, 'level_page': self.level_page,
-                      'edit': self.editor, 'my_levels': self.my_levels, 'my_level_page': self.my_level_page,
-                      'ai_levels': self.ai_levels, 'ai_level_page': self.ai_level_page}
+        self.state = {'game': self.game, 'menu': self.menu, 'level_select': self.level_select,
+                      'level_page': self.level_page, 'edit': self.editor, 'my_levels': self.my_levels,
+                      'my_level_page': self.my_level_page, 'ai_levels': self.ai_levels, 'ai_level_page': self.ai_level_page}
 
     def run(self):
         while True:
@@ -42,7 +42,7 @@ class Engine:
 
             # blit fps counter
             if SHOW_FPS_COUNTER:
-                fpsTXT = Text(str(int(self.clock.get_fps())), (50, 50))
+                fpsTXT = Text(str(int(self.clock.get_fps())), (50, 50), (255, 0, 0))
                 fpsTXT.blit(self.display)
 
             pygame.display.update()

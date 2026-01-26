@@ -15,30 +15,28 @@ class aiAgent():
         self.optim = torch.optim.Adam(self.DQN.parameters(), lr=learning_rate)
         self.epoch = 0
         self.scheduler = torch.optim.lr_scheduler.MultiStepLR(self.optim,[5000*1000, 10000*1000, 15000*1000], gamma=0.5)
-        ephocs = 200000
-        loss = torch.tensor(-1)
-        avg = 0
-        scores, losses, avg_score = [], [], []
+        # ephocs = 200000
+        # loss = torch.tensor(-1)
+        # avg = 0
+        # scores, losses, avg_score = [], [], []
         # scheduler = torch.optim.lr_scheduler.StepLR(optim,100000, gamma=0.50)
-        step = 0
+        # step = 0
         
         
 
     def getAction(self, state, train = False):
-        # Flatten the state from (19, 2) to (38,)
         actions = self.get_actions()
         if train:
             epsilon = self.epsilon_greedy()
             rnd = random.random()
             if rnd < epsilon:
-                return random.choice(actions)
+                return random.choice(actions).item()
       
         state_tensor = torch.from_numpy(state).flatten().float()
         with torch.no_grad():
             Q_values = self.DQN(state_tensor)
         max_index = torch.argmax(Q_values).item()
         
-        # Return the action value as a Python int/float
         return actions[max_index].item()
 
     def get_actions(self):
@@ -52,8 +50,23 @@ class aiAgent():
             max_values, max_indices = torch.max(Q_values,dim=1) # best_values, best_actions
             return max_indices.reshape(-1,1), max_values.reshape(-1,1)
         
+    def handle_training(self, state, action, reward, next_state, done):
+        self.push_to_replayBuffer(state, action, reward, next_state, done)
+        self.train()
+        #if done: self.increment_epoch()
+    
+    def increment_epoch(self):
+        self.epoch += 1
+        C = 3 # update target network every C epochs
+        if self.epoch % C == 0:
+            self.DQN_hat.load_state_dict(self.DQN.state_dict())
+        
     def push_to_replayBuffer(self, state, action, reward, next_state, done):
-        self.replayBuffer.push(state, action, reward, next_state, done)
+        self.replayBuffer.push(torch.from_numpy(state).to(torch.float32),
+                                                   torch.tensor(action, dtype=torch.int32),
+                                                   torch.tensor(reward, dtype=torch.float32),
+                                                   torch.from_numpy(next_state).to(torch.float32),
+                                                   torch.tensor(done, dtype=torch.float32))
         
     def train(self):
         if len(self.replayBuffer) < MIN_BUFFER:
@@ -71,10 +84,8 @@ class aiAgent():
         self.optim.zero_grad()
         self.scheduler.step()
 
-        C = 3
-        if self.epoch % C == 0:
-            self.DQN_hat.load_state_dict(self.DQN.state_dict())
-        self.epoch += 1
+        self.increment_epoch()
+
         
     def Q(self, states, actions):
         Q_values = self.DQN(states) # try: Q_values = self.DQN(states).gather(dim=1, actions) ; check if shape of actions is [-1, 1] otherwise dim=0

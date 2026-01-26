@@ -23,16 +23,16 @@ class myLevels:
         prev_button = Button(prev_text, (0 ,255, 0), button_type='prev', image=load_image('UI/buttons/back.png', (UIsize(3), UIsize(3))) )
         self.buttons.append(prev_button)
 
-        new_map_text = Text('new map', pos = vh(90, 90), size=UIsize(3))
-        new_map_button = Button(new_map_text, (0 ,255, 0), button_type='new_map')
-        self.buttons.append(new_map_button)
-
         my_maps_dict = map_manager.getEditorMapsDict()
         for idx, map in enumerate(my_maps_dict.values()):
             map_text = map['info']['name'] + ' '*5 + map['info']['creator'] + ' '*5 + map['info']['difficulty']
             map_text = Text(map_text, pos = (vh(47, -1)[0], (idx+1)*vh(-1, 14)[1] - vh(-1, 3)[1]), size=UIsize(4), color=(40, 40, 40))
             map_button = Button(map_text, (0 ,255, 0), "map_idx: " + map['info']['id'], scale_factor=1.05, image=self.levelInfoIMG)
             self.buttons.append(map_button)
+
+        new_map_text = Text('new map', pos = vh(90, 90), size=UIsize(3))
+        new_map_button = Button(new_map_text, (0 ,255, 0), button_type='new_map')
+        self.buttons.append(new_map_button)
 
         self.max_scroll = -vh(-1, 14)[1] * len(my_maps_dict)
 
@@ -85,9 +85,32 @@ class myLevelPage:
         self.display = display
         self.level_select = level_select
         self.background = load_image('UI/backgrounds/levelPage.png', scale=DISPLAY_SIZE)
-        self.buttons = []
+        self.setButtons()
+        self.setTexts()
 
         self.popup = None
+
+        creator_input = InputBox(vh(21, 47), width=0, height=UIsize(3), box_type='creator', placeholder='edit creator name...')
+        name_input = InputBox(vh(42, 29), width=0, height=UIsize(3), box_type='name', placeholder='edit level name...')
+        self.inputBoxes = (creator_input ,name_input)
+
+        self.diff_faces = {diff: load_image(f'UI/difficulity/{diff}.png', scale=(UIsize(3), UIsize(3))) for diff in DIFFICULTIES}
+        self.diff_faces['NA'] = load_image(f'UI/difficulity/NA.png', scale=(UIsize(3), UIsize(3)))
+
+    def setTexts(self):
+        self.texts = []
+
+        map_name_text = Text("", pos = vh(50, 20), size=UIsize(5), color=(255, 255, 255))
+        self.texts.append(map_name_text)
+
+        map_creator_text = Text("", pos = vh(30, 40), size=UIsize(3), color=(255, 255, 255))
+        self.texts.append(map_creator_text)
+        
+        map_difficulty_text = Text("difficulty: ", pos =vh(70, 40), size=UIsize(3), color=(255, 255, 255))
+        self.texts.append(map_difficulty_text)
+
+    def setButtons(self):
+        self.buttons = []
 
         play_text = Text('', pos = vh(50, 62), size=0)
         play_button = Button(play_text, (0 ,255, 0), button_type='play', scale_factor=1.1, image=load_image('UI/buttons/play.png', scale=(UIsize(5*35/11), UIsize(5))))
@@ -105,10 +128,6 @@ class myLevelPage:
         prev_button = Button(prev_text, (0 ,255, 0), button_type='prev', image=load_image('UI/buttons/back.png', (UIsize(3), UIsize(3))) )
         self.buttons.append(prev_button)
 
-        creator_input = InputBox(vh(21, 47), width=0, height=UIsize(3), box_type='creator', placeholder='edit creator name...')
-        name_input = InputBox(vh(42, 29), width=0, height=UIsize(3), box_type='name', placeholder='edit level name...')
-        self.inputBoxes = (creator_input ,name_input)
-
         diffs = []
         diffLen = len(DIFFICULTIES)
         for idx, difficulity in enumerate(DIFFICULTIES):
@@ -118,9 +137,6 @@ class myLevelPage:
             diffs.append(diff_button)
         self.diffRadio = radionButton(diffs)
 
-        self.diff_faces = {diff: load_image(f'UI/difficulity/{diff}.png', scale=(UIsize(3), UIsize(3))) for diff in DIFFICULTIES}
-        self.diff_faces['NA'] = load_image(f'UI/difficulity/NA.png', scale=(UIsize(3), UIsize(3)))
-
 
     def run(self):
 
@@ -129,16 +145,13 @@ class myLevelPage:
         map_info = map_manager.getMapInfo(map_manager.current_map_id)
 
         map_name = map_info["name"]
-        map_name_text = Text(map_name, pos = vh(50, 20), size=UIsize(5), color=(255, 255, 255))
-        map_name_text.blit(display=self.display)
-
+        self.texts[0].switchText(map_name)
         map_creator = map_info["creator"]
-        map_creator_text = Text("creator: " + map_creator, pos = vh(30, 40), size=UIsize(3), color=(255, 255, 255))
-        map_creator_text.blit(display=self.display)
-
+        self.texts[1].switchText("creator: " + map_creator)
         map_difficulty = map_info["difficulty"]
-        map_difficulty_text = Text("difficulty: ", pos =vh(70, 40), size=UIsize(3), color=(255, 255, 255))
-        map_difficulty_text.blit(display=self.display)
+        for text in self.texts:
+            text.blit(self.display)
+
         # blit difficulity face
         diff_faces_rect = self.diff_faces[map_difficulty].get_rect(center=vh(79, 40))
         self.display.blit(self.diff_faces[map_difficulty], diff_faces_rect)
