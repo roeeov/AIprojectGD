@@ -14,6 +14,7 @@ class aiAgent():
         learning_rate = 0.00001
         self.optim = torch.optim.Adam(self.DQN.parameters(), lr=learning_rate)
         self.epoch = 0
+        self.step = 0
         self.scheduler = torch.optim.lr_scheduler.MultiStepLR(self.optim,[5000*1000, 10000*1000, 15000*1000], gamma=0.5)
         # ephocs = 200000
         # loss = torch.tensor(-1)
@@ -52,13 +53,14 @@ class aiAgent():
         
     def handle_training(self, state, action, reward, next_state, done):
         self.push_to_replayBuffer(state, action, reward, next_state, done)
+        self.epoch += done
         self.train()
         #if done: self.increment_epoch()
     
-    def increment_epoch(self):
-        self.epoch += 1
+    def increment_step(self):
+        self.step += 1
         C = 3 # update target network every C epochs
-        if self.epoch % C == 0:
+        if self.step % C == 0:
             self.DQN_hat.load_state_dict(self.DQN.state_dict())
         
     def push_to_replayBuffer(self, state, action, reward, next_state, done):
@@ -84,7 +86,7 @@ class aiAgent():
         self.optim.zero_grad()
         self.scheduler.step()
 
-        self.increment_epoch()
+        self.increment_step()
 
         
     def Q(self, states, actions):

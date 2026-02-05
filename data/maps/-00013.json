@@ -1,0 +1,3299 @@
+{
+    "info": {
+        "name": "swing",
+        "creator": "roee",
+        "difficulty": "NA",
+        "id": "-00013"
+    },
+    "tilemap": {
+        "-1;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                -1,
+                3
+            ]
+        },
+        "0;3": {
+            "type": "grass",
+            "variant": 1,
+            "pos": [
+                0,
+                3
+            ]
+        },
+        "1;3": {
+            "type": "grass",
+            "variant": 1,
+            "pos": [
+                1,
+                3
+            ]
+        },
+        "2;3": {
+            "type": "grass",
+            "variant": 1,
+            "pos": [
+                2,
+                3
+            ]
+        },
+        "3;3": {
+            "type": "grass",
+            "variant": 1,
+            "pos": [
+                3,
+                3
+            ]
+        },
+        "4;3": {
+            "type": "grass",
+            "variant": 1,
+            "pos": [
+                4,
+                3
+            ]
+        },
+        "5;3": {
+            "type": "grass",
+            "variant": 1,
+            "pos": [
+                5,
+                3
+            ]
+        },
+        "6;3": {
+            "type": "grass",
+            "variant": 1,
+            "pos": [
+                6,
+                3
+            ]
+        },
+        "7;3": {
+            "type": "grass",
+            "variant": 1,
+            "pos": [
+                7,
+                3
+            ]
+        },
+        "8;3": {
+            "type": "grass",
+            "variant": 1,
+            "pos": [
+                8,
+                3
+            ]
+        },
+        "9;3": {
+            "type": "grass",
+            "variant": 1,
+            "pos": [
+                9,
+                3
+            ]
+        },
+        "10;3": {
+            "type": "grass",
+            "variant": 1,
+            "pos": [
+                10,
+                3
+            ]
+        },
+        "11;3": {
+            "type": "grass",
+            "variant": 2,
+            "pos": [
+                11,
+                3
+            ]
+        },
+        "-1;4": {
+            "type": "grass",
+            "variant": 6,
+            "pos": [
+                -1,
+                4
+            ]
+        },
+        "0;4": {
+            "type": "grass",
+            "variant": 5,
+            "pos": [
+                0,
+                4
+            ]
+        },
+        "1;4": {
+            "type": "grass",
+            "variant": 5,
+            "pos": [
+                1,
+                4
+            ]
+        },
+        "2;4": {
+            "type": "grass",
+            "variant": 5,
+            "pos": [
+                2,
+                4
+            ]
+        },
+        "3;4": {
+            "type": "grass",
+            "variant": 5,
+            "pos": [
+                3,
+                4
+            ]
+        },
+        "4;4": {
+            "type": "grass",
+            "variant": 5,
+            "pos": [
+                4,
+                4
+            ]
+        },
+        "5;4": {
+            "type": "grass",
+            "variant": 5,
+            "pos": [
+                5,
+                4
+            ]
+        },
+        "6;4": {
+            "type": "grass",
+            "variant": 5,
+            "pos": [
+                6,
+                4
+            ]
+        },
+        "7;4": {
+            "type": "grass",
+            "variant": 5,
+            "pos": [
+                7,
+                4
+            ]
+        },
+        "8;4": {
+            "type": "grass",
+            "variant": 5,
+            "pos": [
+                8,
+                4
+            ]
+        },
+        "9;4": {
+            "type": "grass",
+            "variant": 5,
+            "pos": [
+                9,
+                4
+            ]
+        },
+        "10;4": {
+            "type": "grass",
+            "variant": 5,
+            "pos": [
+                10,
+                4
+            ]
+        },
+        "11;4": {
+            "type": "grass",
+            "variant": 4,
+            "pos": [
+                11,
+                4
+            ]
+        },
+        "12;1": {
+            "type": "portal up",
+            "variant": 0,
+            "pos": [
+                12,
+                1
+            ]
+        },
+        "12;2": {
+            "type": "portal down",
+            "variant": 0,
+            "pos": [
+                12,
+                2
+            ]
+        },
+        "13;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                13,
+                -4
+            ]
+        },
+        "13;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                13,
+                -3
+            ]
+        },
+        "13;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                13,
+                -2
+            ]
+        },
+        "13;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                13,
+                -1
+            ]
+        },
+        "13;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                13,
+                0
+            ]
+        },
+        "13;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                13,
+                1
+            ]
+        },
+        "13;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                13,
+                2
+            ]
+        },
+        "13;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                13,
+                3
+            ]
+        },
+        "13;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                13,
+                4
+            ]
+        },
+        "14;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                14,
+                -4
+            ]
+        },
+        "14;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                14,
+                -3
+            ]
+        },
+        "14;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                14,
+                -2
+            ]
+        },
+        "14;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                14,
+                -1
+            ]
+        },
+        "14;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                14,
+                0
+            ]
+        },
+        "14;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                14,
+                1
+            ]
+        },
+        "14;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                14,
+                2
+            ]
+        },
+        "14;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                14,
+                4
+            ]
+        },
+        "15;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                15,
+                -4
+            ]
+        },
+        "15;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                15,
+                -3
+            ]
+        },
+        "15;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                15,
+                -2
+            ]
+        },
+        "15;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                15,
+                -1
+            ]
+        },
+        "15;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                15,
+                0
+            ]
+        },
+        "15;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                15,
+                1
+            ]
+        },
+        "15;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                15,
+                2
+            ]
+        },
+        "15;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                15,
+                4
+            ]
+        },
+        "16;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                16,
+                -4
+            ]
+        },
+        "16;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                16,
+                -3
+            ]
+        },
+        "16;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                16,
+                -2
+            ]
+        },
+        "16;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                16,
+                -1
+            ]
+        },
+        "16;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                16,
+                0
+            ]
+        },
+        "16;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                16,
+                1
+            ]
+        },
+        "16;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                16,
+                2
+            ]
+        },
+        "16;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                16,
+                4
+            ]
+        },
+        "17;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                17,
+                4
+            ]
+        },
+        "18;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                18,
+                4
+            ]
+        },
+        "19;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                19,
+                4
+            ]
+        },
+        "23;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                23,
+                4
+            ]
+        },
+        "24;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                24,
+                4
+            ]
+        },
+        "25;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                25,
+                4
+            ]
+        },
+        "26;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                26,
+                4
+            ]
+        },
+        "27;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                27,
+                4
+            ]
+        },
+        "28;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                28,
+                4
+            ]
+        },
+        "29;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                29,
+                4
+            ]
+        },
+        "30;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                30,
+                4
+            ]
+        },
+        "31;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                31,
+                4
+            ]
+        },
+        "32;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                32,
+                4
+            ]
+        },
+        "33;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                33,
+                4
+            ]
+        },
+        "34;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                34,
+                4
+            ]
+        },
+        "35;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                35,
+                4
+            ]
+        },
+        "36;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                36,
+                4
+            ]
+        },
+        "37;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                37,
+                4
+            ]
+        },
+        "38;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                38,
+                4
+            ]
+        },
+        "39;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                39,
+                4
+            ]
+        },
+        "40;4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                40,
+                4
+            ]
+        },
+        "40;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                40,
+                3
+            ]
+        },
+        "39;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                39,
+                3
+            ]
+        },
+        "38;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                38,
+                3
+            ]
+        },
+        "37;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                37,
+                3
+            ]
+        },
+        "36;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                36,
+                3
+            ]
+        },
+        "35;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                35,
+                3
+            ]
+        },
+        "34;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                34,
+                3
+            ]
+        },
+        "33;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                33,
+                3
+            ]
+        },
+        "32;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                32,
+                3
+            ]
+        },
+        "31;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                31,
+                3
+            ]
+        },
+        "30;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                30,
+                3
+            ]
+        },
+        "29;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                29,
+                3
+            ]
+        },
+        "28;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                28,
+                3
+            ]
+        },
+        "27;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                27,
+                3
+            ]
+        },
+        "26;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                26,
+                3
+            ]
+        },
+        "25;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                25,
+                3
+            ]
+        },
+        "24;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                24,
+                3
+            ]
+        },
+        "23;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                23,
+                3
+            ]
+        },
+        "14;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                14,
+                3
+            ]
+        },
+        "15;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                15,
+                3
+            ]
+        },
+        "16;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                16,
+                3
+            ]
+        },
+        "17;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                17,
+                3
+            ]
+        },
+        "18;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                18,
+                3
+            ]
+        },
+        "19;3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                19,
+                3
+            ]
+        },
+        "17;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                17,
+                2
+            ]
+        },
+        "18;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                18,
+                2
+            ]
+        },
+        "19;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                19,
+                2
+            ]
+        },
+        "20;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                20,
+                2
+            ]
+        },
+        "21;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                21,
+                2
+            ]
+        },
+        "22;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                22,
+                2
+            ]
+        },
+        "23;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                23,
+                2
+            ]
+        },
+        "24;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                24,
+                2
+            ]
+        },
+        "25;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                25,
+                2
+            ]
+        },
+        "26;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                26,
+                2
+            ]
+        },
+        "27;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                27,
+                2
+            ]
+        },
+        "28;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                28,
+                2
+            ]
+        },
+        "29;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                29,
+                2
+            ]
+        },
+        "30;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                30,
+                2
+            ]
+        },
+        "31;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                31,
+                2
+            ]
+        },
+        "32;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                32,
+                2
+            ]
+        },
+        "33;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                33,
+                2
+            ]
+        },
+        "34;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                34,
+                2
+            ]
+        },
+        "35;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                35,
+                2
+            ]
+        },
+        "36;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                36,
+                2
+            ]
+        },
+        "37;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                37,
+                2
+            ]
+        },
+        "38;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                38,
+                2
+            ]
+        },
+        "39;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                39,
+                2
+            ]
+        },
+        "40;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                40,
+                1
+            ]
+        },
+        "40;2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                40,
+                2
+            ]
+        },
+        "39;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                39,
+                1
+            ]
+        },
+        "38;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                38,
+                1
+            ]
+        },
+        "37;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                37,
+                1
+            ]
+        },
+        "36;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                36,
+                1
+            ]
+        },
+        "35;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                35,
+                1
+            ]
+        },
+        "34;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                34,
+                1
+            ]
+        },
+        "33;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                33,
+                1
+            ]
+        },
+        "32;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                32,
+                1
+            ]
+        },
+        "31;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                31,
+                1
+            ]
+        },
+        "30;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                30,
+                1
+            ]
+        },
+        "29;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                29,
+                1
+            ]
+        },
+        "28;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                28,
+                1
+            ]
+        },
+        "27;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                27,
+                1
+            ]
+        },
+        "26;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                26,
+                1
+            ]
+        },
+        "25;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                25,
+                1
+            ]
+        },
+        "24;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                24,
+                1
+            ]
+        },
+        "23;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                23,
+                1
+            ]
+        },
+        "22;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                22,
+                1
+            ]
+        },
+        "21;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                21,
+                1
+            ]
+        },
+        "20;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                20,
+                1
+            ]
+        },
+        "19;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                19,
+                1
+            ]
+        },
+        "18;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                18,
+                1
+            ]
+        },
+        "17;1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                17,
+                1
+            ]
+        },
+        "17;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                17,
+                0
+            ]
+        },
+        "18;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                18,
+                0
+            ]
+        },
+        "19;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                19,
+                0
+            ]
+        },
+        "20;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                20,
+                0
+            ]
+        },
+        "21;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                21,
+                0
+            ]
+        },
+        "22;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                22,
+                0
+            ]
+        },
+        "23;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                23,
+                0
+            ]
+        },
+        "24;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                24,
+                0
+            ]
+        },
+        "25;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                25,
+                0
+            ]
+        },
+        "26;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                26,
+                0
+            ]
+        },
+        "27;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                27,
+                0
+            ]
+        },
+        "28;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                28,
+                0
+            ]
+        },
+        "29;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                29,
+                0
+            ]
+        },
+        "30;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                30,
+                0
+            ]
+        },
+        "31;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                31,
+                0
+            ]
+        },
+        "32;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                32,
+                0
+            ]
+        },
+        "33;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                33,
+                0
+            ]
+        },
+        "34;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                34,
+                0
+            ]
+        },
+        "35;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                35,
+                0
+            ]
+        },
+        "36;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                36,
+                0
+            ]
+        },
+        "37;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                37,
+                0
+            ]
+        },
+        "38;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                38,
+                0
+            ]
+        },
+        "39;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                39,
+                0
+            ]
+        },
+        "40;0": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                40,
+                0
+            ]
+        },
+        "40;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                40,
+                -1
+            ]
+        },
+        "39;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                39,
+                -1
+            ]
+        },
+        "38;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                38,
+                -1
+            ]
+        },
+        "37;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                37,
+                -1
+            ]
+        },
+        "36;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                36,
+                -1
+            ]
+        },
+        "35;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                35,
+                -1
+            ]
+        },
+        "34;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                34,
+                -1
+            ]
+        },
+        "33;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                33,
+                -1
+            ]
+        },
+        "32;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                32,
+                -1
+            ]
+        },
+        "28;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                28,
+                -1
+            ]
+        },
+        "27;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                27,
+                -1
+            ]
+        },
+        "26;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                26,
+                -1
+            ]
+        },
+        "25;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                25,
+                -1
+            ]
+        },
+        "24;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                24,
+                -1
+            ]
+        },
+        "23;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                23,
+                -1
+            ]
+        },
+        "22;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                22,
+                -1
+            ]
+        },
+        "21;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                21,
+                -1
+            ]
+        },
+        "20;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                20,
+                -1
+            ]
+        },
+        "19;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                19,
+                -1
+            ]
+        },
+        "18;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                18,
+                -1
+            ]
+        },
+        "17;-1": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                17,
+                -1
+            ]
+        },
+        "17;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                17,
+                -3
+            ]
+        },
+        "17;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                17,
+                -4
+            ]
+        },
+        "18;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                18,
+                -4
+            ]
+        },
+        "19;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                19,
+                -4
+            ]
+        },
+        "20;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                20,
+                -4
+            ]
+        },
+        "21;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                21,
+                -4
+            ]
+        },
+        "22;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                22,
+                -4
+            ]
+        },
+        "23;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                23,
+                -4
+            ]
+        },
+        "24;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                24,
+                -4
+            ]
+        },
+        "25;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                25,
+                -4
+            ]
+        },
+        "26;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                26,
+                -4
+            ]
+        },
+        "27;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                27,
+                -4
+            ]
+        },
+        "28;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                28,
+                -4
+            ]
+        },
+        "31;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                31,
+                -4
+            ]
+        },
+        "32;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                32,
+                -4
+            ]
+        },
+        "33;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                33,
+                -4
+            ]
+        },
+        "34;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                34,
+                -4
+            ]
+        },
+        "35;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                35,
+                -4
+            ]
+        },
+        "36;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                36,
+                -4
+            ]
+        },
+        "37;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                37,
+                -4
+            ]
+        },
+        "38;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                38,
+                -4
+            ]
+        },
+        "39;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                39,
+                -4
+            ]
+        },
+        "40;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                40,
+                -4
+            ]
+        },
+        "40;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                40,
+                -2
+            ]
+        },
+        "39;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                39,
+                -2
+            ]
+        },
+        "38;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                38,
+                -2
+            ]
+        },
+        "37;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                37,
+                -2
+            ]
+        },
+        "36;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                36,
+                -2
+            ]
+        },
+        "35;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                35,
+                -2
+            ]
+        },
+        "34;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                34,
+                -2
+            ]
+        },
+        "33;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                33,
+                -2
+            ]
+        },
+        "32;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                32,
+                -2
+            ]
+        },
+        "28;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                28,
+                -2
+            ]
+        },
+        "27;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                27,
+                -2
+            ]
+        },
+        "26;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                26,
+                -2
+            ]
+        },
+        "25;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                25,
+                -2
+            ]
+        },
+        "24;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                24,
+                -2
+            ]
+        },
+        "23;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                23,
+                -2
+            ]
+        },
+        "22;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                22,
+                -2
+            ]
+        },
+        "21;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                21,
+                -2
+            ]
+        },
+        "20;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                20,
+                -2
+            ]
+        },
+        "19;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                19,
+                -2
+            ]
+        },
+        "17;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                17,
+                -2
+            ]
+        },
+        "18;-2": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                18,
+                -2
+            ]
+        },
+        "18;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                18,
+                -3
+            ]
+        },
+        "19;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                19,
+                -3
+            ]
+        },
+        "20;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                20,
+                -3
+            ]
+        },
+        "21;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                21,
+                -3
+            ]
+        },
+        "22;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                22,
+                -3
+            ]
+        },
+        "23;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                23,
+                -3
+            ]
+        },
+        "24;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                24,
+                -3
+            ]
+        },
+        "25;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                25,
+                -3
+            ]
+        },
+        "26;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                26,
+                -3
+            ]
+        },
+        "27;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                27,
+                -3
+            ]
+        },
+        "28;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                28,
+                -3
+            ]
+        },
+        "32;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                32,
+                -3
+            ]
+        },
+        "33;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                33,
+                -3
+            ]
+        },
+        "34;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                34,
+                -3
+            ]
+        },
+        "35;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                35,
+                -3
+            ]
+        },
+        "36;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                36,
+                -3
+            ]
+        },
+        "37;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                37,
+                -3
+            ]
+        },
+        "38;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                38,
+                -3
+            ]
+        },
+        "39;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                39,
+                -3
+            ]
+        },
+        "40;-3": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                40,
+                -3
+            ]
+        },
+        "39;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                39,
+                5
+            ]
+        },
+        "38;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                38,
+                5
+            ]
+        },
+        "37;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                37,
+                5
+            ]
+        },
+        "36;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                36,
+                5
+            ]
+        },
+        "35;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                35,
+                5
+            ]
+        },
+        "34;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                34,
+                5
+            ]
+        },
+        "33;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                33,
+                5
+            ]
+        },
+        "32;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                32,
+                5
+            ]
+        },
+        "31;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                31,
+                5
+            ]
+        },
+        "30;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                30,
+                5
+            ]
+        },
+        "29;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                29,
+                5
+            ]
+        },
+        "28;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                28,
+                5
+            ]
+        },
+        "27;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                27,
+                5
+            ]
+        },
+        "26;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                26,
+                5
+            ]
+        },
+        "25;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                25,
+                5
+            ]
+        },
+        "24;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                24,
+                5
+            ]
+        },
+        "23;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                23,
+                5
+            ]
+        },
+        "19;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                19,
+                5
+            ]
+        },
+        "18;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                18,
+                5
+            ]
+        },
+        "17;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                17,
+                5
+            ]
+        },
+        "13;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                13,
+                5
+            ]
+        },
+        "14;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                14,
+                5
+            ]
+        },
+        "15;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                15,
+                5
+            ]
+        },
+        "16;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                16,
+                5
+            ]
+        },
+        "40;5": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                40,
+                5
+            ]
+        },
+        "3;-2": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                3,
+                -2
+            ]
+        },
+        "4;-2": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                4,
+                -2
+            ]
+        },
+        "4;-1": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                4,
+                -1
+            ]
+        },
+        "4;0": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                4,
+                0
+            ]
+        },
+        "2;0": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                2,
+                0
+            ]
+        },
+        "3;0": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                3,
+                0
+            ]
+        },
+        "2;-1": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                2,
+                -1
+            ]
+        },
+        "2;-2": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                2,
+                -2
+            ]
+        },
+        "2;-3": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                2,
+                -3
+            ]
+        },
+        "2;-4": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                2,
+                -4
+            ]
+        },
+        "3;-4": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                3,
+                -4
+            ]
+        },
+        "4;-4": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                4,
+                -4
+            ]
+        },
+        "6;-4": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                6,
+                -4
+            ]
+        },
+        "7;-4": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                7,
+                -4
+            ]
+        },
+        "8;-4": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                8,
+                -4
+            ]
+        },
+        "8;-3": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                8,
+                -3
+            ]
+        },
+        "8;-2": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                8,
+                -2
+            ]
+        },
+        "8;-1": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                8,
+                -1
+            ]
+        },
+        "8;0": {
+            "type": "decor",
+            "variant": 5,
+            "pos": [
+                8,
+                0
+            ]
+        },
+        "13;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                13,
+                6
+            ]
+        },
+        "14;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                14,
+                6
+            ]
+        },
+        "15;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                15,
+                6
+            ]
+        },
+        "16;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                16,
+                6
+            ]
+        },
+        "17;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                17,
+                6
+            ]
+        },
+        "18;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                18,
+                6
+            ]
+        },
+        "19;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                19,
+                6
+            ]
+        },
+        "20;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                20,
+                6
+            ]
+        },
+        "21;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                21,
+                6
+            ]
+        },
+        "22;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                22,
+                6
+            ]
+        },
+        "23;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                23,
+                6
+            ]
+        },
+        "24;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                24,
+                6
+            ]
+        },
+        "25;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                25,
+                6
+            ]
+        },
+        "26;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                26,
+                6
+            ]
+        },
+        "27;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                27,
+                6
+            ]
+        },
+        "28;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                28,
+                6
+            ]
+        },
+        "29;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                29,
+                6
+            ]
+        },
+        "30;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                30,
+                6
+            ]
+        },
+        "31;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                31,
+                6
+            ]
+        },
+        "32;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                32,
+                6
+            ]
+        },
+        "33;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                33,
+                6
+            ]
+        },
+        "34;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                34,
+                6
+            ]
+        },
+        "35;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                35,
+                6
+            ]
+        },
+        "36;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                36,
+                6
+            ]
+        },
+        "37;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                37,
+                6
+            ]
+        },
+        "38;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                38,
+                6
+            ]
+        },
+        "39;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                39,
+                6
+            ]
+        },
+        "40;6": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                40,
+                6
+            ]
+        },
+        "40;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                40,
+                7
+            ]
+        },
+        "39;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                39,
+                7
+            ]
+        },
+        "38;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                38,
+                7
+            ]
+        },
+        "37;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                37,
+                7
+            ]
+        },
+        "36;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                36,
+                7
+            ]
+        },
+        "35;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                35,
+                7
+            ]
+        },
+        "34;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                34,
+                7
+            ]
+        },
+        "33;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                33,
+                7
+            ]
+        },
+        "32;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                32,
+                7
+            ]
+        },
+        "31;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                31,
+                7
+            ]
+        },
+        "30;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                30,
+                7
+            ]
+        },
+        "29;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                29,
+                7
+            ]
+        },
+        "28;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                28,
+                7
+            ]
+        },
+        "27;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                27,
+                7
+            ]
+        },
+        "26;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                26,
+                7
+            ]
+        },
+        "25;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                25,
+                7
+            ]
+        },
+        "24;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                24,
+                7
+            ]
+        },
+        "23;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                23,
+                7
+            ]
+        },
+        "22;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                22,
+                7
+            ]
+        },
+        "21;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                21,
+                7
+            ]
+        },
+        "20;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                20,
+                7
+            ]
+        },
+        "19;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                19,
+                7
+            ]
+        },
+        "18;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                18,
+                7
+            ]
+        },
+        "17;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                17,
+                7
+            ]
+        },
+        "16;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                16,
+                7
+            ]
+        },
+        "15;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                15,
+                7
+            ]
+        },
+        "14;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                14,
+                7
+            ]
+        },
+        "13;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                13,
+                7
+            ]
+        },
+        "13;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                13,
+                -5
+            ]
+        },
+        "14;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                14,
+                -5
+            ]
+        },
+        "15;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                15,
+                -5
+            ]
+        },
+        "16;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                16,
+                -5
+            ]
+        },
+        "17;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                17,
+                -5
+            ]
+        },
+        "18;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                18,
+                -5
+            ]
+        },
+        "19;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                19,
+                -5
+            ]
+        },
+        "20;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                20,
+                -5
+            ]
+        },
+        "21;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                21,
+                -5
+            ]
+        },
+        "22;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                22,
+                -5
+            ]
+        },
+        "23;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                23,
+                -5
+            ]
+        },
+        "24;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                24,
+                -5
+            ]
+        },
+        "25;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                25,
+                -5
+            ]
+        },
+        "26;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                26,
+                -5
+            ]
+        },
+        "27;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                27,
+                -5
+            ]
+        },
+        "28;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                28,
+                -5
+            ]
+        },
+        "29;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                29,
+                -5
+            ]
+        },
+        "30;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                30,
+                -5
+            ]
+        },
+        "31;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                31,
+                -5
+            ]
+        },
+        "32;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                32,
+                -5
+            ]
+        },
+        "33;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                33,
+                -5
+            ]
+        },
+        "34;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                34,
+                -5
+            ]
+        },
+        "35;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                35,
+                -5
+            ]
+        },
+        "36;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                36,
+                -5
+            ]
+        },
+        "37;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                37,
+                -5
+            ]
+        },
+        "38;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                38,
+                -5
+            ]
+        },
+        "39;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                39,
+                -5
+            ]
+        },
+        "40;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                40,
+                -5
+            ]
+        },
+        "20;3": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                20,
+                3
+            ]
+        },
+        "20;4": {
+            "type": "stone",
+            "variant": 7,
+            "pos": [
+                20,
+                4
+            ]
+        },
+        "22;3": {
+            "type": "stone",
+            "variant": 2,
+            "pos": [
+                22,
+                3
+            ]
+        },
+        "21;3": {
+            "type": "stone",
+            "variant": 1,
+            "pos": [
+                21,
+                3
+            ]
+        },
+        "21;4": {
+            "type": "stone",
+            "variant": 8,
+            "pos": [
+                21,
+                4
+            ]
+        },
+        "22;4": {
+            "type": "stone",
+            "variant": 3,
+            "pos": [
+                22,
+                4
+            ]
+        },
+        "22;5": {
+            "type": "stone",
+            "variant": 4,
+            "pos": [
+                22,
+                5
+            ]
+        },
+        "21;5": {
+            "type": "stone",
+            "variant": 5,
+            "pos": [
+                21,
+                5
+            ]
+        },
+        "20;5": {
+            "type": "stone",
+            "variant": 6,
+            "pos": [
+                20,
+                5
+            ]
+        },
+        "29;-3": {
+            "type": "stone",
+            "variant": 0,
+            "pos": [
+                29,
+                -3
+            ]
+        },
+        "29;-2": {
+            "type": "stone",
+            "variant": 7,
+            "pos": [
+                29,
+                -2
+            ]
+        },
+        "31;-1": {
+            "type": "stone",
+            "variant": 4,
+            "pos": [
+                31,
+                -1
+            ]
+        },
+        "29;-1": {
+            "type": "stone",
+            "variant": 6,
+            "pos": [
+                29,
+                -1
+            ]
+        },
+        "30;-1": {
+            "type": "stone",
+            "variant": 5,
+            "pos": [
+                30,
+                -1
+            ]
+        },
+        "30;-2": {
+            "type": "stone",
+            "variant": 8,
+            "pos": [
+                30,
+                -2
+            ]
+        },
+        "30;-3": {
+            "type": "stone",
+            "variant": 1,
+            "pos": [
+                30,
+                -3
+            ]
+        },
+        "31;-3": {
+            "type": "stone",
+            "variant": 2,
+            "pos": [
+                31,
+                -3
+            ]
+        },
+        "31;-2": {
+            "type": "stone",
+            "variant": 3,
+            "pos": [
+                31,
+                -2
+            ]
+        },
+        "30;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                30,
+                -4
+            ]
+        },
+        "29;-4": {
+            "type": "orb",
+            "variant": 1,
+            "pos": [
+                29,
+                -4
+            ]
+        }
+    },
+    "offgrid": []
+}
