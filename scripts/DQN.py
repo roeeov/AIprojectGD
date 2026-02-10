@@ -37,6 +37,9 @@ class DQN (nn.Module):
         gamma = GAMMA
         Q_new = rewards + gamma * Q_next_Values * (1- dones)
         return self.MSELoss(Q_values, Q_new)
+    
+    def load_params(self, path):
+        self.load_state_dict(torch.load(path))
 
     def copy (self):
         return copy.deepcopy(self)

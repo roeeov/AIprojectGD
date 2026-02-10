@@ -3,18 +3,11 @@ TODO LIST:
 ----------
 
 SMALL STUFF:
-
-- fix the player not rotating at some point
-- add portals
-- add spikes
-- change interactive tiles function in tilemap to bring tiles as a tuple: (rect, portal-type)
-- do something when the player finishes the level
+- fix player sometimes dying to spikes above
+- fix acore based model choosing not working properly
 
 BIG STUFF:
 
-- change all sprites
 - add gamemodes (ufo)
-- make the game agent state based
 - change readme file
-- add different levels to levels folder and make it so that
-  in the levelSelect class it would create a button for each levels
+- log in to WnB

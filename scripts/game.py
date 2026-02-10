@@ -19,9 +19,9 @@ class Game:
     def __init__(self, display):
 
         self.display = display
-        self.human_agent = humanAgent()
-        self.ai_agent = aiAgent()
         self.env = Environment(self)
+        self.human_agent = humanAgent()
+        self.ai_agent = aiAgent(self.env)
 
         self.noclip = False
         self.checkPoints = deque()

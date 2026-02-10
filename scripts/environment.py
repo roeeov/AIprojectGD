@@ -20,32 +20,34 @@ class Environment:
         visuals_mode = game_state_manager.getGameSettings('visual')
         visuals_mode_index = VISUALS.index(visuals_mode)
         
-        self.game.display.fill((0, 0, 0))
+        display = self.game.display
+        display.fill((0, 0, 0))
         
         if visuals_mode_index < 2:
-            self.game.scroll[0] += (self.game.player.rect().centerx - self.game.display.get_width() / 3 - self.game.scroll[0]) / 20 * 60 / FPS
-            self.game.scroll[1] += (self.game.player.rect().centery - self.game.display.get_height() / 2 - self.game.scroll[1]) / 20 * 60 / FPS
+            self.game.scroll[0] += (self.game.player.rect().centerx - self.game.display.get_width() / 3 - self.game.scroll[0]) / 20
+            self.game.scroll[1] += (self.game.player.rect().centery - self.game.display.get_height() / 2 - self.game.scroll[1]) / 20
             render_scroll = (int(self.game.scroll[0]), int(self.game.scroll[1]))
             
             if visuals_mode_index < 1:
-                self.game.display.blit(self.game.assets['background'], (0, 0))
+                display.blit(self.game.assets['background'], (0, 0))
                 self.game.clouds.update()
-                self.game.clouds.render(self.game.display, offset=render_scroll)
+                self.game.clouds.render(display, offset=render_scroll)
                 
-            tile_map.render(self.game.display, offset=render_scroll)
-            self.game.player.render(self.game.display, offset=render_scroll)
+            tile_map.render(display, offset=render_scroll)
+            self.game.player.render(display, offset=render_scroll)
             
             if visuals_mode_index < 1: self.blit_state(state_info)
         
-        self.game.pause_button.blit(self.game.display)
+        self.game.pause_button.blit(display)
 
     def move(self, action, state, isTraining):
         boolAction = bool(action)
         self.game.player.update(boolAction)
-        next_state, reward = None, None
+        next_state, reward = None, 0
         if isTraining:
             next_state = self.state()
             reward = self.calculate_reward(action, state)
+        self.score += reward
         return next_state, reward
 
     def calculate_reward(self, action, state): 
@@ -99,7 +101,7 @@ class Environment:
     def state(self):
         player = self.game.player
         state_info = tile_map.getState(player)
-        return state_info;
+        return state_info
     
     def blit_state(self, state_info):
         if DRAW_PLAYER_STATE and state_info is not None:
