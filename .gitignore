@@ -2,3 +2,5 @@ client_secrets.json
 credentials.json
 service_account.json
 TODO.txt
+wandb/
+data/checkpoint_data/*.pth
