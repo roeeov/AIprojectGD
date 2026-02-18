@@ -59,7 +59,7 @@ class Environment:
         if self.game.player.death:
             return 0
 
-        reward = 0.4 # reward for surviving
+        reward = 0.2 # reward for surviving
         a, b, c, d, flag_scalar = 0.6, 0, 5, 1.5, 0
         safe_distance = 0.5 # safe distance until penalty starts
 
@@ -121,7 +121,6 @@ class Environment:
                 reward -= flag_scalar * 2.2
 
         return reward
-
     def state(self):
         player = self.game.player
         state_info = tile_map.getState(player)

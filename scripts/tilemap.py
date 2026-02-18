@@ -66,7 +66,8 @@ class Tilemap:
                 base = tile['type'].split()[0]
                 # Only collect 'finish' and 'spike' rects — player won't touch portal/orb
                 if base == 'finish':
-                    interactive_rects.append((pygame.Rect(tile['pos'][0] * self.tile_size, tile['pos'][1] * self.tile_size, self.tile_size, self.tile_size), (base, tile.get('variant'))))
+                    pass
+                    #interactive_rects.append((pygame.Rect(tile['pos'][0] * self.tile_size, tile['pos'][1] * self.tile_size, self.tile_size, self.tile_size), (base, tile.get('variant'))))
                 elif base == 'spike':
                     colrect = pygame.Rect(
                         self.tile_size * tile['pos'][0],

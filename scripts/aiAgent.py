@@ -14,7 +14,7 @@ class aiAgent():
         self.replayBuffer = ReplayBuffer()
         
         self.DQN_hat = self.DQN.copy()
-        learning_rate = 0.00001
+        learning_rate = 0.0001
         self.optim = torch.optim.Adam(self.DQN.parameters(), lr=learning_rate)
         self.epoch = 0
         self.step = 0
@@ -24,13 +24,14 @@ class aiAgent():
         self.avg = 0
         self.end_reached = 0
         self.scores, self.losses, self.avg_score = [], [], []
+        self.loss_sum, self.frames = 0, 0
         self.current_model_avg_score = 0
         self.best_model_avg_score = float('-inf')
         # scheduler = torch.optim.lr_scheduler.StepLR(optim,100000, gamma=0.50)
         # step = 0
         self.load_checkpoint()
 
-        num = 5 # wandb run number, change if you want to start a new run instead of resuming
+        num = 10 # wandb run number, change if you want to start a new run instead of resuming
         project_name = "GeoRush"
         entity_name = "roeeovadia1-"
         self.run = wandb.init(
@@ -78,9 +79,13 @@ class aiAgent():
         if done:
             self.select_better_model()
             self.epoch += 1
-        
+
     def select_better_model(self):
-        if self.epoch % 100 == 0:
+        print(f'current avg: {self.current_model_avg_score} | best avg: {self.best_model_avg_score}')
+        if self.epoch % 150 == 0 and self.epoch != 0:
+
+            self.best_model_avg_score = float('-inf') # always save new model
+
             if self.current_model_avg_score > self.best_model_avg_score:
                 self.best_model_avg_score = self.current_model_avg_score
                 self.save_checkpoint()
@@ -92,7 +97,7 @@ class aiAgent():
     
     def compare_model_values(self, counter = None):
         if counter is None: counter = self.epoch
-        C = 5 # update target network every C epochs
+        C = 3 # update target network every C epochs
         if counter % C == 0:
             self.DQN_hat.load_state_dict(self.DQN.state_dict())
         
@@ -118,18 +123,24 @@ class aiAgent():
         self.step += 1
         self.compare_model_values(counter=self.step)
 
+        self.loss_sum += loss.item()
+        self.frames += 1
+
         if gave_over:
             self.end_reached += int(player_won)
             self.avg = (self.avg * (self.epoch % 10) + self.env.score) / (self.epoch % 10 + 1)
+            loss_avg = self.loss_sum / self.frames
+
             if self.epoch % 10 == 0:
                 self.scores.append(self.env.score)
-                self.losses.append(loss.item())
+                self.losses.append(loss_avg)
+                self.loss_sum, self.frames = 0, 0
 
             if (self.epoch + 1) % 10 == 0:
                 self.avg_score.append(self.avg)
                 self.log(
                     score=self.env.score,
-                    loss=loss.item(),
+                    loss=loss_avg,
                     avg_score=self.avg)
                 if PRINT_AI_STATUS: print(f'average score last 10 games: {self.avg} ')
                 self.current_model_avg_score += self.avg

@@ -7,7 +7,7 @@ root.destroy()
 
 DISPLAY_SIZE = (screen_width, screen_height)
 #DISPLAY_SIZE = (1920, 1080)
-FPS = 60 #60
+FPS = 999 #60
 
 TILE_SIZE = DISPLAY_SIZE[0] * 3 // 80
 
@@ -47,7 +47,7 @@ ORBS = ('blue', 'green', 'yellow')
 SPIKE_SIZE = (0.4, 0.6) # precent
 FONT = 'data/fonts/PixelifySans-VariableFont_wght.ttf'
 
-STATE_ANGLES = np.concatenate((np.array([90]), np.array(list(range(50, -51, -5))), np.array([-90])))
+STATE_ANGLES = np.array([90, 45, -45, -90]) # np.concatenate((np.array([90]), np.array(list(range(50, -51, -5))), np.array([-90])))
 MAX_DISTANCE = 10.0
 STEP = (PLAYER_SPEED / TILE_SIZE) * (2** 0.5) / 2
 TILE_TYPE_MAP = {
@@ -70,8 +70,8 @@ MAP_SWITCH = ('always', 'on completion', 'never')
 
 # training consts
 MIN_BUFFER = 5000
-BATCH_SIZE = 50
-GAMMA = 0.9
+BATCH_SIZE = 64
+GAMMA = 0.99 # 0.9
 EPSILON_START, EPSILON_FINAL, EPSILON_DECAY = 1, 0.01, 5000
 
 
@@ -83,3 +83,4 @@ SHOW_SPIKE_HITBOX = False
 SHOW_FPS_COUNTER = False
 PRINT_AI_STATUS = True
 TEST_REWARD_SYSTEM = False
+#---------------------#

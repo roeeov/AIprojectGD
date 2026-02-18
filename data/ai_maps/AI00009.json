@@ -726,70 +726,6 @@
                 -3
             ]
         },
-        "38;-3": {
-            "type": "grass",
-            "variant": 0,
-            "pos": [
-                38,
-                -3
-            ]
-        },
-        "38;-2": {
-            "type": "grass",
-            "variant": 0,
-            "pos": [
-                38,
-                -2
-            ]
-        },
-        "38;-1": {
-            "type": "grass",
-            "variant": 0,
-            "pos": [
-                38,
-                -1
-            ]
-        },
-        "38;0": {
-            "type": "grass",
-            "variant": 0,
-            "pos": [
-                38,
-                0
-            ]
-        },
-        "38;1": {
-            "type": "grass",
-            "variant": 0,
-            "pos": [
-                38,
-                1
-            ]
-        },
-        "38;2": {
-            "type": "grass",
-            "variant": 0,
-            "pos": [
-                38,
-                2
-            ]
-        },
-        "38;3": {
-            "type": "grass",
-            "variant": 0,
-            "pos": [
-                38,
-                3
-            ]
-        },
-        "38;4": {
-            "type": "grass",
-            "variant": 0,
-            "pos": [
-                38,
-                4
-            ]
-        },
         "37;4": {
             "type": "grass",
             "variant": 0,
@@ -844,38 +780,6 @@
             "pos": [
                 20,
                 3
-            ]
-        },
-        "37;2": {
-            "type": "finish up",
-            "variant": 0,
-            "pos": [
-                37,
-                2
-            ]
-        },
-        "37;3": {
-            "type": "finish down",
-            "variant": 0,
-            "pos": [
-                37,
-                3
-            ]
-        },
-        "37;0": {
-            "type": "finish up",
-            "variant": 0,
-            "pos": [
-                37,
-                0
-            ]
-        },
-        "37;1": {
-            "type": "finish down",
-            "variant": 0,
-            "pos": [
-                37,
-                1
             ]
         },
         "37;-2": {
@@ -940,6 +844,38 @@
             "pos": [
                 36,
                 3
+            ]
+        },
+        "37;2": {
+            "type": "finish up",
+            "variant": 0,
+            "pos": [
+                37,
+                2
+            ]
+        },
+        "37;3": {
+            "type": "finish down",
+            "variant": 0,
+            "pos": [
+                37,
+                3
+            ]
+        },
+        "37;0": {
+            "type": "finish up",
+            "variant": 0,
+            "pos": [
+                37,
+                0
+            ]
+        },
+        "37;1": {
+            "type": "finish down",
+            "variant": 0,
+            "pos": [
+                37,
+                1
             ]
         }
     },

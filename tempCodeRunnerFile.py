@@ -1,2 +1,2 @@
-
-        self.ai_level_page = aiLevelPage(self.display, self.ai_levels)
+action = 1
+print(f'{['down', 'up'][action]}')
