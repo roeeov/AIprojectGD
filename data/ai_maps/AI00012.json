@@ -1,0 +1,971 @@
+{
+    "info": {
+        "name": "unnamed",
+        "creator": "not entered",
+        "difficulty": "NA",
+        "id": "AI00012"
+    },
+    "tilemap": {
+        "1;0": {
+            "type": "portal up",
+            "variant": 2,
+            "pos": [
+                1,
+                0
+            ]
+        },
+        "1;1": {
+            "type": "portal down",
+            "variant": 2,
+            "pos": [
+                1,
+                1
+            ]
+        },
+        "1;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                1,
+                4
+            ]
+        },
+        "2;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                2,
+                4
+            ]
+        },
+        "3;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                3,
+                4
+            ]
+        },
+        "4;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                4,
+                4
+            ]
+        },
+        "5;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                5,
+                4
+            ]
+        },
+        "6;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                6,
+                4
+            ]
+        },
+        "7;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                7,
+                4
+            ]
+        },
+        "8;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                8,
+                3
+            ]
+        },
+        "9;2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                9,
+                2
+            ]
+        },
+        "10;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                10,
+                1
+            ]
+        },
+        "11;2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                11,
+                2
+            ]
+        },
+        "12;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                12,
+                3
+            ]
+        },
+        "13;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                13,
+                4
+            ]
+        },
+        "14;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                14,
+                4
+            ]
+        },
+        "7;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                7,
+                -2
+            ]
+        },
+        "6;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                6,
+                -2
+            ]
+        },
+        "5;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                5,
+                -2
+            ]
+        },
+        "4;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                4,
+                -2
+            ]
+        },
+        "3;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                3,
+                -2
+            ]
+        },
+        "2;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                2,
+                -2
+            ]
+        },
+        "1;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                1,
+                -2
+            ]
+        },
+        "0;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                0,
+                -2
+            ]
+        },
+        "0;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                0,
+                4
+            ]
+        },
+        "8;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                8,
+                -1
+            ]
+        },
+        "9;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                9,
+                -2
+            ]
+        },
+        "10;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                10,
+                -2
+            ]
+        },
+        "11;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                11,
+                -2
+            ]
+        },
+        "12;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                12,
+                -2
+            ]
+        },
+        "13;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                13,
+                -1
+            ]
+        },
+        "14;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                14,
+                0
+            ]
+        },
+        "15;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                15,
+                -1
+            ]
+        },
+        "17;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                17,
+                1
+            ]
+        },
+        "16;2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                16,
+                2
+            ]
+        },
+        "15;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                15,
+                3
+            ]
+        },
+        "18;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                18,
+                0
+            ]
+        },
+        "19;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                19,
+                1
+            ]
+        },
+        "20;2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                20,
+                2
+            ]
+        },
+        "21;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                21,
+                3
+            ]
+        },
+        "16;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                16,
+                -2
+            ]
+        },
+        "17;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                17,
+                -3
+            ]
+        },
+        "18;-4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                18,
+                -4
+            ]
+        },
+        "19;-4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                19,
+                -4
+            ]
+        },
+        "20;-4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                20,
+                -4
+            ]
+        },
+        "21;-4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                21,
+                -4
+            ]
+        },
+        "22;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                22,
+                -3
+            ]
+        },
+        "23;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                23,
+                -2
+            ]
+        },
+        "24;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                24,
+                -1
+            ]
+        },
+        "25;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                25,
+                -2
+            ]
+        },
+        "26;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                26,
+                -3
+            ]
+        },
+        "27;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                27,
+                -3
+            ]
+        },
+        "28;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                28,
+                -3
+            ]
+        },
+        "22;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                22,
+                3
+            ]
+        },
+        "23;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                23,
+                3
+            ]
+        },
+        "24;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                24,
+                3
+            ]
+        },
+        "25;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                25,
+                3
+            ]
+        },
+        "26;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                26,
+                3
+            ]
+        },
+        "27;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                27,
+                3
+            ]
+        },
+        "28;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                28,
+                3
+            ]
+        },
+        "19;0": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                19,
+                0
+            ]
+        },
+        "20;1": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                20,
+                1
+            ]
+        },
+        "21;2": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                21,
+                2
+            ]
+        },
+        "21;-3": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                21,
+                -3
+            ]
+        },
+        "22;-2": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                22,
+                -2
+            ]
+        },
+        "23;-1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                23,
+                -1
+            ]
+        },
+        "24;0": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                24,
+                0
+            ]
+        },
+        "14;1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                14,
+                1
+            ]
+        },
+        "13;3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                13,
+                3
+            ]
+        },
+        "13;0": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                13,
+                0
+            ]
+        },
+        "12;-1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                12,
+                -1
+            ]
+        },
+        "15;0": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                15,
+                0
+            ]
+        },
+        "16;-1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                16,
+                -1
+            ]
+        },
+        "17;-2": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                17,
+                -2
+            ]
+        },
+        "18;-3": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                18,
+                -3
+            ]
+        },
+        "12;2": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                12,
+                2
+            ]
+        },
+        "11;1": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                11,
+                1
+            ]
+        },
+        "10;0": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                10,
+                0
+            ]
+        },
+        "8;0": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                8,
+                0
+            ]
+        },
+        "7;-1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                7,
+                -1
+            ]
+        },
+        "33;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                33,
+                3
+            ]
+        },
+        "32;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                32,
+                3
+            ]
+        },
+        "31;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                31,
+                3
+            ]
+        },
+        "30;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                30,
+                3
+            ]
+        },
+        "29;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                29,
+                3
+            ]
+        },
+        "35;-5": {
+            "type": "finish up",
+            "variant": 0,
+            "pos": [
+                35,
+                -5
+            ]
+        },
+        "35;-4": {
+            "type": "finish down",
+            "variant": 0,
+            "pos": [
+                35,
+                -4
+            ]
+        },
+        "35;-6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                35,
+                -6
+            ]
+        },
+        "34;-6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                34,
+                -6
+            ]
+        },
+        "33;-5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                33,
+                -5
+            ]
+        },
+        "32;-4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                32,
+                -4
+            ]
+        },
+        "31;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                31,
+                -3
+            ]
+        },
+        "30;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                30,
+                -3
+            ]
+        },
+        "29;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                29,
+                -3
+            ]
+        },
+        "34;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                34,
+                -5
+            ]
+        },
+        "33;-4": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                33,
+                -4
+            ]
+        },
+        "32;-3": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                32,
+                -3
+            ]
+        },
+        "31;-2": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                31,
+                -2
+            ]
+        },
+        "30;-2": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                30,
+                -2
+            ]
+        },
+        "25;-1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                25,
+                -1
+            ]
+        },
+        "36;-6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                36,
+                -6
+            ]
+        },
+        "37;-6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                37,
+                -6
+            ]
+        },
+        "38;-6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                38,
+                -6
+            ]
+        },
+        "39;-6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                39,
+                -6
+            ]
+        },
+        "40;-6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                40,
+                -6
+            ]
+        },
+        "41;-5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                41,
+                -5
+            ]
+        },
+        "41;-4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                41,
+                -4
+            ]
+        },
+        "41;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                41,
+                -3
+            ]
+        },
+        "41;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                41,
+                -2
+            ]
+        },
+        "41;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                41,
+                -1
+            ]
+        },
+        "41;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                41,
+                0
+            ]
+        },
+        "41;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                41,
+                1
+            ]
+        },
+        "41;2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                41,
+                2
+            ]
+        },
+        "40;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                40,
+                3
+            ]
+        },
+        "39;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                39,
+                3
+            ]
+        },
+        "38;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                38,
+                3
+            ]
+        },
+        "37;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                37,
+                3
+            ]
+        },
+        "36;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                36,
+                3
+            ]
+        },
+        "35;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                35,
+                3
+            ]
+        },
+        "34;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                34,
+                3
+            ]
+        }
+    },
+    "offgrid": []
+}

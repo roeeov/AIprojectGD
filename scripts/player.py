@@ -36,6 +36,7 @@ class Player:
         self.total_rotation = 0  # Track total rotation during a jump
         # Residual impulse applied to ship velocity when collecting orbs
         self.ship_impulse = 0
+        self.jumped_this_frame = False  # Flag to prevent air_time reset on jump frame
 
     def reset(self):
         """Reset the player to its initial state."""
@@ -50,7 +51,8 @@ class Player:
         if self.death:
             self.set_action('death')
             self.animation.update()
-            if self.animation.done: self.respawn = True 
+            if self.animation.done: self.respawn = True
+            #self.respawn = True
             return
 
         self.input['click'] = upPressed and not self.input['hold']
@@ -58,6 +60,7 @@ class Player:
         if self.input['click']:  self.input['buffer'] = True
         if not self.input['hold']: self.input['buffer'] = False
         self.orb_clicked = False
+        self.jumped_this_frame = False  # Reset jump flag at start of frame
 
         self.collisions = {'up': False, 'down': False, 'right': False}
         self.hitbox_collisions = {'up': False, 'down': False, 'right': False}
@@ -80,8 +83,20 @@ class Player:
         self.pos[1] += frame_movement[1]
         entity_rect = self.rect()
         hitbox = self.hitbox_rect()
+        
+        # When velocity is 0, check one pixel ahead in gravity direction to detect ground/ceiling
+        if frame_movement[1] == 0:
+            if self.gravityDirection == 'down':
+                check_rect = entity_rect.copy()
+                check_rect.y += 1  # Look one pixel down for ground
+            else:  # gravity up
+                check_rect = entity_rect.copy()
+                check_rect.y -= 1  # Look one pixel up for ceiling
+        else:
+            check_rect = entity_rect
+        
         for rect in tile_map.physics_rects_around(self.pos):
-            if entity_rect.colliderect(rect):
+            if check_rect.colliderect(rect):
                 if frame_movement[1] > 0:
                     entity_rect.bottom = rect.top
                     self.collisions['down'] = True
@@ -92,6 +107,16 @@ class Player:
                     self.collisions['up'] = True
                     if hitbox.colliderect(rect):
                         self.hitbox_collisions['up'] = True
+                if frame_movement[1] == 0:
+                    # Detect collision with zero velocity by gravity direction
+                    if self.gravityDirection == 'down':
+                        self.collisions['down'] = True
+                        if hitbox.colliderect(rect):
+                            self.hitbox_collisions['down'] = True
+                    else:
+                        self.collisions['up'] = True
+                        if hitbox.colliderect(rect):
+                            self.hitbox_collisions['up'] = True
                 if not self.collisions['right'] and not self.gamemode == 'wave':
                     self.pos[1] = entity_rect.y
 
@@ -109,7 +134,9 @@ class Player:
                             game_mode = GAMEMODES[variant]
                             self.setGameMode(game_mode)
                         case 'spike':
-                            if not self.game.noclip: self.death = True
+                            if not self.game.noclip:
+                                self.death = True
+                                #self.respawn = True
                         case 'finish':
                             self.finishLevel = True
                 if entity_rect.colliderect(rect):
@@ -122,18 +149,11 @@ class Player:
                                     orb_vel = {'down': -1, 'up': 1}[self.gravityDirection] * ORB_JUMP[ORBS[variant]][self.gamemode]
                                     # For ship mode, add the orb's impulse to a residual so base steering stays responsive
                                     if self.gamemode == 'ship':
-                                        try:
-                                            self.ship_impulse += orb_vel
-                                        except Exception:
-                                            # ensure the field exists
-                                            self.ship_impulse = orb_vel
+                                        self.ship_impulse += orb_vel
                                         # If yellow/green orb, immediately tilt the ship for visual feedback
                                         if ORBS[variant] in {'yellow', 'green'}:
                                             # Use orb_vel sign to decide tilt direction; choose a visible tilt (35 degrees)
-                                            try:
-                                                self.deg = 35 if orb_vel > 0 else -35
-                                            except Exception:
-                                                self.deg = 35 if orb_vel > 0 else -35
+                                            self.deg = 35 if orb_vel > 0 else -35
                                     else:
                                         self.Yvelocity = orb_vel
 
@@ -141,6 +161,7 @@ class Player:
                                 self.orb_clicked = True
                                 self.air_time = 5
                                 self.grounded = False
+                                self.jumped_this_frame = True  # Set flag to prevent air_time reset
             
 
         self.updateVelocity()
@@ -151,7 +172,9 @@ class Player:
         if (self.collisions['down'] and self.gravityDirection == 'down' or self.collisions['up'] and self.gravityDirection == 'up') and not self.orb_clicked:
             if self.air_time > 4:  # We were in the air but now we're not
                 just_landed = True
-            self.air_time = 0
+            # Don't reset air_time if we just jumped (prevents double jump)
+            if not self.jumped_this_frame:
+                self.air_time = 0
         # Check if the player is on the ground
         self.grounded = self.air_time <= 4
    
@@ -256,6 +279,7 @@ class Player:
                         self.air_time = 5
                         self.Yvelocity = jumpVel
                         just_jumped = True
+                        self.jumped_this_frame = True  # Set flag to prevent air_time reset
                         
                     if not just_jumped and (self.collisions['down'] or self.collisions['up']) and not self.collisions['right']:
                         self.Yvelocity = 0
@@ -286,6 +310,7 @@ class Player:
                         self.air_time = 5
                         self.gravityDirection = {'down': 'up', 'up': 'down'}[self.gravityDirection]
                         self.Yvelocity = PLAYER_VELOCITY['ball'] * {'down': 1, 'up': -1}[self.gravityDirection]
+                        self.jumped_this_frame = True  # Set flag to prevent air_time reset
 
             case 'ship':
                 self.input['buffer'] = False
@@ -293,22 +318,18 @@ class Player:
                 steer_dir = {'down': 1, 'up': -1}[self.gravityDirection]
                 desired = math.sin(self.deg * math.pi / 180 * steer_dir) * PLAYER_VELOCITY['ship']
 
-                # If touching ground ceilings, zero base velocity
-                if (self.collisions['down'] or self.collisions['up']) and not self.collisions['right']:
-                    desired = 0
+                # Only zero velocity if trying to move INTO the collision, not away from it
+                # (desired > 0 = down, desired < 0 = up)
+                if not self.collisions['right']:
+                    if (self.collisions['down'] and desired > 0) or (self.collisions['up'] and desired < 0):
+                        desired = 0
 
                 # Decay residual impulse over time so orb effects persist briefly then fade
-                try:
-                    decay = SHIP_IMPULSE_DECAY
-                except Exception:
-                    decay = 0.12
-                try:
-                    self.ship_impulse *= (1 - decay)
-                except Exception:
-                    self.ship_impulse = 0
+                decay = SHIP_IMPULSE_DECAY
+                self.ship_impulse *= (1 - decay)
 
                 # Compose final Y velocity: immediate base steering + residual orb impulse
-                self.Yvelocity = desired + getattr(self, 'ship_impulse', 0)
+                self.Yvelocity = desired + self.ship_impulse
 
                 # Clamp velocity to the configured max for ship
                 try:

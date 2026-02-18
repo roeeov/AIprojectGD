@@ -47,6 +47,7 @@ class Environment:
         if isTraining:
             next_state = self.state()
             reward = self.calculate_reward(action, state)
+            # print(f"Reward up: {self.calculate_reward(1, state)}, Reward down: {self.calculate_reward(0, state)}")
         self.score += reward
         return next_state, reward
 
@@ -55,26 +56,40 @@ class Environment:
             return 1000
         if self.game.player.respawn:
             return -200
+        if self.game.player.death:
+            return 0
 
         reward = 0.4 # reward for surviving
-        a, b, c, d, flag_scalar = 0.6, 0, 5, 1.5, 2
+        a, b, c, d, flag_scalar = 0.6, 0, 5, 1.5, 0
         safe_distance = 0.5 # safe distance until penalty starts
 
-        best_dir_dist, best_dir_angle = -1, -1 # (distance, angle)
+        best_dir_dist, best_dir_angle = -1, [] # (distance, angle)
         min_danger_distance = MAX_DISTANCE + STEP
-        flag_proximity_bonus = 0
+
+        flag_detected = False
+        flag_distance = {1: MAX_DISTANCE * 2,
+                         0: MAX_DISTANCE * 2,
+                         -1: MAX_DISTANCE * 2}
 
         distances , types = state[0::2], state[1::2]
         for (distance, type), deg in zip(zip(distances, types), STATE_ANGLES):
-            
+
             if type == TILE_TYPE_MAP["finish"]:
-                
-                flag_proximity_bonus = max(flag_proximity_bonus, (MAX_DISTANCE + STEP - distance) * flag_scalar)
+                if (abs(deg) <= 45):
+                    flag_detected = True
+
+                    if deg == 0:
+                        flag_distance[0] = distance
+                    else: 
+                        flag_distance[int(deg / abs(deg))] = min(flag_distance[int(deg / abs(deg))], distance)
 
                 virtual_dist = MAX_DISTANCE * 2 
-                if abs(deg) == 45 and virtual_dist > best_dir_dist:
-                    best_dir_dist = virtual_dist
-                    best_dir_angle = deg
+                if abs(deg) == 45:
+                    if virtual_dist > best_dir_dist:
+                        best_dir_angle.clear()
+                    if virtual_dist >= best_dir_dist:
+                        best_dir_dist = virtual_dist
+                        best_dir_angle.append(int(deg>0))
 
             else:
                 min_danger_distance = min(min_danger_distance, distance)
@@ -82,9 +97,12 @@ class Environment:
                 if distance < safe_distance:
                     reward -= b * ((safe_distance - distance)**2)
                 
-                if abs(deg) == 45 and distance > best_dir_dist:
-                    best_dir_dist = distance
-                    best_dir_angle = deg
+                if abs(deg) == 45:
+                    if distance > best_dir_dist:
+                        best_dir_angle.clear()
+                    if distance >= best_dir_dist:
+                        best_dir_dist = distance
+                        best_dir_angle.append(int(deg>0))
         
         dist_up, dist_down = distances[0], distances[-1]
         total_vertical_gap = dist_up + dist_down
@@ -92,9 +110,15 @@ class Environment:
             off_center = abs(dist_up - dist_down) / total_vertical_gap
             reward += (1.0 - off_center) * d
 
-        reward += c * ((best_dir_angle > 0) == action)
+        reward += c * int(action in best_dir_angle)
         reward += min_danger_distance * a
-        reward += flag_proximity_bonus
+
+        if flag_detected:
+            reward += flag_scalar
+            if flag_distance[1] > flag_distance[-1] and action == 1:
+                reward -= flag_scalar * 2.2
+            if flag_distance[-1] > flag_distance[1] and action == 0:
+                reward -= flag_scalar * 2.2
 
         return reward
 

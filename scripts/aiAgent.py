@@ -22,25 +22,32 @@ class aiAgent():
         # ephocs = 200000
         # loss = torch.tensor(-1)
         self.avg = 0
+        self.end_reached = 0
         self.scores, self.losses, self.avg_score = [], [], []
         self.current_model_avg_score = 0
-        self.best_model_avg_score = 0
+        self.best_model_avg_score = float('-inf')
         # scheduler = torch.optim.lr_scheduler.StepLR(optim,100000, gamma=0.50)
         # step = 0
         self.load_checkpoint()
 
+        num = 5 # wandb run number, change if you want to start a new run instead of resuming
         project_name = "GeoRush"
         entity_name = "roeeovadia1-"
         self.run = wandb.init(
+            resume='allow',
+            id=f'AIprojectGD-{num}',
             config={
             "name": project_name,
             "entity": entity_name
         })
 
     def getAction(self, state, train = False):
+        if TEST_REWARD_SYSTEM:
+            return int(self.env.calculate_reward(1, state) > self.env.calculate_reward(0, state))
+        
         actions = self.get_actions()
         if train:
-            epsilon = self.epsilon_greedy()
+            epsilon = self.epsilon_greedy(counter=self.step)
             rnd = random.random()
             if rnd < epsilon:
                 return random.choice(actions).item()
@@ -67,22 +74,26 @@ class aiAgent():
         self.push_to_replayBuffer(state, action, reward, next_state, done)
         if len(self.replayBuffer) < MIN_BUFFER:
             return
-        self.train(gave_over=done)
+        self.train(gave_over=done, player_won=(reward > 0))
         if done:
-            if self.epoch % 100 == 0:
-                if self.current_model_avg_score > self.best_model_avg_score:
-                    self.best_model_avg_score = self.current_model_avg_score
-                    self.save_checkpoint()
-                    print(f"New best model with average score: {self.current_model_avg_score}")
-                else:
-                    self.load_checkpoint()
-                    print(f"Model did not improve. Loaded best model with average score: {self.best_model_avg_score}")
-                self.current_model_avg_score = 0
+            self.select_better_model()
             self.epoch += 1
+        
+    def select_better_model(self):
+        if self.epoch % 100 == 0:
+            if self.current_model_avg_score > self.best_model_avg_score:
+                self.best_model_avg_score = self.current_model_avg_score
+                self.save_checkpoint()
+                print(f"New best model with average score: {self.current_model_avg_score}")
+            else:
+                self.load_checkpoint()
+                print(f"Model did not improve. Loaded best model with average score: {self.best_model_avg_score}")
+            self.current_model_avg_score = 0
     
-    def compare_models(self):
-        C = 3 # update target network every C epochs
-        if self.epoch % C == 0:
+    def compare_model_values(self, counter = None):
+        if counter is None: counter = self.epoch
+        C = 5 # update target network every C epochs
+        if counter % C == 0:
             self.DQN_hat.load_state_dict(self.DQN.state_dict())
         
     def push_to_replayBuffer(self, state, action, reward, next_state, done):
@@ -92,10 +103,9 @@ class aiAgent():
                                                    torch.from_numpy(next_state).to(torch.float32),
                                                    torch.tensor(done, dtype=torch.float32))
         
-    def train(self, gave_over=False):
+    def train(self, gave_over=False, player_won=False):
         batch_size = BATCH_SIZE
         states, actions, rewards, next_states, dones = self.replayBuffer.sample(batch_size)
-        print(f"States shape: {states.shape}, Actions shape: {actions.shape}, Rewards shape: {rewards.shape}, Next_states shape: {next_states.shape}, Dones shape: {dones.shape}")  # Debugging line
         Q_values = self.Q(states = states, actions = actions)
         next_actions, Q_hat_Values = self.get_Actions_Values(next_states, modle= self.DQN_hat)
 
@@ -106,9 +116,10 @@ class aiAgent():
         self.scheduler.step()
 
         self.step += 1
-        self.compare_models()
+        self.compare_model_values(counter=self.step)
 
         if gave_over:
+            self.end_reached += int(player_won)
             self.avg = (self.avg * (self.epoch % 10) + self.env.score) / (self.epoch % 10 + 1)
             if self.epoch % 10 == 0:
                 self.scores.append(self.env.score)
@@ -120,9 +131,15 @@ class aiAgent():
                     score=self.env.score,
                     loss=loss.item(),
                     avg_score=self.avg)
-                print (f'average score last 10 games: {self.avg} ')
+                if PRINT_AI_STATUS: print(f'average score last 10 games: {self.avg} ')
                 self.current_model_avg_score += self.avg
                 self.avg = 0
+            if (self.epoch + 1) % 50 == 0:
+                self.log(
+                    end_reached = self.end_reached,
+                )
+                self.end_reached = 0
+
 
     def save_checkpoint(self):
         checkpoint_path, buffer_path = self.get_checkpoint_path()
@@ -163,13 +180,16 @@ class aiAgent():
         buffer_path = "data/checkpoint_data/buffer1.pth"
         return checkpoint_path, buffer_path
 
-    def log(self, score, loss, avg_score):
+    def log(self, score = None, loss = None, avg_score = None, end_reached = None):
         if self.run is not None:
-            self.run.log({
-                "score": score,
-                "loss": loss,
-                "avg_score": avg_score
-            })
+            if score is not None:
+                self.run.log({"score": score})
+            if loss is not None:
+                self.run.log({"loss": loss})
+            if avg_score is not None:
+                self.run.log({"avg_score": avg_score})
+            if end_reached is not None:
+                self.run.log({"end_reached": end_reached})
         
     def Q(self, states, actions):
         Q_values = self.DQN(states)
@@ -177,9 +197,9 @@ class aiAgent():
         cols = actions.reshape(-1,1)
         return Q_values[rows, cols]
     
-    def epsilon_greedy(self, epoch = None, start=EPSILON_START, final=EPSILON_FINAL, decay=EPSILON_DECAY):
-        if epoch is None: epoch = self.epoch
+    def epsilon_greedy(self, counter = None, start=EPSILON_START, final=EPSILON_FINAL, decay=EPSILON_DECAY):
+        if counter is None: counter = self.step
         # res = final + (start - final) * math.exp(-1 * epoch/decay)
-        if epoch < decay:
-            return start - (start - final) * epoch/decay
+        if counter < decay:
+            return start - (start - final) * counter/decay
         return final

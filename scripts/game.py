@@ -71,6 +71,7 @@ class Game:
         tile_map.assets = self.assets
         self.human_agent.reset()
         self.player.reset()
+        self.env.score = 0
 
     def blitMenu(self, mouse_pressed, mouse_released):
         rect_width, rect_height = DISPLAY_SIZE[0]//2, DISPLAY_SIZE[1]//3*2 # size of the black rectangle
@@ -216,7 +217,7 @@ class Game:
             if (action is not None): # data didnt get lost due to menu opening
                 #print('---------------------------------------------------')
                 #print(state, action, reward, next_state, done)
-                print('Epoch:', self.ai_agent.epoch, ' | Reward:', reward, ' | Buffer Size:', len(self.ai_agent.replayBuffer), ' | state shape:', torch.from_numpy(state).shape)
+                if PRINT_AI_STATUS: print('Epoch:', self.ai_agent.epoch, ' | Reward:', reward, ' | Buffer Size:', len(self.ai_agent.replayBuffer), ' | is dead:', self.player.death, ' | is finish:', self.player.finishLevel)
                 self.ai_agent.handle_training(state, action, reward, next_state, done)
 
         if (self.player.finishLevel):

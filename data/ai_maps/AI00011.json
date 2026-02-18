@@ -1,0 +1,2508 @@
+{
+    "info": {
+        "name": "unnamed",
+        "creator": "not entered",
+        "difficulty": "NA",
+        "id": "AI00011"
+    },
+    "tilemap": {
+        "1;0": {
+            "type": "portal up",
+            "variant": 2,
+            "pos": [
+                1,
+                0
+            ]
+        },
+        "1;1": {
+            "type": "portal down",
+            "variant": 2,
+            "pos": [
+                1,
+                1
+            ]
+        },
+        "7;2": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                7,
+                2
+            ]
+        },
+        "6;3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                6,
+                3
+            ]
+        },
+        "5;4": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                5,
+                4
+            ]
+        },
+        "4;5": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                4,
+                5
+            ]
+        },
+        "3;6": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                3,
+                6
+            ]
+        },
+        "2;7": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                2,
+                7
+            ]
+        },
+        "1;8": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                1,
+                8
+            ]
+        },
+        "1;9": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                1,
+                9
+            ]
+        },
+        "2;8": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                2,
+                8
+            ]
+        },
+        "3;7": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                3,
+                7
+            ]
+        },
+        "4;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                4,
+                6
+            ]
+        },
+        "5;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                5,
+                5
+            ]
+        },
+        "6;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                6,
+                4
+            ]
+        },
+        "7;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                7,
+                3
+            ]
+        },
+        "8;0": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                8,
+                0
+            ]
+        },
+        "7;-1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                7,
+                -1
+            ]
+        },
+        "6;-2": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                6,
+                -2
+            ]
+        },
+        "5;-3": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                5,
+                -3
+            ]
+        },
+        "4;-4": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                4,
+                -4
+            ]
+        },
+        "3;-5": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                3,
+                -5
+            ]
+        },
+        "2;-6": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                2,
+                -6
+            ]
+        },
+        "1;-7": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                1,
+                -7
+            ]
+        },
+        "0;-8": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                0,
+                -8
+            ]
+        },
+        "0;-9": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                0,
+                -9
+            ]
+        },
+        "1;-8": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                1,
+                -8
+            ]
+        },
+        "2;-7": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                2,
+                -7
+            ]
+        },
+        "3;-6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                3,
+                -6
+            ]
+        },
+        "4;-5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                4,
+                -5
+            ]
+        },
+        "5;-4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                5,
+                -4
+            ]
+        },
+        "6;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                6,
+                -3
+            ]
+        },
+        "7;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                7,
+                -2
+            ]
+        },
+        "8;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                8,
+                -1
+            ]
+        },
+        "9;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                9,
+                0
+            ]
+        },
+        "10;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                10,
+                1
+            ]
+        },
+        "8;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                8,
+                4
+            ]
+        },
+        "9;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                9,
+                5
+            ]
+        },
+        "10;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                10,
+                6
+            ]
+        },
+        "10;5": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                10,
+                5
+            ]
+        },
+        "9;4": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                9,
+                4
+            ]
+        },
+        "8;3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                8,
+                3
+            ]
+        },
+        "10;2": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                10,
+                2
+            ]
+        },
+        "9;1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                9,
+                1
+            ]
+        },
+        "11;1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                11,
+                1
+            ]
+        },
+        "12;0": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                12,
+                0
+            ]
+        },
+        "11;5": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                11,
+                5
+            ]
+        },
+        "12;4": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                12,
+                4
+            ]
+        },
+        "13;3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                13,
+                3
+            ]
+        },
+        "13;-1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                13,
+                -1
+            ]
+        },
+        "14;4": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                14,
+                4
+            ]
+        },
+        "15;5": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                15,
+                5
+            ]
+        },
+        "16;6": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                16,
+                6
+            ]
+        },
+        "17;5": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                17,
+                5
+            ]
+        },
+        "18;4": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                18,
+                4
+            ]
+        },
+        "19;3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                19,
+                3
+            ]
+        },
+        "14;0": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                14,
+                0
+            ]
+        },
+        "15;1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                15,
+                1
+            ]
+        },
+        "16;2": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                16,
+                2
+            ]
+        },
+        "17;1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                17,
+                1
+            ]
+        },
+        "18;0": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                18,
+                0
+            ]
+        },
+        "19;-1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                19,
+                -1
+            ]
+        },
+        "20;0": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                20,
+                0
+            ]
+        },
+        "20;4": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                20,
+                4
+            ]
+        },
+        "21;5": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                21,
+                5
+            ]
+        },
+        "21;1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                21,
+                1
+            ]
+        },
+        "21;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                21,
+                6
+            ]
+        },
+        "20;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                20,
+                5
+            ]
+        },
+        "19;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                19,
+                4
+            ]
+        },
+        "18;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                18,
+                5
+            ]
+        },
+        "17;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                17,
+                6
+            ]
+        },
+        "16;7": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                16,
+                7
+            ]
+        },
+        "15;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                15,
+                6
+            ]
+        },
+        "14;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                14,
+                5
+            ]
+        },
+        "13;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                13,
+                4
+            ]
+        },
+        "12;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                12,
+                5
+            ]
+        },
+        "11;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                11,
+                6
+            ]
+        },
+        "11;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                11,
+                0
+            ]
+        },
+        "12;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                12,
+                -1
+            ]
+        },
+        "13;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                13,
+                -2
+            ]
+        },
+        "14;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                14,
+                -1
+            ]
+        },
+        "15;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                15,
+                0
+            ]
+        },
+        "16;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                16,
+                1
+            ]
+        },
+        "17;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                17,
+                0
+            ]
+        },
+        "18;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                18,
+                -1
+            ]
+        },
+        "19;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                19,
+                -2
+            ]
+        },
+        "20;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                20,
+                -1
+            ]
+        },
+        "21;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                21,
+                0
+            ]
+        },
+        "25;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                25,
+                3
+            ]
+        },
+        "25;2": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                25,
+                2
+            ]
+        },
+        "25;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                25,
+                0
+            ]
+        },
+        "24;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                24,
+                0
+            ]
+        },
+        "23;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                23,
+                0
+            ]
+        },
+        "22;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                22,
+                0
+            ]
+        },
+        "22;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                22,
+                6
+            ]
+        },
+        "23;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                23,
+                6
+            ]
+        },
+        "24;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                24,
+                6
+            ]
+        },
+        "25;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                25,
+                6
+            ]
+        },
+        "26;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                26,
+                6
+            ]
+        },
+        "27;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                27,
+                6
+            ]
+        },
+        "25;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                25,
+                4
+            ]
+        },
+        "25;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                25,
+                5
+            ]
+        },
+        "26;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                26,
+                0
+            ]
+        },
+        "29;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                29,
+                3
+            ]
+        },
+        "29;5": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                29,
+                5
+            ]
+        },
+        "28;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                28,
+                6
+            ]
+        },
+        "29;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                29,
+                6
+            ]
+        },
+        "29;2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                29,
+                2
+            ]
+        },
+        "29;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                29,
+                1
+            ]
+        },
+        "27;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                27,
+                0
+            ]
+        },
+        "28;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                28,
+                0
+            ]
+        },
+        "33;3": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                33,
+                3
+            ]
+        },
+        "33;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                33,
+                1
+            ]
+        },
+        "33;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                33,
+                0
+            ]
+        },
+        "32;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                32,
+                0
+            ]
+        },
+        "31;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                31,
+                0
+            ]
+        },
+        "30;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                30,
+                0
+            ]
+        },
+        "29;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                29,
+                0
+            ]
+        },
+        "33;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                33,
+                4
+            ]
+        },
+        "33;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                33,
+                5
+            ]
+        },
+        "33;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                33,
+                6
+            ]
+        },
+        "32;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                32,
+                6
+            ]
+        },
+        "30;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                30,
+                6
+            ]
+        },
+        "31;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                31,
+                6
+            ]
+        },
+        "37;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                37,
+                5
+            ]
+        },
+        "37;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                37,
+                6
+            ]
+        },
+        "36;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                36,
+                6
+            ]
+        },
+        "35;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                35,
+                6
+            ]
+        },
+        "34;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                34,
+                6
+            ]
+        },
+        "37;3": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                37,
+                3
+            ]
+        },
+        "37;2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                37,
+                2
+            ]
+        },
+        "37;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                37,
+                1
+            ]
+        },
+        "37;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                37,
+                0
+            ]
+        },
+        "36;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                36,
+                0
+            ]
+        },
+        "35;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                35,
+                0
+            ]
+        },
+        "34;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                34,
+                0
+            ]
+        },
+        "46;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                46,
+                1
+            ]
+        },
+        "45;2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                45,
+                2
+            ]
+        },
+        "44;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                44,
+                3
+            ]
+        },
+        "45;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                45,
+                4
+            ]
+        },
+        "46;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                46,
+                5
+            ]
+        },
+        "47;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                47,
+                6
+            ]
+        },
+        "48;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                48,
+                5
+            ]
+        },
+        "49;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                49,
+                4
+            ]
+        },
+        "47;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                47,
+                0
+            ]
+        },
+        "48;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                48,
+                1
+            ]
+        },
+        "49;2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                49,
+                2
+            ]
+        },
+        "50;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                50,
+                3
+            ]
+        },
+        "48;9": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                48,
+                9
+            ]
+        },
+        "47;9": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                47,
+                9
+            ]
+        },
+        "46;9": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                46,
+                9
+            ]
+        },
+        "46;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                46,
+                -3
+            ]
+        },
+        "47;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                47,
+                -3
+            ]
+        },
+        "48;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                48,
+                -3
+            ]
+        },
+        "45;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                45,
+                -2
+            ]
+        },
+        "44;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                44,
+                -2
+            ]
+        },
+        "43;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                43,
+                -1
+            ]
+        },
+        "49;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                49,
+                -2
+            ]
+        },
+        "50;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                50,
+                -2
+            ]
+        },
+        "51;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                51,
+                -1
+            ]
+        },
+        "49;8": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                49,
+                8
+            ]
+        },
+        "50;8": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                50,
+                8
+            ]
+        },
+        "51;7": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                51,
+                7
+            ]
+        },
+        "45;8": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                45,
+                8
+            ]
+        },
+        "44;8": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                44,
+                8
+            ]
+        },
+        "43;7": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                43,
+                7
+            ]
+        },
+        "42;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                42,
+                6
+            ]
+        },
+        "42;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                42,
+                5
+            ]
+        },
+        "42;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                42,
+                0
+            ]
+        },
+        "42;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                42,
+                1
+            ]
+        },
+        "52;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                52,
+                0
+            ]
+        },
+        "52;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                52,
+                1
+            ]
+        },
+        "52;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                52,
+                6
+            ]
+        },
+        "52;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                52,
+                5
+            ]
+        },
+        "41;2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                41,
+                2
+            ]
+        },
+        "41;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                41,
+                4
+            ]
+        },
+        "40;6": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                40,
+                6
+            ]
+        },
+        "39;6": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                39,
+                6
+            ]
+        },
+        "40;0": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                40,
+                0
+            ]
+        },
+        "39;0": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                39,
+                0
+            ]
+        },
+        "40;7": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                40,
+                7
+            ]
+        },
+        "39;7": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                39,
+                7
+            ]
+        },
+        "40;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                40,
+                -1
+            ]
+        },
+        "39;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                39,
+                -1
+            ]
+        },
+        "41;1": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                41,
+                1
+            ]
+        },
+        "41;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                41,
+                0
+            ]
+        },
+        "41;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                41,
+                6
+            ]
+        },
+        "41;5": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                41,
+                5
+            ]
+        },
+        "38;6": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                38,
+                6
+            ]
+        },
+        "38;0": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                38,
+                0
+            ]
+        },
+        "38;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                38,
+                -1
+            ]
+        },
+        "38;7": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                38,
+                7
+            ]
+        },
+        "53;2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                53,
+                2
+            ]
+        },
+        "53;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                53,
+                4
+            ]
+        },
+        "54;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                54,
+                5
+            ]
+        },
+        "55;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                55,
+                6
+            ]
+        },
+        "56;7": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                56,
+                7
+            ]
+        },
+        "57;8": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                57,
+                8
+            ]
+        },
+        "58;9": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                58,
+                9
+            ]
+        },
+        "54;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                54,
+                1
+            ]
+        },
+        "55;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                55,
+                0
+            ]
+        },
+        "56;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                56,
+                -1
+            ]
+        },
+        "57;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                57,
+                -2
+            ]
+        },
+        "58;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                58,
+                -3
+            ]
+        },
+        "60;-2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                60,
+                -2
+            ]
+        },
+        "60;-1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                60,
+                -1
+            ]
+        },
+        "60;8": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                60,
+                8
+            ]
+        },
+        "60;7": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                60,
+                7
+            ]
+        },
+        "59;6": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                59,
+                6
+            ]
+        },
+        "58;5": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                58,
+                5
+            ]
+        },
+        "57;4": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                57,
+                4
+            ]
+        },
+        "59;0": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                59,
+                0
+            ]
+        },
+        "58;1": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                58,
+                1
+            ]
+        },
+        "57;2": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                57,
+                2
+            ]
+        },
+        "59;-2": {
+            "type": "finish up",
+            "variant": 0,
+            "pos": [
+                59,
+                -2
+            ]
+        },
+        "59;-1": {
+            "type": "finish down",
+            "variant": 0,
+            "pos": [
+                59,
+                -1
+            ]
+        },
+        "59;9": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                59,
+                9
+            ]
+        },
+        "59;-3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                59,
+                -3
+            ]
+        },
+        "59;8": {
+            "type": "spike",
+            "variant": 0,
+            "pos": [
+                59,
+                8
+            ]
+        },
+        "59;7": {
+            "type": "spike",
+            "variant": 1,
+            "pos": [
+                59,
+                7
+            ]
+        },
+        "56;3": {
+            "type": "grass",
+            "variant": 0,
+            "pos": [
+                56,
+                3
+            ]
+        }
+    },
+    "offgrid": [
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.177083333333336,
+                0.6875
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.385416666666664,
+                0.8645833333333334
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.552083333333336,
+                1.03125
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.770833333333336,
+                1.2395833333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.885416666666664,
+                1.2916666666666667
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.114583333333336,
+                1.4375
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.270833333333336,
+                1.5729166666666667
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.697916666666664,
+                1.8541666666666667
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.4375,
+                1.7916666666666667
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.864583333333336,
+                2.0104166666666665
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.0625,
+                2.1875
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.364583333333336,
+                2.3333333333333335
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.583333333333336,
+                2.4791666666666665
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.770833333333336,
+                2.5833333333333335
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.208333333333336,
+                0.53125
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.5625,
+                0.5833333333333334
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.822916666666664,
+                0.5729166666666666
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.0625,
+                0.6041666666666666
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.385416666666664,
+                0.625
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.666666666666664,
+                0.65625
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.854166666666664,
+                0.6770833333333334
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.15625,
+                0.6041666666666666
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.166666666666664,
+                0.7604166666666666
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.1875,
+                0.9270833333333334
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.166666666666664,
+                1.125
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.1875,
+                1.4270833333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.166666666666664,
+                1.6458333333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.239583333333336,
+                1.9583333333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.15625,
+                1.1875
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.177083333333336,
+                1.8125
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.916666666666664,
+                2.7708333333333335
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                63.03125,
+                2.8229166666666665
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.229166666666664,
+                2.3020833333333335
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                60.25,
+                0.7395833333333334
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.020833333333336,
+                -2.5208333333333335
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.8125,
+                -2.4479166666666665
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.59375,
+                -2.4166666666666665
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.34375,
+                -2.3020833333333335
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.083333333333336,
+                -2.2083333333333335
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.21875,
+                -2.0729166666666665
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.40625,
+                -1.875
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.604166666666664,
+                -1.65625
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.854166666666664,
+                -1.4895833333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.125,
+                -1.25
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.40625,
+                -1.0833333333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.25,
+                -2.59375
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.5625,
+                -2.6041666666666665
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.302083333333336,
+                -2.21875
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.666666666666664,
+                -2.1145833333333335
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.96875,
+                -2.0416666666666665
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.208333333333336,
+                -2.0
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.510416666666664,
+                -1.9479166666666667
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.666666666666664,
+                -1.8958333333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.885416666666664,
+                -1.875
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                63.09375,
+                -1.84375
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                63.322916666666664,
+                -1.8020833333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                63.572916666666664,
+                -1.75
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                63.875,
+                -1.6875
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                64.30208333333333,
+                -1.5833333333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                64.07291666666667,
+                -1.6666666666666667
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                64.54166666666667,
+                -1.4895833333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.395833333333336,
+                -2.1145833333333335
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.760416666666664,
+                6.885416666666667
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.958333333333336,
+                7.0625
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.0625,
+                7.166666666666667
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.333333333333336,
+                7.447916666666667
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.572916666666664,
+                7.6875
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.989583333333336,
+                8.041666666666666
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                63.25,
+                6.541666666666667
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                63.09375,
+                6.71875
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.90625,
+                6.854166666666667
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.65625,
+                7.083333333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.53125,
+                7.239583333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.270833333333336,
+                7.5
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.114583333333336,
+                7.71875
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.84375,
+                7.96875
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.375,
+                7.552083333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.697916666666664,
+                7.791666666666667
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                62.8125,
+                7.90625
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                63.114583333333336,
+                8.15625
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                63.302083333333336,
+                8.3125
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                63.385416666666664,
+                8.447916666666666
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                63.5625,
+                8.645833333333334
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.625,
+                6.729166666666667
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.4375,
+                6.65625
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.291666666666664,
+                6.427083333333333
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.447916666666664,
+                6.5
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.625,
+                8.114583333333334
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.5,
+                8.302083333333334
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.354166666666664,
+                8.489583333333334
+            ]
+        },
+        {
+            "type": "decor",
+            "variant": 4,
+            "pos": [
+                61.25,
+                8.645833333333334
+            ]
+        }
+    ]
+}
