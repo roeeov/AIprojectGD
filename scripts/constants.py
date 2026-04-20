@@ -7,7 +7,7 @@ root.destroy()
 
 DISPLAY_SIZE = (screen_width, screen_height)
 #DISPLAY_SIZE = (1920, 1080)
-FPS = 999 #60
+FPS = 60 #60
 
 TILE_SIZE = DISPLAY_SIZE[0] * 3 // 80
 

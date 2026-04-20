@@ -31,12 +31,13 @@ class aiAgent():
         # step = 0
         self.load_checkpoint()
 
-        num = 10 # wandb run number, change if you want to start a new run instead of resuming
+        num = 11 # wandb run number
         project_name = "GeoRush"
         entity_name = "roeeovadia1-"
         self.run = wandb.init(
             resume='allow',
             id=f'AIprojectGD-{num}',
+            mode='offline',  # Run in offline mode to avoid syncing delays, sync manually later with `wandb sync`
             config={
             "name": project_name,
             "entity": entity_name

@@ -3,7 +3,7 @@ import random
 import torch
 import numpy as np
 
-capacity = 500000
+capacity = 100000
 
 class ReplayBuffer:
     def __init__(self, capacity= capacity, path = None) -> None:
