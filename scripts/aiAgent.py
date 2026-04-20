@@ -1,7 +1,6 @@
 import os
 import torch
 from scripts.DQN import DQN
-import numpy as np
 from scripts.ReplayBuffer import ReplayBuffer
 from scripts.constants import *
 import random
