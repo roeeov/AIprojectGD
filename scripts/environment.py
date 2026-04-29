@@ -7,12 +7,9 @@ from scripts.gameStateManager import game_state_manager
 class Environment:
     def __init__(self, game):
         self.game = game
-        self.done = False
         self.score = 0
 
     def reset(self):
-        self.game.reset()  # Make sure Game has a reset() method
-        self.done = False
         self.score = 0
         return self.state()
 
@@ -121,6 +118,7 @@ class Environment:
                 reward -= flag_scalar * 2.2
 
         return reward
+    
     def state(self):
         player = self.game.player
         state_info = tile_map.getState(player)
@@ -150,6 +148,3 @@ class Environment:
 
     def check_done(self):
         return self.game.player.finishLevel or self.game.player.respawn
-
-    def render(self, display):
-        self.game.render(display)

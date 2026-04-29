@@ -1,6 +1,7 @@
 import os
 import torch
-from scripts.DQN import DQN
+from scripts.DDQN import DDQN
+import numpy as np
 from scripts.ReplayBuffer import ReplayBuffer
 from scripts.constants import *
 import random
@@ -9,12 +10,12 @@ import wandb
 class aiAgent():
     def __init__(self, envronment):
         self.env = envronment
-        self.DQN = DQN()
+        self.DDQN = DDQN()
         self.replayBuffer = ReplayBuffer()
         
-        self.DQN_hat = self.DQN.copy()
+        self.DDQN_hat = self.DDQN.copy()
         learning_rate = 0.0001
-        self.optim = torch.optim.Adam(self.DQN.parameters(), lr=learning_rate)
+        self.optim = torch.optim.Adam(self.DDQN.parameters(), lr=learning_rate)
         self.epoch = 0
         self.step = 0
         self.scheduler = torch.optim.lr_scheduler.MultiStepLR(self.optim,[5000*1000, 10000*1000, 15000*1000], gamma=0.5)
@@ -55,7 +56,7 @@ class aiAgent():
       
         state_tensor = torch.from_numpy(state).flatten().float()
         with torch.no_grad():
-            Q_values = self.DQN(state_tensor)
+            Q_values = self.DDQN(state_tensor)
         max_index = torch.argmax(Q_values).item()
         
         return actions[max_index].item()
@@ -66,8 +67,8 @@ class aiAgent():
     
     def get_Actions_Values (self, states, modle = None):
         with torch.no_grad():
-            DQN_modle = self.DQN if modle is None else modle
-            Q_values = DQN_modle(states)
+            DDQN_modle = self.DDQN if modle is None else modle
+            Q_values = DDQN_modle(states)
             max_values, max_indices = torch.max(Q_values,dim=1) # best_values, best_actions
             return max_indices.reshape(-1,1), max_values.reshape(-1,1)
         
@@ -97,9 +98,9 @@ class aiAgent():
     
     def compare_model_values(self, counter = None):
         if counter is None: counter = self.epoch
-        C = 3 # update target network every C epochs
+        C = 10 # update target network every C epochs
         if counter % C == 0:
-            self.DQN_hat.load_state_dict(self.DQN.state_dict())
+            self.DDQN_hat.load_state_dict(self.DDQN.state_dict())
         
     def push_to_replayBuffer(self, state, action, reward, next_state, done):
         self.replayBuffer.push(torch.from_numpy(state).to(torch.float32),
@@ -112,9 +113,10 @@ class aiAgent():
         batch_size = BATCH_SIZE
         states, actions, rewards, next_states, dones = self.replayBuffer.sample(batch_size)
         Q_values = self.Q(states = states, actions = actions)
-        next_actions, Q_hat_Values = self.get_Actions_Values(next_states, modle= self.DQN_hat)
+        next_actions = self.get_Actions_Values(next_states, modle= self.DDQN)[0]
+        Q_hat_Values = self.Q(states = next_states, actions = next_actions, modle= self.DDQN_hat)
 
-        loss = self.DQN.loss(Q_values, rewards, Q_hat_Values, dones)
+        loss = self.DDQN.loss(Q_values, rewards, Q_hat_Values, dones)
         loss.backward()
         self.optim.step()
         self.optim.zero_grad()
@@ -157,7 +159,7 @@ class aiAgent():
         checkpoint = {
                 'epoch': self.epoch,
                 'step': self.step,
-                'model_state_dict': self.DQN.state_dict(),
+                'model_state_dict': self.DDQN.state_dict(),
                 'optimizer_state_dict': self.optim.state_dict(),
                 'scheduler_state_dict': self.scheduler.state_dict(),
                 'loss': self.losses,
@@ -175,8 +177,8 @@ class aiAgent():
 
         self.epoch = checkpoint['epoch']+1
         self.step = checkpoint['step']+1
-        self.DQN.load_state_dict(checkpoint['model_state_dict'])
-        self.DQN_hat.load_state_dict(checkpoint['model_state_dict'])
+        self.DDQN.load_state_dict(checkpoint['model_state_dict'])
+        self.DDQN_hat.load_state_dict(checkpoint['model_state_dict'])
         self.optim.load_state_dict(checkpoint['optimizer_state_dict'])
         self.scheduler.load_state_dict(checkpoint['scheduler_state_dict'])
         self.replayBuffer = torch.load(buffer_path, weights_only=False)
@@ -202,8 +204,9 @@ class aiAgent():
             if end_reached is not None:
                 self.run.log({"end_reached": end_reached})
         
-    def Q(self, states, actions):
-        Q_values = self.DQN(states)
+    def Q(self, states, actions, modle = None):
+        if modle is None: modle = self.DDQN
+        Q_values = modle(states)
         rows = torch.arange(Q_values.shape[0]).reshape(-1,1)
         cols = actions.reshape(-1,1)
         return Q_values[rows, cols]

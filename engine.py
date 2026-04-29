@@ -22,19 +22,19 @@ class Engine:
         blitLoading(self.display, 'LOADING...')
         map_manager._initialize()
 
-        self.game = Game(self.display)
-        self.menu = Menu(self.display)
-        self.level_select = LevelSelect(self.display)
-        self.level_page = LevelPage(self.display, self.level_select)
-        self.my_levels = myLevels(self.display)
-        self.my_level_page = myLevelPage(self.display, self.my_levels)
-        self.ai_levels = aiLevels(self.display)
-        self.ai_level_page = aiLevelPage(self.display, self.ai_levels)
-        self.editor = Editor(self.display)
+        game = Game(self.display)
+        menu = Menu(self.display)
+        level_select = LevelSelect(self.display)
+        level_page = LevelPage(self.display, level_select)
+        my_levels = myLevels(self.display)
+        my_level_page = myLevelPage(self.display, my_levels)
+        ai_levels = aiLevels(self.display)
+        ai_level_page = aiLevelPage(self.display, ai_levels)
+        editor = Editor(self.display)
 
-        self.state = {'game': self.game, 'menu': self.menu, 'level_select': self.level_select,
-                      'level_page': self.level_page, 'edit': self.editor, 'my_levels': self.my_levels,
-                      'my_level_page': self.my_level_page, 'ai_levels': self.ai_levels, 'ai_level_page': self.ai_level_page}
+        self.state = {'game': game, 'menu': menu, 'level_select': level_select,
+                      'level_page': level_page, 'edit': editor, 'my_levels': my_levels,
+                      'my_level_page': my_level_page, 'ai_levels': ai_levels, 'ai_level_page': ai_level_page}
 
     def run(self):
         while True:

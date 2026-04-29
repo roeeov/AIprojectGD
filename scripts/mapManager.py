@@ -20,7 +20,6 @@ class MapManager:
         self.drive = self.auth_drive()
 
         self.update_map_dict()
-        self.download_index()
 
     def auth_drive(self):
         from pydrive2.auth import GoogleAuth

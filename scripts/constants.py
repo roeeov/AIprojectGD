@@ -15,7 +15,6 @@ TILE_SIZE = DISPLAY_SIZE[0] * 3 // 80
 PLAYER_SPEED = TILE_SIZE / 6
 PLAYER_HITBOX = 0.7 # precent
 
-
 PLAYER_POS = [0.5, 0.5]
 
 # Needs to be changed for every new gamemode added

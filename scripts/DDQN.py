@@ -12,7 +12,7 @@ output_size = 2 #value of each action
 gamma = 0.99 
 MSELoss = nn.MSELoss()
 
-class DQN (nn.Module):
+class DDQN (nn.Module):
     def __init__(self) -> None:
         super().__init__()
         if torch.cuda.is_available:
@@ -33,7 +33,7 @@ class DQN (nn.Module):
         x = self.output(x)
         return x
     
-    def loss (self, Q_values, rewards, Q_next_Values, dones ):
+    def loss (self, Q_values, rewards, Q_next_Values, dones):
         gamma = GAMMA
         Q_new = rewards + gamma * Q_next_Values * (1- dones)
         return self.MSELoss(Q_values, Q_new)

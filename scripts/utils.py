@@ -120,8 +120,6 @@ class Text():
             # Draw the text
             display.blit(text, text_rect)
 
-
-
 class Popup:
     def __init__(self, text, font_size=2, color=(255, 255, 255), bg_color=(0, 0, 0), duration=120, padding=10, pos=None):
         self.font = pygame.font.Font(FONT, UIsize(font_size))
@@ -153,8 +151,6 @@ class Popup:
 
     def is_done(self):
         return self.timer >= self.duration
-
-
 
 class InputBox:
     def __init__(self, pos, width, height, box_type, placeholder='', placeholderColor = (99, 99, 99), 
@@ -226,8 +222,6 @@ class radionButton:
             opacity = 255 if idx == self.chosen else self.opacity_factor
             button.blit(surf, opacity=opacity)
 
-    
-
 class Button:
     def __init__(self, text='', background_color=(255, 255, 255), button_type='', hover=True, scale_factor=1.2, x=None, y=None, image=None, mouse_offset=(0, 0)):
         self.text = text
@@ -282,7 +276,6 @@ class Button:
         self.mouse_pos[1] += self.mouse_offset[1]
 
     def set_offset(self, offset_x, offset_y):
-        """Set the position offset of the button"""
         # Store the new offset
         self.offset_x = offset_x
         self.offset_y = offset_y
@@ -306,7 +299,6 @@ class Button:
             self.scaled_hover_rect.center = (center_x, center_y)
 
     def set_image(self, image):
-        """Set or change the button's background image"""
         self.image = image
         if self.image:
             # Scale to the hover_rect size
@@ -380,13 +372,6 @@ class Button:
         return self.is_hovered() and self.mouse_released
 
     def blit(self, display, opacity=255):
-        """
-        Draw the button to the display with the specified opacity.
-        
-        Args:
-            display: The display surface to draw on
-            opacity: Opacity value (0-255, default=255 for fully opaque)
-        """
         self.update()
         hovering = self.is_hovered() and self.hover_enabled
         

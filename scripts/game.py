@@ -30,6 +30,23 @@ class Game:
 
         self.openMenu = False
 
+        self.reloadButtons()
+        self.pause_title_text = Text("Pause Menu", vh(50, 30), color=(255, 255, 255))
+
+        self.assets = load_assets()
+        for gamemode in GAMEMODES:
+            IMG_scale = PLAYERS_IMAGE_SIZE[gamemode]
+            base_path = 'player/' + gamemode
+            self.assets[base_path + '/run'] = Animation(load_images(base_path + '/run', scale=IMG_scale), img_dur=4)
+            self.assets[base_path + '/death'] = Animation(load_images(base_path + '/death', scale=IMG_scale), loop=False)
+            if gamemode in GROUND_GAMEMODES:
+                self.assets[base_path + '/jump'] = Animation(load_images(base_path + '/jump', scale=IMG_scale))
+        
+        self.clouds = Clouds(self.assets['clouds'], count=16)
+        
+        self.player = Player(self)
+
+    def reloadButtons(self):
         self.buttons = []
 
         back_text = Text('', pos = vh(60, 55), size=UIsize(5))
@@ -51,27 +68,12 @@ class Game:
         pause_text = Text('', pos = vh(4, 4.5), size=UIsize(1.5))
         self.pause_button = Button(pause_text, (0 ,255, 0), button_type='prev', image=load_image('UI/buttons/pause.png', scale=(UIsize(2.5), UIsize(2.5))))
 
-        self.pause_title_text = Text("Pause Menu", vh(50, 30), color=(255, 255, 255))
-
-        self.assets = load_assets()
-        for gamemode in GAMEMODES:
-            IMG_scale = PLAYERS_IMAGE_SIZE[gamemode]
-            base_path = 'player/' + gamemode
-            self.assets[base_path + '/run'] = Animation(load_images(base_path + '/run', scale=IMG_scale), img_dur=4)
-            self.assets[base_path + '/death'] = Animation(load_images(base_path + '/death', scale=IMG_scale), loop=False)
-            if gamemode in GROUND_GAMEMODES:
-                self.assets[base_path + '/jump'] = Animation(load_images(base_path + '/jump', scale=IMG_scale))
         
-        self.clouds = Clouds(self.assets['clouds'], count=16)
-        
-        self.player = Player(self)
-        
-
     def reset(self):    
         tile_map.assets = self.assets
         self.human_agent.reset()
         self.player.reset()
-        self.env.score = 0
+        self.env.reset()
 
     def blitMenu(self, mouse_pressed, mouse_released):
         rect_width, rect_height = DISPLAY_SIZE[0]//2, DISPLAY_SIZE[1]//3*2 # size of the black rectangle

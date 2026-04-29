@@ -33,4 +33,4 @@ class humanAgent():
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 self.input['mouse'] = False
 
-        return 1 if self.input['space'] or self.input['w'] or self.input['up_arrow'] or self.input['mouse'] else 0
+        return int(self.input['space'] or self.input['w'] or self.input['up_arrow'] or self.input['mouse'])
