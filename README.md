@@ -38,7 +38,9 @@
 4. **Run the game:**
    ```
    python engine.py
+   ```
    If that doesn't work, try this:
+   ```
    py engine.py
    ```
 
