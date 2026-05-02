@@ -22,11 +22,8 @@ class MapManager:
         self.update_map_dict()
 
     def auth_drive(self):
-        from pydrive2.auth import GoogleAuth
-        from pydrive2.drive import GoogleDrive
-
-        gauth = GoogleAuth()       # Auto-loads settings.yaml
-        gauth.ServiceAuth()        # Uses service account from settings.yaml
+        gauth = GoogleAuth()
+        gauth.ServiceAuth()
         return GoogleDrive(gauth)
 
     def postMap(self, id):
@@ -47,34 +44,29 @@ class MapManager:
             final_path = self.getMapPath(online_id)
 
             if not os.path.exists(staging_path):
-                print(f"❌ Staging map {id} not found.")
+                print(f"staging map {id} not found.")
                 return
 
-            # Load staging content
             with open(staging_path, "r", encoding="utf-8") as f:
                 staging_data = json.load(f) 
 
-            # If the final file doesn't exist, create it using staging data
             if os.path.exists(final_path):
                 with open(final_path, "r", encoding="utf-8") as f:
                     final_data = json.load(f)
             else:
                 final_data = {}
 
-            # Copy all contents from staging → final, except 'id'
             final_data["info"] = staging_data.get("info", {})
-            final_data["info"]["id"] = online_id  # Force correct ID
+            final_data["info"]["id"] = online_id
             final_data["tilemap"] = staging_data.get("tilemap", {})
             final_data["offgrid"] = staging_data.get("offgrid", [])
 
-            # Save updated level
             with open(final_path, "w", encoding="utf-8") as f:
                 json.dump(final_data, f, indent=4)
 
-            print(f"🔁 Synced content from {id} → {online_id} (ID preserved)")
+            print(f"synced content from {id} → {online_id}")
             self.upload_level(online_id)
 
-    # needs to change
     def generateOnlineId(self):
         online_levels = self.list_online_levels()
         try:
@@ -101,7 +93,6 @@ class MapManager:
                     map_id = data["info"]["id"]
                     self.editor_levels_json[map_id] = data
                     
-    
     def update_ai_map_dict(self):
 
         self.ai_levels_json = {}
@@ -114,9 +105,7 @@ class MapManager:
                     data = json.load(file)
                     map_id = data["info"]["id"]
                     self.ai_levels_json[map_id] = data
-                    
-
-
+                
     def getEditorMapsDict(self):
         self.update_map_dict()
         return self.editor_levels_json
@@ -146,7 +135,6 @@ class MapManager:
 
         self.update_map_dict()
 
-    # use more
     def getMapPath(self, id = None, isAi = False):
         # isAi: true-ai map, false-normal map, None-detect from id
         map_id = self.current_map_id if id is None else id
@@ -172,9 +160,8 @@ class MapManager:
 
         file_path = f'data/maps/{new_map_id}.json'
         with open(file_path, 'w') as f:
-            json.dump(new_map_data, f, indent=4)  # indent=4 makes it pretty
+            json.dump(new_map_data, f, indent=4)
 
-        # self.update_map_dict()
         self.setMap(new_map_id)
 
     def createNewAIMap(self):
@@ -209,9 +196,8 @@ class MapManager:
 
         file_path = f'data/ai_maps/{new_map_id}.json'
         with open(file_path, 'w') as f:
-            json.dump(new_map_data, f, indent=4)  # indent=4 makes it pretty
+            json.dump(new_map_data, f, indent=4)
 
-        # self.update_map_dict()
         self.setMap(new_map_id)
 
 
@@ -257,15 +243,14 @@ class MapManager:
         if file_list:
             file = file_list[0]
             file.GetContentFile(local_path)
-            print("✅ Downloaded index.json")
+            print("downloaded index.json")
         else:
-            print("❌ index.json not found on Drive.")
+            print("index.json not found on Drive.")
 
     def upload_level(self, map_id):
 
         level_path = self.getMapPath(map_id)
 
-        # Upload level file
         file_metadata = {
             'title': f"{map_id}.json",
             'parents': [{'id': self.LEVELS_FOLDER_ID}]
@@ -273,12 +258,10 @@ class MapManager:
         file = self.drive.CreateFile(file_metadata)
         file.SetContentFile(level_path)
         file.Upload()
-        print(f"✅ Uploaded level {map_id}")
+        print(f"uploaded level {map_id}")
 
-        # Step 2: Download existing index.json
         self.download_index()
 
-        # Step 3: Update it
         with open(level_path, "r") as f:
             level_data = json.load(f)
         with open("index.json", "r") as f:
@@ -286,14 +269,12 @@ class MapManager:
 
         info = level_data.get("info", {})
         map_id = info.get("id")
-        # Remove 'id' from the info dict before saving to index
         info_without_id = {k: v for k, v in info.items() if k != "id"}
         index[map_id] = info_without_id
 
         with open("index.json", "w") as f:
             json.dump(index, f, indent=2)
 
-        # Step 4: Re-upload index.json to Drive
         self.upload_index()
 
     def upload_index(self):
@@ -302,67 +283,40 @@ class MapManager:
         }).GetList()
 
         if existing:
-            file = existing[0]  # Update the existing file
-            print("♻️ Updating existing index.json")
+            file = existing[0]
+            print("updating existing index.json")
         else:
             file = self.drive.CreateFile({
                 'title': 'index.json',
                 'parents': [{'id': self.LEVELS_FOLDER_ID}]
             })
-            print("📄 Uploading new index.json")
+            print("Uploading new index.json")
 
         file.SetContentFile("index.json")
         file.Upload()
-        print("✅ index.json uploaded/updated on Drive")
+        print("index.json uploaded/updated on Drive")
 
 
     def download_level(self, map_id, local_folder="data/maps"):
         filename = f"{map_id}.json"
 
-        # Search for the level file on Google Drive
         file_list = self.drive.ListFile({
             'q': f"title='{filename}' and trashed=false"
         }).GetList()
 
         if not file_list:
-            print(f"❌ Level {map_id} not found on Drive.")
+            print(f"level {map_id} not found on Drive.")
             return False
 
-        # Make sure local folder exists
         os.makedirs(local_folder, exist_ok=True)
 
-        # Download the file
         level_file = file_list[0]
         save_path = os.path.join(local_folder, filename)
         level_file.GetContentFile(save_path)
 
-        print(f"✅ Downloaded level {map_id} to {save_path}")
+        print(f"downloaded level {map_id} to {save_path}")
         return True
-    
-    def delete_level(self, map_id):
-        filename = f"{map_id}.json"
-        file_list = self.drive.ListFile({
-            'q': f"title='{filename}' and '{self.LEVELS_FOLDER_ID}' in parents and trashed=false"
-        }).GetList()
-
-        if not file_list:
-            print(f"❌ Level {map_id} not found on Drive.")
-            return
-
-        file_list[0].Delete()
-        print(f"🗑️ Deleted level {map_id} from Drive.")
-
-        # Remove from index
-        self.download_index()
-        with open("index.json", "r") as f:
-            index = json.load(f)
-        if map_id in index:
-            del index[map_id]
-            with open("index.json", "w") as f:
-                json.dump(index, f, indent=2)
-            self.upload_index()
-            print(f"🗑️ Removed {map_id} from index.json")
-    
+        
     def list_online_levels(self):
         self.download_index()
         with open("index.json", "r") as f:
@@ -380,36 +334,32 @@ class MapManager:
         filename = f"{map_id}.json"
         local_path = os.path.join(local_folder, filename)
 
-        # Step 1: Check if file exists locally
         if not self.isMapLoaded(map_id):
-            print(f"📥 Level {map_id} not found locally. Downloading...")
+            print(f"level {map_id} not found locally. Downloading...")
             return self.download_level(map_id)
 
-        # Step 2: Look for the file on Drive
         file_list = self.drive.ListFile({
             'q': f"title='{filename}' and '{self.LEVELS_FOLDER_ID}' in parents and trashed=false"
         }).GetList()
 
         if not file_list:
-            print(f"❌ Level {map_id} not found on Drive.")
+            print(f"level {map_id} not found on Drive.")
             return False
 
         remote_file = file_list[0]
 
-        # Step 3: Download Drive version to temp file
         temp_path = os.path.join(local_folder, f"__temp_{filename}")
         remote_file.GetContentFile(temp_path)
 
-        # Step 4: Compare hashes
         local_hash = self.hash_file(local_path)
         remote_hash = self.hash_file(temp_path)
 
         if local_hash != remote_hash:
-            print(f"🔄 Level {map_id} differs. Replacing local file...")
+            print(f"level {map_id} differs. Replacing local file...")
             os.replace(temp_path, local_path)
             return True
         else:
-            print(f"✅ Level {map_id} is up to date.")
+            print(f"level {map_id} is up to date.")
             os.remove(temp_path)
             return False
         

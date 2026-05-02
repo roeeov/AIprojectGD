@@ -1,9 +1,0 @@
-ame = Game(self.display)
-        menu = Menu(self.display)
-        level_select = LevelSelect(self.display)
-        level_page = LevelPage(self.display, level_select)
-        my_levels = myLevels(self.display)
-        my_level_page = myLevelPage(self.display, my_levels)
-        ai_levels = aiLevels(self.display)
-        ai_level_page = aiLevelPage(self.display, ai_levels)
-        editor = Editor(self.dis
