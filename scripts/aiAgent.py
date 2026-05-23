@@ -181,7 +181,8 @@ class aiAgent():
         self.DDQN_hat.load_state_dict(checkpoint['model_state_dict'])
         self.optim.load_state_dict(checkpoint['optimizer_state_dict'])
         self.scheduler.load_state_dict(checkpoint['scheduler_state_dict'])
-        self.replayBuffer = torch.load(buffer_path, weights_only=False)
+        if os.path.exists(buffer_path):
+            self.replayBuffer = torch.load(buffer_path, weights_only=False)
 
         self.losses = checkpoint['loss']
         self.scores = checkpoint['scores']
