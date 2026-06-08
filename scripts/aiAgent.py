@@ -76,7 +76,7 @@ class aiAgent():
         self.push_to_replayBuffer(state, action, reward, next_state, done)
         if len(self.replayBuffer) < MIN_BUFFER:
             return
-        self.train(gave_over=done, player_won=(reward > 0))
+        self.train(game_over=done, player_won=(reward > 0))
         if done:
             self.select_better_model()
             self.epoch += 1
@@ -109,9 +109,8 @@ class aiAgent():
                                                    torch.from_numpy(next_state).to(torch.float32),
                                                    torch.tensor(done, dtype=torch.float32))
         
-    def train(self, gave_over=False, player_won=False):
-        batch_size = BATCH_SIZE
-        states, actions, rewards, next_states, dones = self.replayBuffer.sample(batch_size)
+    def train(self, game_over=False, player_won=False):
+        states, actions, rewards, next_states, dones = self.replayBuffer.sample(BATCH_SIZE)
         Q_values = self.Q(states = states, actions = actions)
         next_actions = self.get_Actions_Values(next_states, modle= self.DDQN)[0]
         Q_hat_Values = self.Q(states = next_states, actions = next_actions, modle= self.DDQN_hat)
@@ -128,7 +127,7 @@ class aiAgent():
         self.loss_sum += loss.item()
         self.frames += 1
 
-        if gave_over:
+        if game_over:
             self.end_reached += int(player_won)
             self.avg = (self.avg * (self.epoch % 10) + self.env.score) / (self.epoch % 10 + 1)
             loss_avg = self.loss_sum / self.frames
