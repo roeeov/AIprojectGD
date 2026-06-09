@@ -50,12 +50,7 @@ class MapManager:
             with open(staging_path, "r", encoding="utf-8") as f:
                 staging_data = json.load(f) 
 
-            if os.path.exists(final_path):
-                with open(final_path, "r", encoding="utf-8") as f:
-                    final_data = json.load(f)
-            else:
-                final_data = {}
-
+            final_data = {}
             final_data["info"] = staging_data.get("info", {})
             final_data["info"]["id"] = online_id
             final_data["tilemap"] = staging_data.get("tilemap", {})
@@ -322,13 +317,6 @@ class MapManager:
         with open("index.json", "r") as f:
             index = json.load(f)
         return index
-    
-    def hash_file(self, path):
-        hasher = hashlib.md5()
-        with open(path, "rb") as f:
-            for chunk in iter(lambda: f.read(4096), b""):
-                hasher.update(chunk)
-        return hasher.hexdigest()
 
     def sync_level(self, map_id, local_folder="data/maps"):
         filename = f"{map_id}.json"
@@ -351,17 +339,9 @@ class MapManager:
         temp_path = os.path.join(local_folder, f"__temp_{filename}")
         remote_file.GetContentFile(temp_path)
 
-        local_hash = self.hash_file(local_path)
-        remote_hash = self.hash_file(temp_path)
-
-        if local_hash != remote_hash:
-            print(f"level {map_id} differs. Replacing local file...")
-            os.replace(temp_path, local_path)
-            return True
-        else:
-            print(f"level {map_id} is up to date.")
-            os.remove(temp_path)
-            return False
+        print(f"replacing local level {map_id} with remote version...")
+        os.replace(temp_path, local_path)
+        return True
         
     def isMapLoaded(self, map_id):
         local_path = f'data/maps/{map_id}.json'
